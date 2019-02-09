@@ -2,49 +2,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SA.models;
 
-namespace Player
+namespace SA.player
 {
     public class PlayerController : MonoBehaviour
     {
         public float movementSpeed;
 
-        Rigidbody2D rb2d;
+        public EntityStats stats;
+
+        Animator anim;
 
         float xDir;
         float yDir;
+        bool cast;
         private void Awake()
         {
-            rb2d = GetComponent<Rigidbody2D>();
+            anim = GetComponent<Animator>();
         }
-        // Start is called before the first frame update
-        void Start()
-        {
-            GetInput();
-
-            //incorporate Stats on movements;
-        }
-
-        // Update is called once per frame
-        void Update()
+        private void Start()
         {
             GetInput();
         }
-        private void FixedUpdate()
+        private void Update()
         {
-            PlayerMovement();
+            GetInput();
+            Attack();
         }
-
-        private void PlayerMovement()
+        void Attack()
         {
-            rb2d.velocity = new Vector2(Mathf.Lerp(0, xDir * movementSpeed, 0.8f), Mathf.Lerp(0, yDir * movementSpeed, 0.8f));
+            if (cast)
+            {
+                anim.SetTrigger("cast");
+            }
         }
-
-        void GetInput()
+        public Vector2 GetInputDirection()
         {
             xDir = Input.GetAxisRaw("Horizontal");
             yDir = Input.GetAxisRaw("Vertical");
+
+            return new Vector2(xDir, yDir);
+        }
+        public void GetInput()
+        {
+            cast = Input.GetKeyDown(KeyCode.K);
         }
     }
-
 }
