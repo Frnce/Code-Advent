@@ -6,14 +6,19 @@ namespace Advent.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        Vector3 worldPoint;
-        float movementSpeed = 5f;
 
+        public float movementSpeed = 5f;
+        public float startTimeBetweenAttack = 0.5f;
+        float timeBetweenAttack;
+        Vector3 worldPoint;
         float xDir;
         float yDir;
+        bool attackInput;
 
         Animator anim;
         Rigidbody2D rb2d;
+
+        bool canMove = true;
         private void Awake()
         {
             anim = GetComponent<Animator>();
@@ -23,6 +28,7 @@ namespace Advent.Player
         void Start()
         {
             GetPlayerInput();
+            timeBetweenAttack = startTimeBetweenAttack;
         }
 
         // Update is called once per frame
@@ -30,10 +36,19 @@ namespace Advent.Player
         {
             GetMousePosition();
             GetPlayerInput();
+
+            Attack();
         }
         private void FixedUpdate()
         {
-            Movement();
+            if (canMove)
+            {
+                Movement();
+            }
+            else
+            {
+                rb2d.velocity = Vector2.zero;
+            }
         }
         void GetMousePosition()
         {
@@ -45,11 +60,37 @@ namespace Advent.Player
         {
             xDir = Input.GetAxisRaw("Horizontal");
             yDir = Input.GetAxisRaw("Vertical");
+            attackInput = Input.GetMouseButton(0);
         }
         void Movement()
         {
             rb2d.velocity = new Vector2(Mathf.Lerp(0, xDir * movementSpeed, 0.8f),
                                                Mathf.Lerp(0, yDir * movementSpeed, 0.8f));
+        }
+        void Attack()
+        {
+            if (timeBetweenAttack <= 0)
+            {
+                if (attackInput)
+                {
+                    StartCoroutine(AttackCoroutine());
+                    timeBetweenAttack = startTimeBetweenAttack;
+                }
+            }
+            else
+            {
+                timeBetweenAttack -= Time.deltaTime;
+            }
+
+        }
+        IEnumerator AttackCoroutine()
+        {
+            canMove = false;
+            anim.SetTrigger("Attack_1");
+
+            yield return new WaitForSeconds(startTimeBetweenAttack);
+
+            canMove = true;
         }
     }
 }
