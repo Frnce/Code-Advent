@@ -8,17 +8,18 @@ namespace Advent.Player
     {
 
         public float movementSpeed = 5f;
-        public float startTimeBetweenAttack = 0.5f;
-        float timeBetweenAttack;
+        //public float startTimeBetweenAttack = 0.5f;
+        //float timeBetweenAttack;
         Vector3 worldPoint;
         float xDir;
         float yDir;
-        bool attackInput;
+        //bool attackInput;
 
         Animator anim;
         Rigidbody2D rb2d;
 
         bool canMove = true;
+        bool isMoving = false;
         private void Awake()
         {
             anim = GetComponent<Animator>();
@@ -28,7 +29,7 @@ namespace Advent.Player
         void Start()
         {
             GetPlayerInput();
-            timeBetweenAttack = startTimeBetweenAttack;
+            //timeBetweenAttack = startTimeBetweenAttack;
         }
 
         // Update is called once per frame
@@ -37,10 +38,11 @@ namespace Advent.Player
             GetMousePosition();
             GetPlayerInput();
 
-            Attack();
+            //Attack();
         }
         private void FixedUpdate()
         {
+            isMoving = false;
             if (canMove)
             {
                 Movement();
@@ -49,6 +51,8 @@ namespace Advent.Player
             {
                 rb2d.velocity = Vector2.zero;
             }
+
+            anim.SetBool("isMoving",isMoving);
         }
         void GetMousePosition()
         {
@@ -60,35 +64,24 @@ namespace Advent.Player
         {
             xDir = Input.GetAxisRaw("Horizontal");
             yDir = Input.GetAxisRaw("Vertical");
-            attackInput = Input.GetMouseButton(0);
+            //attackInput = Input.GetMouseButton(0);
         }
         void Movement()
         {
+            isMoving = true;
             rb2d.velocity = new Vector2(Mathf.Lerp(0, xDir * movementSpeed, 0.8f),
                                                Mathf.Lerp(0, yDir * movementSpeed, 0.8f));
         }
-        void Attack()
+        public void Attack()
         {
-            if (timeBetweenAttack <= 0)
-            {
-                if (attackInput)
-                {
-                    StartCoroutine(AttackCoroutine());
-                    timeBetweenAttack = startTimeBetweenAttack;
-                }
-            }
-            else
-            {
-                timeBetweenAttack -= Time.deltaTime;
-            }
-
+            StartCoroutine(AttackCoroutine());
         }
         IEnumerator AttackCoroutine()
         {
             canMove = false;
             anim.SetTrigger("Attack_1");
 
-            yield return new WaitForSeconds(startTimeBetweenAttack);
+            yield return new WaitForSeconds(0.25f);
 
             canMove = true;
         }
