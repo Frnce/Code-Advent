@@ -6,20 +6,20 @@ namespace Advent.Player
 {
     public class PlayerController : MonoBehaviour
     {
-
+        public int HP = 10;
+        public int MP = 10;
+        public int attack = 5;
         public float movementSpeed = 5f;
-        //public float startTimeBetweenAttack = 0.5f;
-        //float timeBetweenAttack;
         Vector3 worldPoint;
         float xDir;
         float yDir;
-        //bool attackInput;
 
         Animator anim;
         Rigidbody2D rb2d;
 
         bool canMove = true;
         bool isMoving = false;
+        bool isAlive = true;
         private void Awake()
         {
             anim = GetComponent<Animator>();
@@ -29,7 +29,6 @@ namespace Advent.Player
         void Start()
         {
             GetPlayerInput();
-            //timeBetweenAttack = startTimeBetweenAttack;
         }
 
         // Update is called once per frame
@@ -37,6 +36,8 @@ namespace Advent.Player
         {
             GetMousePosition();
             GetPlayerInput();
+
+            CheckPlayerDeath();
 
             //Attack();
         }
@@ -64,7 +65,6 @@ namespace Advent.Player
         {
             xDir = Input.GetAxisRaw("Horizontal");
             yDir = Input.GetAxisRaw("Vertical");
-            //attackInput = Input.GetMouseButton(0);
         }
         void Movement()
         {
@@ -84,6 +84,19 @@ namespace Advent.Player
             yield return new WaitForSeconds(0.25f);
 
             canMove = true;
+        }
+        public void DamagePlayer(int dmg)
+        {
+            HP -= dmg;
+            Debug.Log("player has been hit");
+        }
+        public void CheckPlayerDeath()
+        {
+            if (HP <= 0)
+            {
+                isAlive = false;
+                Debug.Log("Dead");
+            }
         }
     }
 }

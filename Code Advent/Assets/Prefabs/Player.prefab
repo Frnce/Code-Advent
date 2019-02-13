@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7035666972377390964}
   - component: {fileID: 7035666972377390965}
   - component: {fileID: 7035666972377390962}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &7035666972377390964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1adcd6e434b469408766b6e17460bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 5
 --- !u!1 &7035666972722199634
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7035666972722199637}
   - component: {fileID: 7035666972722199636}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +182,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 9ba16e8848859f7458e7e2d39bcd81ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5eae87e600c94543a1232c3c4b172ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
