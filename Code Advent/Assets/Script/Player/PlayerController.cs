@@ -57,7 +57,7 @@ namespace Advent.Player
         }
         void GetMousePosition()
         {
-            worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            worldPoint = CaptureMousePos();
             anim.SetFloat("xPosition", worldPoint.x);
             anim.SetFloat("yPosition", worldPoint.y);
         }
@@ -71,6 +71,18 @@ namespace Advent.Player
             isMoving = true;
             rb2d.velocity = new Vector2(Mathf.Lerp(0, xDir * movementSpeed, 0.8f),
                                                Mathf.Lerp(0, yDir * movementSpeed, 0.8f));
+        }
+        private Vector3 CaptureMousePos()
+        {
+            Vector2 ret = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            ret *= 2;
+            ret -= Vector2.one;
+            float max = 0.9f;
+            if (Mathf.Abs(ret.x) > max || Mathf.Abs(ret.y) > max)
+            {
+                ret = ret.normalized;
+            }
+            return ret;
         }
         public void Attack()
         {

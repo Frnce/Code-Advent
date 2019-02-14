@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Advent.Player;
 
 public class AbilityCooldown : MonoBehaviour
 {
     public string AbilityButtonAxisName = "Fire1"; //Button from input manager
     public Image darkMask;
     public Text cooldownTextDisplay;
-    public GameObject player;
+    public PlayerController player;
 
     [SerializeField] private Ability ability;
 
@@ -20,6 +21,7 @@ public class AbilityCooldown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<PlayerController>();
         Initialize(ability); // INitialize method will be initialized on player class select
     }
 
@@ -32,7 +34,7 @@ public class AbilityCooldown : MonoBehaviour
         //darkMask.sprite = ability.asprite;
 
         cooldownDuration = ability.baseCooldown;
-        ability.Initialize(player);
+        ability.Initialize(player.gameObject);
     }
 
     // Update is called once per frame
