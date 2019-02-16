@@ -1,13 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent.Player;
+using UnityEngine.SceneManagement;
 
-public class LevelGenerator : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
+    [Header("Level Generation")]
+    public Vector2 roomSizeWorldUnits = new Vector2(25, 25);
+    public int maxWalker = 3;
+    public GameObject wallObj, floorObj;
+    public GameObject startPosition;
+    public GameObject exitPosition;
+    public GameObject[] enemies;
+    public int maxEnemyCount; // ? You can use scriptable objects on some of this variables instead
+    public GameObject abilitySkillUI;
+    public Canvas canvas;
+    public Camera mainCamera;
+
+    [HideInInspector]
+    public int enemyCount;
+
     enum gridSpace { empty,floor,Wall}; //Add door ?
     gridSpace[,] grid;
     int roomHeight, roomwidth;
-    public Vector2 roomSizeWorldUnits = new Vector2(100,100);
     float worldUnitsInOneGridCell = 1;
     struct walker
     {
@@ -18,17 +34,10 @@ public class LevelGenerator : MonoBehaviour
     List<Vector2> floorList;
     float chanceWalkerChangeDir = 0.5f, chanceWalkerSpawn = 0.05f;
     float chanceWalkerDestroy = 0.05f;
-    public int maxWalker = 10;
     float percentToFill = 0.2f;
-    public GameObject wallObj, floorObj;
-    public GameObject startPosition;
-    public GameObject exitPosition;
-    public GameObject[] enemies;
-    public int enemyCount; // ? You can use scriptable objects on some of this variables instead
-    public GameObject abilitySkillUI;
-    public Canvas canvas;
-    // Start is called before the first frame update
-    void Start()
+
+    PlayerController player;
+    private void Start()
     {
         Setup();
         CreateFloors();
@@ -38,8 +47,28 @@ public class LevelGenerator : MonoBehaviour
         SpawnEndPoint();
         SpawnEnemies();
         SpawnUI();
+
+        player = FindObjectOfType<PlayerController>();
+        Instantiate(mainCamera);
+
+        enemyCount = maxEnemyCount;
     }
-    void Setup()
+    void Update()
+    {
+
+    }
+    private void LateUpdate()
+    {
+        CheckIfAllEnemyIsDestroyed();
+    }
+    void CheckIfAllEnemyIsDestroyed()
+    {
+        if(enemyCount == 0)
+        {
+            exitPosition.SetActive(true);
+        }
+    }
+    public void Setup()
     {
         //find grid size
         roomHeight = Mathf.RoundToInt(roomSizeWorldUnits.x / worldUnitsInOneGridCell);
@@ -69,7 +98,7 @@ public class LevelGenerator : MonoBehaviour
         //init list of floor that has been instantiated
         floorList = new List<Vector2>();
     }
-    private void CreateFloors()
+    public void CreateFloors()
     {
         int iterations = 0; //loop will not run forever
         do
@@ -139,7 +168,7 @@ public class LevelGenerator : MonoBehaviour
             iterations++;
         } while (iterations < 10000);
     }
-    void SpawnLevel()
+    public void SpawnLevel()
     {
         for (int x = 0; x < roomwidth; x++)
         {
@@ -162,24 +191,24 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-    void SpawnStartingPoint()
+    public void SpawnStartingPoint()
     {
         int rand = Random.Range(0, floorList.Count);
         Vector2 offset = roomSizeWorldUnits / 2.0f;
         Vector2 spawnPos = floorList[rand] * worldUnitsInOneGridCell - offset;
         Instantiate(startPosition, spawnPos, Quaternion.identity);
     }
-    void SpawnEndPoint()
+    public void SpawnEndPoint()
     {
         int rand = Random.Range(0, floorList.Count);
         Vector2 offset = roomSizeWorldUnits / 2.0f;
         Vector2 spawnPos = floorList[rand] * worldUnitsInOneGridCell - offset;
-        GameObject go = Instantiate(exitPosition, spawnPos, Quaternion.identity) as GameObject;
-        go.SetActive(false);
+        exitPosition = Instantiate(exitPosition, spawnPos, Quaternion.identity);
+        exitPosition.SetActive(false);
     }
-    void SpawnEnemies()
+    public void SpawnEnemies()
     {
-        for (int i = 0; i < enemyCount; i++)
+        for (int i = 0; i < maxEnemyCount; i++)
         {
             int rand = Random.Range(0, floorList.Count);
             Vector2 offset = roomSizeWorldUnits / 2.0f;
@@ -190,11 +219,11 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-    void SpawnUI()
+    public void SpawnUI()
     {
         Instantiate(abilitySkillUI, Vector3.zero, Quaternion.identity, canvas.transform);
     }
-    void CreateWalls()
+    public void CreateWalls()
     {
         //loop though every grid space
         for (int x = 0; x < roomwidth -1; x++)
@@ -225,7 +254,7 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-    void Spawn(float x, float y, GameObject go)
+    public void Spawn(float x, float y, GameObject go)
     {
         //find position to spawn
         Vector2 offset = roomSizeWorldUnits / 2.0f;
@@ -234,7 +263,7 @@ public class LevelGenerator : MonoBehaviour
         Instantiate(go, spawnPos, Quaternion.identity);
     }
 
-    int NumberOfFloors()
+    public int NumberOfFloors()
     {
         int count = 0;
         foreach (gridSpace space in grid)
@@ -247,7 +276,7 @@ public class LevelGenerator : MonoBehaviour
         return count;
     }
 
-    private Vector2 RandomDirection()
+    public Vector2 RandomDirection()
     {
         //pick random int between 0 and 3
         int choice = Mathf.FloorToInt(Random.value * 3.99f);

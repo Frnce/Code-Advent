@@ -6,10 +6,12 @@ using Advent.Player;
 public class HitEnemy : MonoBehaviour
 {
     PlayerController player;
+    PlayerStats playerStats;
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        playerStats = player.playerStats;
     }
 
     // Update is called once per frame
@@ -21,7 +23,7 @@ public class HitEnemy : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Slime>().EnemyHit(player.attack);
+            collision.GetComponent<Slime>().EnemyHit(playerStats.attack.GetValue());
         }
     }
 }

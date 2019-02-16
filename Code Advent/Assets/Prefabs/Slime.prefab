@@ -149,9 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eef34e0b86104e43919b12d0d178a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
   player: {fileID: 0}
-  enemy: {fileID: 8055217217233823490}
+  enemy: {fileID: 11400000, guid: f6933823a1112a5429d531e83f671c71, type: 2}
 --- !u!1 &8055217216716805078
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +195,7 @@ GameObject:
   - component: {fileID: 8055217217233823550}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

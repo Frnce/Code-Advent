@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Advent.Player;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-
+    public static GameManager instance;
+    private PlayerController player;
     private void Awake()
     {
         if (instance == null)
@@ -18,15 +20,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
+    public void RestartScene()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // first scene
     }
 }

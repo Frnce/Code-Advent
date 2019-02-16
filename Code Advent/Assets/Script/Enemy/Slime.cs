@@ -20,11 +20,14 @@ public class Slime : MonoBehaviour
     private int attack;
     private int defense;
 
+    LevelManager levelManager;
+
     bool detectedEnemy;
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         target = FindObjectOfType<PlayerController>();
+        levelManager = FindObjectOfType<LevelManager>();
     }
     void Start()
     {
@@ -67,6 +70,7 @@ public class Slime : MonoBehaviour
     {
         if (hp <= 0)
         {
+            levelManager.enemyCount--;
             Destroy(gameObject);
         }
     }

@@ -7,10 +7,9 @@ public class HitPlayer : MonoBehaviour
 {
     //This certain module will temporarily disable the boxcollider then will enable after certain time to hurt the player if they are in range
     //This is only a temporary code. this will be used and update later on the development
-    public int damage = 1;
     [HideInInspector]
     public PlayerController player;
-    public GameObject enemy;
+    public EnemyObject enemy;
 
     bool isHit = false;
 
@@ -43,7 +42,7 @@ public class HitPlayer : MonoBehaviour
         if (collision.collider.CompareTag("Player") && !isHit)
         {
             isHit = true;
-            player.DamagePlayer(damage);
+            player.playerStats.TakeDamage(enemy.attack);
         }
     }
     private void OnCollisionExit2D(Collision2D collision)

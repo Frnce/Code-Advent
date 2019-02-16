@@ -6,10 +6,10 @@ namespace Advent.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        public int HP = 10;
-        public int MP = 10;
-        public int attack = 5;
-        public float movementSpeed = 5f;
+        [HideInInspector]
+        public PlayerStats playerStats;
+
+        public Transform weapon; //Change to scriptable objects ?
         Vector3 worldPoint;
         float xDir;
         float yDir;
@@ -19,11 +19,12 @@ namespace Advent.Player
 
         bool canMove = true;
         bool isMoving = false;
-        bool isAlive = true;
+        bool isFacingRight;
         private void Awake()
         {
             anim = GetComponent<Animator>();
             rb2d = GetComponent<Rigidbody2D>();
+            playerStats = FindObjectOfType<PlayerStats>();
         }
         // Start is called before the first frame update
         void Start()
@@ -36,14 +37,11 @@ namespace Advent.Player
         {
             GetMousePosition();
             GetPlayerInput();
-
-            CheckPlayerDeath();
-
+            Aim();
             //Attack();
         }
         private void FixedUpdate()
         {
-            isMoving = false;
             if (canMove)
             {
                 Movement();
@@ -52,7 +50,6 @@ namespace Advent.Player
             {
                 rb2d.velocity = Vector2.zero;
             }
-
             anim.SetBool("isMoving",isMoving);
         }
         void GetMousePosition()
@@ -68,9 +65,29 @@ namespace Advent.Player
         }
         void Movement()
         {
-            isMoving = true;
-            rb2d.velocity = new Vector2(Mathf.Lerp(0, xDir * movementSpeed, 0.8f),
-                                               Mathf.Lerp(0, yDir * movementSpeed, 0.8f));
+            if(xDir != 0 || yDir != 0)
+            {
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
+            rb2d.velocity = new Vector2(Mathf.Lerp(0, xDir * playerStats.speed.GetValue(), 0.8f),
+                                               Mathf.Lerp(0, yDir * playerStats.speed.GetValue(), 0.8f));
+        }
+        void Aim()
+        {
+            Vector2 mouse = Camera.main.ScreenToViewportPoint(Input.mousePosition);        //Mouse position
+            Vector3 objpos = Camera.main.WorldToViewportPoint(weapon.position);        //Object position on screen
+            Vector2 relobjpos = new Vector2(objpos.x - 0.5f, objpos.y - 0.5f);            //Set coordinates relative to object
+            Vector2 relmousepos = new Vector2(mouse.x - 0.5f, mouse.y - 0.5f) - relobjpos;
+            float angle = Vector2.Angle(Vector2.up, relmousepos);    //Angle calculation
+            if (relmousepos.x > 0)
+                angle = 360 - angle;
+            Quaternion quat = Quaternion.identity;
+            quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
+            weapon.rotation = quat;
         }
         private Vector3 CaptureMousePos()
         {
@@ -96,19 +113,6 @@ namespace Advent.Player
             yield return new WaitForSeconds(0.25f);
 
             canMove = true;
-        }
-        public void DamagePlayer(int dmg)
-        {
-            HP -= dmg;
-            Debug.Log("player has been hit");
-        }
-        public void CheckPlayerDeath()
-        {
-            if (HP <= 0)
-            {
-                isAlive = false;
-                Debug.Log("Dead");
-            }
         }
     }
 }
