@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22b1a24b7de1a2844a9d0c45cf42f36a, type: 3}
-  m_Name: Swordsman Default Attack
+  m_Script: {fileID: 11500000, guid: 8e4d7cf01a0f0e04e8f3113c7d0f7784, type: 3}
+  m_Name: Sword of benevolence
   m_EditorClassIdentifier: 
-  aName: Attack
-  baseCooldown: 0.3
-  damage: 1
+  name: Sword of benevolence
+  icon: {fileID: 21300000, guid: e3a1234620bd695439b6cface6e26e20, type: 3}
+  isDefault: 0
+  equipmentSlot: 0
+  armorModifier: 0
+  damageModifier: 10

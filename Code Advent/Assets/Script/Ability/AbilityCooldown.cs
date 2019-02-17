@@ -62,8 +62,7 @@ public class AbilityCooldown : MonoBehaviour
     private void Cooldown()
     {
         cooldownTimeLeft -= Time.deltaTime;
-        float roundedCD = Mathf.Round(cooldownTimeLeft);
-        cooldownTextDisplay.text = roundedCD.ToString();
+        cooldownTextDisplay.text = cooldownTimeLeft.ToString("0.0");
 
         darkMask.fillAmount = (cooldownTimeLeft / cooldownDuration);
     }

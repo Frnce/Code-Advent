@@ -13,15 +13,15 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(instance);
+            //DontDestroyOnLoad(instance);
         }
         else
         {
             Destroy(gameObject);
         }
     }
-    public void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // first scene
-    }
+    //public void RestartScene()
+    //{
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // first scene
+    //}
 }

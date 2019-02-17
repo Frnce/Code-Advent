@@ -23,7 +23,7 @@ public class HitEnemy : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Slime>().EnemyHit(playerStats.attack.GetValue());
+            collision.GetComponent<Dummy>().EnemyHit(playerStats.attack.GetValue());
         }
     }
 }

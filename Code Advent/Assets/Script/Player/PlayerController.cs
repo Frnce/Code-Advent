@@ -35,10 +35,9 @@ namespace Advent.Player
         // Update is called once per frame
         void Update()
         {
-            GetMousePosition();
             GetPlayerInput();
             Aim();
-            //Attack();
+            FlipCharacter();
         }
         private void FixedUpdate()
         {
@@ -51,12 +50,6 @@ namespace Advent.Player
                 rb2d.velocity = Vector2.zero;
             }
             anim.SetBool("isMoving",isMoving);
-        }
-        void GetMousePosition()
-        {
-            worldPoint = CaptureMousePos();
-            anim.SetFloat("xPosition", worldPoint.x);
-            anim.SetFloat("yPosition", worldPoint.y);
         }
         void GetPlayerInput()
         {
@@ -76,8 +69,29 @@ namespace Advent.Player
             rb2d.velocity = new Vector2(Mathf.Lerp(0, xDir * playerStats.speed.GetValue(), 0.8f),
                                                Mathf.Lerp(0, yDir * playerStats.speed.GetValue(), 0.8f));
         }
+        void FlipCharacter()
+        {
+            Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (mouse.x > transform.position.x && isFacingRight)
+            {
+                flip();
+            }
+            else if (mouse.x < transform.position.x && !isFacingRight)
+            {
+                flip();
+            }
+        }
+        void flip()
+        {
+            isFacingRight = !isFacingRight;
+
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
         void Aim()
         {
+            //The Weapon should be facing up or vector2.up for it to work properly
             Vector2 mouse = Camera.main.ScreenToViewportPoint(Input.mousePosition);        //Mouse position
             Vector3 objpos = Camera.main.WorldToViewportPoint(weapon.position);        //Object position on screen
             Vector2 relobjpos = new Vector2(objpos.x - 0.5f, objpos.y - 0.5f);            //Set coordinates relative to object
@@ -88,18 +102,6 @@ namespace Advent.Player
             Quaternion quat = Quaternion.identity;
             quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
             weapon.rotation = quat;
-        }
-        private Vector3 CaptureMousePos()
-        {
-            Vector2 ret = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-            ret *= 2;
-            ret -= Vector2.one;
-            float max = 0.9f;
-            if (Mathf.Abs(ret.x) > max || Mathf.Abs(ret.y) > max)
-            {
-                ret = ret.normalized;
-            }
-            return ret;
         }
         public void Attack()
         {

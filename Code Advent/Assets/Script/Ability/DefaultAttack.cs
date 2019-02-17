@@ -6,7 +6,6 @@ using Advent.Player;
 [CreateAssetMenu(menuName ="Abilities/DefaultAttack")]
 public class DefaultAttack : Ability
 {
-    public int damage = 1;
     private PlayerController player;
 
     public override void Initialize(GameObject obj)

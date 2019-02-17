@@ -17,6 +17,9 @@ public class LevelManager : MonoBehaviour
     public GameObject abilitySkillUI;
     public Canvas canvas;
     public Camera mainCamera;
+    [Space]
+    //Change to scriptable objects
+    public GameObject[] items;
 
     [HideInInspector]
     public int enemyCount;
@@ -47,6 +50,7 @@ public class LevelManager : MonoBehaviour
         SpawnEndPoint();
         SpawnEnemies();
         SpawnUI();
+        SpawnItems();
 
         player = FindObjectOfType<PlayerController>();
         Instantiate(mainCamera);
@@ -192,14 +196,14 @@ public class LevelManager : MonoBehaviour
         }
     }
     public void SpawnStartingPoint()
-    {
+    {//Spawn the character
         int rand = Random.Range(0, floorList.Count);
         Vector2 offset = roomSizeWorldUnits / 2.0f;
         Vector2 spawnPos = floorList[rand] * worldUnitsInOneGridCell - offset;
         Instantiate(startPosition, spawnPos, Quaternion.identity);
     }
     public void SpawnEndPoint()
-    {
+    {//spawns the end point where the player can move to the next stage;
         int rand = Random.Range(0, floorList.Count);
         Vector2 offset = roomSizeWorldUnits / 2.0f;
         Vector2 spawnPos = floorList[rand] * worldUnitsInOneGridCell - offset;
@@ -260,9 +264,20 @@ public class LevelManager : MonoBehaviour
         Vector2 offset = roomSizeWorldUnits / 2.0f;
         Vector2 spawnPos = new Vector2(x, y) * worldUnitsInOneGridCell - offset;
         //spawn object
-        Instantiate(go, spawnPos, Quaternion.identity);
+        Instantiate(go, spawnPos, Quaternion.identity,transform);
     }
-
+    public void SpawnItems()
+    {
+        //Spawning Items on random location;
+        //You can spawn chest instead of item itself
+        for (int i = 0; i < 3; i++)
+        {
+            int rand = Random.Range(0, floorList.Count);
+            Vector2 offset = roomSizeWorldUnits / 2.0f;
+            Vector2 spawnPos = floorList[rand] * worldUnitsInOneGridCell - offset;
+            Instantiate(items[0], spawnPos, Quaternion.identity);
+        }
+    }
     public int NumberOfFloors()
     {
         int count = 0;

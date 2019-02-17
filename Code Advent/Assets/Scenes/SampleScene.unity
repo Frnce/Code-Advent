@@ -122,6 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 139226825}
   - component: {fileID: 139226824}
+  - component: {fileID: 139226826}
+  - component: {fileID: 139226827}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -155,6 +157,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &139226826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139226823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2489b79adcf10b740b2f100a61f19758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+--- !u!114 &139226827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139226823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7491b45914a85d44da9e3225ffb949be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &518068047
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,66 +317,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
         type: 3}
-      propertyPath: enemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
-        type: 3}
-      propertyPath: wallObj
-      value: 
-      objectReference: {fileID: 7824447725176289840, guid: 6d46c901a1c389d4690b10a0257a232f,
-        type: 3}
-    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
-        type: 3}
-      propertyPath: floorObj
-      value: 
-      objectReference: {fileID: 1577640085123038982, guid: 2e7572974b493724d9562405503f1836,
-        type: 3}
-    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
-        type: 3}
-      propertyPath: startPosition
-      value: 
-      objectReference: {fileID: 7035666972377390963, guid: 11645086f94fbdc44b2c4f30d7714182,
-        type: 3}
-    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
-        type: 3}
-      propertyPath: exitPosition
-      value: 
-      objectReference: {fileID: 3215862125553050526, guid: 89e3de6a47e479a4780792cbcda520a3,
-        type: 3}
-    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
-        type: 3}
-      propertyPath: enemies.Array.data[0]
-      value: 
-      objectReference: {fileID: 8055217217233823490, guid: a66e10d769eb6ea48bcee7cadec92bda,
-        type: 3}
-    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
-        type: 3}
-      propertyPath: enemyCount
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
-        type: 3}
-      propertyPath: abilitySkillUI
-      value: 
-      objectReference: {fileID: 6952845568880014962, guid: 5acc1f43b123faf4e84e0e37a0a304c7,
-        type: 3}
-    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
-        type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1502457234}
-    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 2747234044931474741, guid: ef6c8a390cef81e4f8b9034e7bf0fed0,
-        type: 3}
-    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
-        type: 3}
-      propertyPath: maxEnemyCount
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f638b357e1c895f41bb62cb1d0d6b35f, type: 3}
 --- !u!1 &1502457231

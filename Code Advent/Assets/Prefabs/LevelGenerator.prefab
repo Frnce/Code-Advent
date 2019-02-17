@@ -43,3 +43,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7b3e287bae617429263704eb1bab9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomSizeWorldUnits: {x: 25, y: 25}
+  maxWalker: 1
+  wallObj: {fileID: 7824447725176289840, guid: 6d46c901a1c389d4690b10a0257a232f, type: 3}
+  floorObj: {fileID: 1577640085123038982, guid: 2e7572974b493724d9562405503f1836,
+    type: 3}
+  startPosition: {fileID: 7035666972377390963, guid: 11645086f94fbdc44b2c4f30d7714182,
+    type: 3}
+  exitPosition: {fileID: 3215862125553050526, guid: 89e3de6a47e479a4780792cbcda520a3,
+    type: 3}
+  enemies:
+  - {fileID: 1915644790719486532, guid: c0a3f0cd2ec3abf44a6cc9d6f26fc190, type: 3}
+  maxEnemyCount: 1
+  abilitySkillUI: {fileID: 6952845568880014962, guid: 5acc1f43b123faf4e84e0e37a0a304c7,
+    type: 3}
+  canvas: {fileID: 0}
+  mainCamera: {fileID: 2747234044931474741, guid: ef6c8a390cef81e4f8b9034e7bf0fed0,
+    type: 3}
+  items:
+  - {fileID: 7717311661291090446, guid: d1cae2c880d824744bb0f5b087093226, type: 3}
+  - {fileID: 5764088134087958042, guid: 687ac3483d63b7f4f995aec5a3ee4831, type: 3}
+  enemyCount: 5
