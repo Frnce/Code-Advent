@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent.Player;
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class EquipmentManager : MonoBehaviour
         instance = this;
     }
     #endregion
-
     Equipment[] currentEquipment;
     public delegate void OnEquipmentChanged(Equipment oldItem, Equipment newItem);
     public OnEquipmentChanged onEquipmentChanged;
@@ -23,7 +23,7 @@ public class EquipmentManager : MonoBehaviour
         int numOfSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new Equipment[numOfSlots];
     }
-    public void Equip(Equipment newItem)
+    public void Equip(Equipment newItem) // Gets the equipment on the ground and put it on the equipment manager
     {
         int slotIndex = (int)newItem.equipmentSlot;
 
@@ -32,11 +32,12 @@ public class EquipmentManager : MonoBehaviour
         if(currentEquipment[slotIndex] != null)
         {
             oldItem = currentEquipment[slotIndex];
-            inventory.Add(oldItem);
+            Instantiate(oldItem.equipmentObject,FindObjectOfType<PlayerController>().transform.position,Quaternion.identity); // instantiate the old equipped when replaced it with the newly equipped item
         }
         if(onEquipmentChanged != null)
         {
             onEquipmentChanged.Invoke(oldItem,newItem);
+            //invokes delegate to get the item data
         }
         currentEquipment[slotIndex] = newItem;
     }

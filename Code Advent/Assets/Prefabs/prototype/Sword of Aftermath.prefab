@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 553362589130674958}
   - component: {fileID: 5708965800582298455}
   m_Layer: 0
-  m_Name: Sword of benevolence
+  m_Name: Sword of Aftermath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: e3a1234620bd695439b6cface6e26e20, type: 3}
+  m_Sprite: {fileID: 21300030, guid: e3a1234620bd695439b6cface6e26e20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a65c0ee7da27942b546b8a9c3efd3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipment: {fileID: 11400000, guid: 09ee722aeb22dfe4ca94ba4c9b018669, type: 2}
+  equipment: {fileID: 11400000, guid: adb642856ece6f042872645674c444d4, type: 2}

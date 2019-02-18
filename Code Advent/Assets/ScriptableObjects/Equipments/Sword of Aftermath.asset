@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e4d7cf01a0f0e04e8f3113c7d0f7784, type: 3}
-  m_Name: Sword of benevolence
+  m_Name: Sword of Aftermath
   m_EditorClassIdentifier: 
-  name: Sword of benevolence
-  icon: {fileID: 21300000, guid: e3a1234620bd695439b6cface6e26e20, type: 3}
+  name: Sword of AfterMath
+  icon: {fileID: 21300030, guid: e3a1234620bd695439b6cface6e26e20, type: 3}
   isDefault: 0
   equipmentSlot: 0
-  equipmentObject: {fileID: 7717311661291090446, guid: d1cae2c880d824744bb0f5b087093226,
+  equipmentObject: {fileID: 7717311661291090446, guid: 0e975256015ac28419044d09cafb0f4b,
     type: 3}
   armorModifier: 0
-  damageModifier: 10
+  damageModifier: 11

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Equipment : Item
 {
     public EquipmentSlot equipmentSlot;
-
+    public GameObject equipmentObject;
     public int armorModifier;
     public int damageModifier;
 
@@ -14,7 +14,7 @@ public class Equipment : Item
     {
         base.Use();
         EquipmentManager.instance.Equip(this);
-        RemoveFromInventory();
+        //RemoveFromInventory();
     }
 }
 public enum EquipmentSlot { Weapon,Armor,Accesories}
