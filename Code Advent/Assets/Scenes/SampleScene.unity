@@ -182,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7491b45914a85d44da9e3225ffb949be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSprite: {fileID: 0}
 --- !u!1 &518068047
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +318,7 @@ PrefabInstance:
     - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
         type: 3}
       propertyPath: items.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
         type: 3}
@@ -350,13 +349,19 @@ PrefabInstance:
     - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
         type: 3}
       propertyPath: maxWalker
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
         type: 3}
       propertyPath: items.Array.data[1]
       value: 
       objectReference: {fileID: 7717311661291090446, guid: 0e975256015ac28419044d09cafb0f4b,
+        type: 3}
+    - target: {fileID: 4127280800311697464, guid: f638b357e1c895f41bb62cb1d0d6b35f,
+        type: 3}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 2016327241371272771, guid: 8ee0fb160fb701b4fb2f6866e9bf9c4b,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f638b357e1c895f41bb62cb1d0d6b35f, type: 3}

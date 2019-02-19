@@ -6,6 +6,9 @@ public class Item : ScriptableObject
     new public string name = "New Item";
     public Sprite icon = null;
     public bool isDefault = false;
+    public Rarity rarity;
+    public int dropRarity;
+    public GameObject itemObject;
 
     public virtual void Use()
     {

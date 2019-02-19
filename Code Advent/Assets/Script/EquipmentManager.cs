@@ -32,7 +32,7 @@ public class EquipmentManager : MonoBehaviour
         if(currentEquipment[slotIndex] != null)
         {
             oldItem = currentEquipment[slotIndex];
-            Instantiate(oldItem.equipmentObject,FindObjectOfType<PlayerController>().transform.position,Quaternion.identity); // instantiate the old equipped when replaced it with the newly equipped item
+            Instantiate(oldItem.itemObject,FindObjectOfType<PlayerController>().transform.position,Quaternion.identity); // instantiate the old equipped when replaced it with the newly equipped item
         }
         if(onEquipmentChanged != null)
         {

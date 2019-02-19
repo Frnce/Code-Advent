@@ -15,8 +15,10 @@ MonoBehaviour:
   name: Sword of benevolence
   icon: {fileID: 21300000, guid: e3a1234620bd695439b6cface6e26e20, type: 3}
   isDefault: 0
-  equipmentSlot: 0
-  equipmentObject: {fileID: 7717311661291090446, guid: d1cae2c880d824744bb0f5b087093226,
+  rarity: 1
+  dropRarity: 25
+  itemObject: {fileID: 7717311661291090446, guid: d1cae2c880d824744bb0f5b087093226,
     type: 3}
+  equipmentSlot: 0
   armorModifier: 0
   damageModifier: 10

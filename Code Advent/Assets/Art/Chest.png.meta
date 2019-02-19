@@ -1,11 +1,8 @@
 fileFormatVersion: 2
-guid: de4e3f0a66db1d049a4c8955c29eea66
+guid: c58381c476016f044b953a53865e380b
 TextureImporter:
   fileIDToRecycleName:
-    21300000: down right_0
-    21300002: down right_1
-    21300004: down right_2
-    21300006: down right_3
+    21300000: Chest_0
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -99,13 +96,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: down right_0
+      name: Chest_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 7
-        width: 14
-        height: 27
+        x: 1
+        y: 1
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,67 +110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1561db53f34c1464fbdceb02ff3c838a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: down right_1
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 7
-        width: 13
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a8f2f6ee4a326644962c4ac95608f7b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: down right_2
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 10
-        width: 12
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 070dab2854be7c040ae37bbdc6bcd71d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: down right_3
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 7
-        width: 11
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 062a84a07f5b2bc49b29cbddb0b964f7
+      spriteID: b29c73804c717814394942b688a5ef33
       vertices: []
       indices: 
       edges: []
@@ -181,7 +118,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0b5349272e9352c4baba935150a81dff
+    spriteID: aa795a93eb9163f4fb06611c81bcb630
     vertices: []
     indices: 
     edges: []
