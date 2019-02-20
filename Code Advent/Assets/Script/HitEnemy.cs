@@ -10,7 +10,7 @@ public class HitEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = PlayerController.instance;
         playerStats = player.playerStats;
     }
 

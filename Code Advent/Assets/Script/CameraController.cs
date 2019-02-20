@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = PlayerController.instance;
         target = player.transform.position;
         zstart = transform.position.z;
     }

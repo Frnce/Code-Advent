@@ -6,6 +6,21 @@ namespace Advent.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        #region singleton
+        public static PlayerController instance;
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(instance);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+        #endregion
         [HideInInspector]
         public PlayerStats playerStats;
 
@@ -20,15 +35,13 @@ namespace Advent.Player
         bool canMove = true;
         bool isMoving = false;
         bool isFacingRight;
-        private void Awake()
+        // Start is called before the first frame update
+        void Start()
         {
             anim = GetComponent<Animator>();
             rb2d = GetComponent<Rigidbody2D>();
             playerStats = FindObjectOfType<PlayerStats>();
-        }
-        // Start is called before the first frame update
-        void Start()
-        {
+
             GetPlayerInput();
         }
 

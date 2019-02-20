@@ -26,7 +26,7 @@ public class Slime : MonoBehaviour
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        target = FindObjectOfType<PlayerController>();
+        target = PlayerController.instance;
         levelManager = FindObjectOfType<LevelManager>();
     }
     void Start()

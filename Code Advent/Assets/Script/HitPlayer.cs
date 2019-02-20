@@ -17,7 +17,7 @@ public class HitPlayer : MonoBehaviour
     float enabledTime;
     private void Awake()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = PlayerController.instance;
     }
     private void Start()
     {

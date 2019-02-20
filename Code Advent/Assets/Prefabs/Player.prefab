@@ -317,7 +317,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &1326509202108444844
 CircleCollider2D:
@@ -380,9 +380,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07693074d7fb3ed4783827bbe76f3876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterClasses: {fileID: 11400000, guid: 9a4132e6adc5710408080ba2c983035a, type: 2}
   health:
     baseValue: 100
-  energy:
+  mana:
     baseValue: 50
   attack:
     baseValue: 5
@@ -390,6 +391,14 @@ MonoBehaviour:
     baseValue: 3
   speed:
     baseValue: 5
+  str:
+    baseValue: 0
+  dex:
+    baseValue: 0
+  intelligence:
+    baseValue: 0
+  con:
+    baseValue: 0
 --- !u!1 &7035666972722199634
 GameObject:
   m_ObjectHideFlags: 0

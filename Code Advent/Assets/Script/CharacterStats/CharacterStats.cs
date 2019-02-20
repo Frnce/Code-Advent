@@ -4,17 +4,32 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    public Stat health;
-    public int currentHealth { get; private set; }
+    public CharacterClasses characterClasses;
 
-    public Stat energy;
+    public Stat health;
+    public int currentHealth { get; set; }
+
+    public Stat mana;
+    public int currentMana { get; set; }
     public Stat attack;
     public Stat defense;
     public Stat speed;
 
+    public Stat str;
+    public Stat dex;
+    public Stat intelligence;
+    public Stat con;
+
     private void Awake()
     {
+        //Set base stats
         currentHealth = health.GetValue();
+        currentMana = mana.GetValue();
+
+        str = characterClasses.baseStr;
+        dex = characterClasses.baseDex;
+        intelligence = characterClasses.baseInt;
+        con = characterClasses.baseCon;
     }
     public void TakeDamage(int damage)
     {
@@ -22,7 +37,7 @@ public class CharacterStats : MonoBehaviour
         damage = Mathf.Clamp(damage, 0, int.MaxValue); //have room for improvements ,. ,balancing shits
 
         currentHealth -= damage;
-        Debug.Log("Take Daamge" + transform.name);
+        Debug.Log("Take Damage" + transform.name);
 
         if(currentHealth <= 0)
         {

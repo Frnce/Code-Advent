@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     public GameObject exitPosition;
     public GameObject[] enemies;
     public int maxEnemyCount; // ? You can use scriptable objects on some of this variables instead
-    public GameObject abilitySkillUI;
+    //public GameObject abilitySkillUI;
     public Canvas canvas;
     public Camera mainCamera;
     [Space]
@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
         SpawnUI();
         SpawnItems();
 
-        player = FindObjectOfType<PlayerController>();
+        player = PlayerController.instance;
         Instantiate(mainCamera);
 
         enemyCount = maxEnemyCount;
@@ -181,7 +181,7 @@ public class LevelManager : MonoBehaviour
                 switch (grid[x, y])
                 {
                     case gridSpace.empty:
-                        //Spawn(x, y, wallObj);
+                        Spawn(x, y, wallObj);
                         //can spawn here to closed the level
                         break;
                     case gridSpace.floor:
@@ -225,7 +225,7 @@ public class LevelManager : MonoBehaviour
     }
     public void SpawnUI()
     {
-        Instantiate(abilitySkillUI, Vector3.zero, Quaternion.identity, canvas.transform);
+        Instantiate(canvas, Vector3.zero, Quaternion.identity);
     }
     public void CreateWalls()
     {

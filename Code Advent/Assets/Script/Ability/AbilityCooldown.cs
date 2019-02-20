@@ -21,7 +21,7 @@ public class AbilityCooldown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = PlayerController.instance;
         Initialize(ability); // INitialize method will be initialized on player class select
     }
 
