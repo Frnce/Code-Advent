@@ -1,43 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent.Items;
 
-public class Inventory : MonoBehaviour
+namespace Advent.InventorySystem
 {
-    #region Singleton
-    public static Inventory instance;
-
-    private void Awake()
+    public class Inventory : MonoBehaviour
     {
-        if(instance != null)
+        #region Singleton
+        public static Inventory instance;
+
+        private void Awake()
         {
-            Debug.LogWarning("More than one instance of inventory found");
-            return;
+            if (instance != null)
+            {
+                Debug.LogWarning("More than one instance of inventory found");
+                return;
+            }
+            instance = this;
         }
-        instance = this;
-    }
-    #endregion
-    public delegate void OnItemChanged();
-    public OnItemChanged onItemChangedCallBack;
-    public List<Item> items = new List<Item>();
+        #endregion
+        public delegate void OnItemChanged();
+        public OnItemChanged onItemChangedCallBack;
+        public List<Item> items = new List<Item>();
 
-    public void Add(Item item)
-    {
-        if (!item.isDefault)
+        public void Add(Item item)
         {
-            items.Add(item);
-            if(onItemChangedCallBack != null)
+            if (!item.isDefault)
+            {
+                items.Add(item);
+                if (onItemChangedCallBack != null)
+                {
+                    onItemChangedCallBack.Invoke();
+                }
+            }
+        }
+        public void Remove(Item item)
+        {
+            items.Remove(item);
+            if (onItemChangedCallBack != null)
             {
                 onItemChangedCallBack.Invoke();
             }
         }
     }
-    public void Remove(Item item)
-    {
-        items.Remove(item);
-        if (onItemChangedCallBack != null)
-        {
-            onItemChangedCallBack.Invoke();
-        }
-    }
+
 }

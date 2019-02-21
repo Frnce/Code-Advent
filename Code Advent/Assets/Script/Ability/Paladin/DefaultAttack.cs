@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Player;
+using Advent.Abilities;
 
 [CreateAssetMenu(menuName ="Abilities/DefaultAttack")]
 public class DefaultAttack : Ability

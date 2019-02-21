@@ -2,32 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Stat
+namespace Advent.CharacterStats
 {
-    [SerializeField]
-    private int baseValue;
-
-    private List<int> modifiers = new List<int>();
-
-    public int GetValue()
+    [System.Serializable]
+    public class Stat
     {
-        int finalValue = baseValue;
-        modifiers.ForEach(x => finalValue += x);
-        return finalValue;
-    }
-    public void AddModifier(int modifier)
-    {
-        if(modifier != 0)
+        [SerializeField]
+        private int baseValue;
+
+        private List<int> modifiers = new List<int>();
+
+        public int GetValue()
         {
-            modifiers.Add(modifier);
+            int finalValue = baseValue;
+            modifiers.ForEach(x => finalValue += x);
+            return finalValue;
         }
-    }
-    public void RemoveModifier(int modifier)
-    {
-        if (modifier != 0)
+        public void AddModifier(int modifier)
         {
-            modifiers.Remove(modifier);
+            if (modifier != 0)
+            {
+                modifiers.Add(modifier);
+            }
+        }
+        public void RemoveModifier(int modifier)
+        {
+            if (modifier != 0)
+            {
+                modifiers.Remove(modifier);
+            }
         }
     }
 }

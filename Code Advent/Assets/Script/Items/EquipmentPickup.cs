@@ -1,24 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class EquipmentPickup : MonoBehaviour
+namespace Advent.Items
 {
-    public Equipment equipment;
-    void Pickup()
+    public class EquipmentPickup : MonoBehaviour
     {
-        //Temp , Can be used when the item is picked up , the stat modifier will be used;
-        Debug.Log("Item PIcked " + equipment.name);
-        Destroy(gameObject);
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (Input.GetKeyDown(KeyCode.F) && collision.CompareTag("Player"))
+        public Equipment equipment;
+        void Pickup()
         {
-            Pickup();
-            if (equipment != null)
+            //Temp , Can be used when the item is picked up , the stat modifier will be used;
+            Debug.Log("Item PIcked " + equipment.name);
+            Destroy(gameObject);
+        }
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (Input.GetKeyDown(KeyCode.F) && collision.CompareTag("Player"))
             {
-                equipment.Use();
+                Pickup();
+                if (equipment != null)
+                {
+                    equipment.Use();
+                }
             }
         }
     }
+
 }

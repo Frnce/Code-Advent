@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Player;
+using Advent.Enemies;
 
 public class HitPlayer : MonoBehaviour
 {

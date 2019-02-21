@@ -4,24 +4,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Advent.Player;
 
-public class GameManager : MonoBehaviour
+namespace Advent
 {
-    public static GameManager instance;
-    private PlayerController player;
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if (instance == null)
+        public static GameManager instance;
+        private PlayerController player;
+        private void Awake()
         {
-            instance = this;
-            //DontDestroyOnLoad(instance);
+            if (instance == null)
+            {
+                instance = this;
+                //DontDestroyOnLoad(instance);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //public void RestartScene()
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // first scene
+        //}
     }
-    //public void RestartScene()
-    //{
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // first scene
-    //}
+
 }

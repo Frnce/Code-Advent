@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent.Items;
 
-[CreateAssetMenu(fileName ="New Loots Table",menuName = "Loot Table")]
-public class LootTable : ScriptableObject
+namespace Advent.Loot
 {
-    public List<Item> items = new List<Item>();
-    public int maxItemDrop;
+    [CreateAssetMenu(fileName = "New Loots Table", menuName = "Loot Table")]
+    public class LootTable : ScriptableObject
+    {
+        public List<Item> items = new List<Item>();
+        public int maxItemDrop;
+    }
+
 }

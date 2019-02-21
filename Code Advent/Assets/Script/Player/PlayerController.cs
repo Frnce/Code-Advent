@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent;
+using Advent.CharacterStats;
+using Advent.Items;
 
 namespace Advent.Player
 {
@@ -24,7 +27,8 @@ namespace Advent.Player
         [HideInInspector]
         public PlayerStats playerStats;
 
-        public Transform weapon; //Change to scriptable objects ?
+        public GameObject weapon; //Change to scriptable objects ?
+
         Vector3 worldPoint;
         float xDir;
         float yDir;
@@ -35,6 +39,7 @@ namespace Advent.Player
         bool canMove = true;
         bool isMoving = false;
         bool isFacingRight;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -106,7 +111,7 @@ namespace Advent.Player
         {
             //The Weapon should be facing up or vector2.up for it to work properly
             Vector2 mouse = Camera.main.ScreenToViewportPoint(Input.mousePosition);        //Mouse position
-            Vector3 objpos = Camera.main.WorldToViewportPoint(weapon.position);        //Object position on screen
+            Vector3 objpos = Camera.main.WorldToViewportPoint(weapon.transform.position);        //Object position on screen
             Vector2 relobjpos = new Vector2(objpos.x - 0.5f, objpos.y - 0.5f);            //Set coordinates relative to object
             Vector2 relmousepos = new Vector2(mouse.x - 0.5f, mouse.y - 0.5f) - relobjpos;
             float angle = Vector2.Angle(Vector2.up, relmousepos);    //Angle calculation
@@ -114,7 +119,7 @@ namespace Advent.Player
                 angle = 360 - angle;
             Quaternion quat = Quaternion.identity;
             quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
-            weapon.rotation = quat;
+            weapon.transform.rotation = quat;
         }
         public void Attack()
         {

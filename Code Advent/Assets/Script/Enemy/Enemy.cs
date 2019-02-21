@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public abstract class Enemy : ScriptableObject
+namespace Advent.Enemies
 {
-    public string enemyName = "New Enemy";
+    public abstract class Enemy : ScriptableObject
+    {
+        public string enemyName = "New Enemy";
 
-    public abstract void DamageEnemy(int dmg);
+        public abstract void DamageEnemy(int dmg);
+    }
+
 }
