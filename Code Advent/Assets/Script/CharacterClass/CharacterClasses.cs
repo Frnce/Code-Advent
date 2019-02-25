@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Advent.CharacterStats;
+using Advent.CharacterStat;
 
 namespace Advent.CharacterClass
 {

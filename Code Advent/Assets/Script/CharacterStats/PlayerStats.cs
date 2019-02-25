@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Advent.Items;
 
-namespace Advent.CharacterStats
+namespace Advent.CharacterStat
 {
     public class PlayerStats : CharacterStats
     {

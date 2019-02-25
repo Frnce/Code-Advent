@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent;
-using Advent.CharacterStats;
+using Advent.CharacterStat;
 using Advent.Items;
 
 namespace Advent.Player
@@ -53,6 +53,7 @@ namespace Advent.Player
         // Update is called once per frame
         void Update()
         {
+            Debug.Log(playerStats.currentHealth);
             GetPlayerInput();
             Aim();
             FlipCharacter();

@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Advent.Player;
 using Advent.Enemies;
+using Advent.EnemyStat;
 
 public class HitPlayer : MonoBehaviour
 {
     //This certain module will temporarily disable the boxcollider then will enable after certain time to hurt the player if they are in range
     //This is only a temporary code. this will be used and update later on the development
-    [HideInInspector]
-    public PlayerController player;
-    public EnemyObject enemy;
 
     bool isHit = false;
 
@@ -18,7 +16,6 @@ public class HitPlayer : MonoBehaviour
     float enabledTime;
     private void Awake()
     {
-        player = PlayerController.instance;
     }
     private void Start()
     {
@@ -38,15 +35,15 @@ public class HitPlayer : MonoBehaviour
             GetComponent<BoxCollider2D>().enabled = false;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("Player") && !isHit)
+        if (collision.CompareTag("Player") && !isHit)
         {
             isHit = true;
-            player.playerStats.TakeDamage(enemy.attack);
+            collision.GetComponent<PlayerController>().playerStats.TakeDamage(FindObjectOfType<EnemyStats>().attack.GetValue());
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         isHit = false;
     }

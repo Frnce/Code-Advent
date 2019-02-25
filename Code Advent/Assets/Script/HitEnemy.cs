@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Player;
-using Advent.CharacterStats;
+using Advent.CharacterStat;
 using Advent.Enemies;
+using Advent.EnemyStat;
 
 public class HitEnemy : MonoBehaviour
 {
     PlayerController player;
-    PlayerStats playerStats;
     // Start is called before the first frame update
     void Start()
     {
         player = PlayerController.instance;
-        playerStats = player.playerStats;
     }
 
     // Update is called once per frame
@@ -25,7 +24,7 @@ public class HitEnemy : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Slime>().EnemyHit(playerStats.attack.GetValue());
+            collision.GetComponent<Slime>().TakeDamage(player.playerStats.attack.GetValue());
         }
     }
 }

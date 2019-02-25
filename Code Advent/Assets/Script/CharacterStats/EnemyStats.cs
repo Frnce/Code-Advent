@@ -1,19 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Advent.CharacterClass;
+using Advent.CharacterStat;
 
-namespace Advent.CharacterStat
+namespace Advent.EnemyStat
 {
-    public class CharacterStats : MonoBehaviour
+    public class EnemyStats : MonoBehaviour
     {
-        public CharacterClasses characterClasses;
-
         public Stat health;
         public int currentHealth { get; set; }
 
-        public Stat stamina;
-        public int currentStamina { get; set; }
         public Stat attack;
         public Stat defense;
         public Stat speed;
@@ -25,14 +21,7 @@ namespace Advent.CharacterStat
 
         private void Awake()
         {
-            //Set base stats
             currentHealth = health.GetValue();
-            currentStamina = stamina.GetValue();
-
-            str = characterClasses.baseStr;
-            dex = characterClasses.baseDex;
-            intelligence = characterClasses.baseInt;
-            con = characterClasses.baseCon;
         }
         public void TakeDamage(int damage)
         {
@@ -40,15 +29,13 @@ namespace Advent.CharacterStat
             damage = Mathf.Clamp(damage, 0, int.MaxValue); //have room for improvements ,. ,balancing shits
 
             currentHealth -= damage;
-            Debug.Log("Take Damage" + transform.name);
+            Debug.Log("Take Damage");
 
             if (currentHealth <= 0)
             {
                 Die();
             }
         }
-
-
         public virtual void Die()
         {
             //Die in some way 
