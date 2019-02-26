@@ -8,27 +8,37 @@ namespace Advent.Loot
     {
         public LootTable lootTable;
         List<GameObject> droppedItems = new List<GameObject>();
+        public int dropChance = 50;
         public void CalculateLoot()
         {
             for (int k = 0; k < lootTable.maxItemDrop; k++)
             {
-                int itemWeight = 0;
-                for (int i = 0; i < lootTable.items.Count; i++)
+                int calcDropChance = Random.Range(0, 101);
+                if (calcDropChance > dropChance)
                 {
-                    itemWeight += lootTable.items[i].dropRarity;
+                    //No loot;
+                    return;
                 }
-
-                int randomValue = Random.Range(0, itemWeight);
-                for (int j = 0; j < lootTable.items.Count; j++)
+                if(calcDropChance <= dropChance)
                 {
-                    if (randomValue <= lootTable.items[j].dropRarity)
+                    int itemWeight = 0;
+                    for (int i = 0; i < lootTable.items.Count; i++)
                     {
-                        GameObject item = Instantiate(lootTable.items[j].itemObject, transform.position, Quaternion.identity);
-                        droppedItems.Add(item);
-                        ScrambleItems(item);
-                        break;
+                        itemWeight += lootTable.items[i].dropRarity;
                     }
-                    randomValue -= lootTable.items[j].dropRarity;
+
+                    int randomValue = Random.Range(0, itemWeight);
+                    for (int j = 0; j < lootTable.items.Count; j++)
+                    {
+                        if (randomValue <= lootTable.items[j].dropRarity)
+                        {
+                            GameObject item = Instantiate(lootTable.items[j].itemObject, transform.position, Quaternion.identity);
+                            droppedItems.Add(item);
+                            ScrambleItems(item);
+                            break;
+                        }
+                        randomValue -= lootTable.items[j].dropRarity;
+                    }
                 }
             }
         }
@@ -41,5 +51,4 @@ namespace Advent.Loot
             item.transform.position = newPosition;
         }
     }
-
 }

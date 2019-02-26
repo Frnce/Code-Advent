@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Advent.Player;
 using Advent.EnemyStat;
+using Advent.Loot;
 
 namespace Advent.Enemies
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D),typeof(LootScript))]
     public class Slime : Enemy
     {
 
         Rigidbody2D rb2d;
+        LootScript loot;
 
         private void Awake()
         {
             player = PlayerController.instance;
+            loot = GetComponent<LootScript>();
         }
         void Start()
         {
@@ -27,6 +30,9 @@ namespace Advent.Enemies
         public override void Die()
         {
             base.Die();
+            //Drop loot here
+            loot.CalculateLoot();
+            Destroy(gameObject);
         }
 
         public override void PassiveRegen()

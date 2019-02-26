@@ -8,7 +8,7 @@ namespace Advent.Abilities
     {
         public string aName = "New Ability";
         public float baseCooldown = 1f;
-        public Image icon;
+        public Sprite icon;
 
         public abstract void Initialize(GameObject obj);
         public abstract void TriggerAbility();

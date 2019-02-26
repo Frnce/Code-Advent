@@ -8,6 +8,7 @@ namespace Advent.Abilities
     public class AbilityCooldown : MonoBehaviour
     {
         public string AbilityButtonAxisName = "Fire1"; //Button from input manager
+        public Image iconImage;
         public Image darkMask;
         public Text cooldownTextDisplay;
         public PlayerController player;
@@ -24,6 +25,7 @@ namespace Advent.Abilities
         {
             player = PlayerController.instance;
             Initialize(ability); // INitialize method will be initialized on player class select
+            iconImage.sprite = ability.icon;
         }
 
         public void Initialize(Ability selectedAbility)
