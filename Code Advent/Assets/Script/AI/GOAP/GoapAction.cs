@@ -4,6 +4,10 @@ using UnityEngine;
 
 public abstract class GoapAction : MonoBehaviour
 {
+
+    private HashSet<KeyValuePair<string, object>> preconditions;
+    private HashSet<KeyValuePair<string, object>> effects;
+
     private bool inRange = false;
 
     /* The cost of performing the action. 
@@ -17,8 +21,8 @@ public abstract class GoapAction : MonoBehaviour
 
     public GoapAction()
     {
-        Preconditions = new HashSet<KeyValuePair<string, object>>();
-        Effects = new HashSet<KeyValuePair<string, object>>();
+        preconditions = new HashSet<KeyValuePair<string, object>>();
+        effects = new HashSet<KeyValuePair<string, object>>();
     }
 
     public void doReset()
@@ -110,6 +114,20 @@ public abstract class GoapAction : MonoBehaviour
         if (!default(KeyValuePair<string, object>).Equals(remove))
             Effects.Remove(remove);
     }
-    public HashSet<KeyValuePair<string, object>> Preconditions { get; }
-    public HashSet<KeyValuePair<string, object>> Effects { get; }
+
+    public HashSet<KeyValuePair<string, object>> Preconditions
+    {
+        get
+        {
+            return preconditions;
+        }
+    }
+
+    public HashSet<KeyValuePair<string, object>> Effects
+    {
+        get
+        {
+            return effects;
+        }
+    }
 }

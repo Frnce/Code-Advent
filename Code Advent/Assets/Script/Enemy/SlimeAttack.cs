@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent.Player;
 
 namespace Advent.Enemies
 {
@@ -15,7 +16,7 @@ namespace Advent.Enemies
         }
         public override bool CheckProceduralPrecondition(GameObject agent)
         {
-            target = GameObject.Find("Player");
+            target = PlayerController.instance.gameObject;
             return target != null;
         }
 
@@ -26,7 +27,7 @@ namespace Advent.Enemies
 
         public override bool Perform(GameObject agent)
         {
-            Slime currentSlime= agent.GetComponent<Slime>();
+            Slime currentSlime = agent.GetComponent<Slime>();
             if (currentSlime.stamina >= (cost))
             {
 
@@ -38,7 +39,8 @@ namespace Advent.Enemies
                 //    damage -= currentSlime.player.defense;
                 //}
 
-                currentSlime.player.playerStats.currentHealth -= damage;
+                //currentSlime.player.playerStats.currentHealth -= damage;
+                currentSlime.player.playerStats.TakeDamage(damage);
                 currentSlime.stamina -= cost;
 
                 attacked = true;

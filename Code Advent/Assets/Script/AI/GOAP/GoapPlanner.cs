@@ -103,7 +103,7 @@ public class GoapPlanner
                 //Debug.Log(GoapAgent.prettyPrint(currentState));
                 Node node = new Node(parent, parent.runningCost + action.cost, currentState, action);
 
-                if (InState(goal, currentState))
+                if (GoalInState(goal, currentState))
                 {
                     // we found a solution!
                     leaves.Add(node);
@@ -136,6 +136,28 @@ public class GoapPlanner
         }
         return subset;
     }
+
+    /*
+ * Checks if at least one goal is met. 
+ * to-do: Create a system for weighting towards paths that fulfill more goals
+ */
+    protected bool GoalInState(HashSet<KeyValuePair<string, object>> test, HashSet<KeyValuePair<string, object>> state)
+    {
+        bool match = false;
+        foreach (KeyValuePair<string, object> t in test)
+        {
+            foreach (KeyValuePair<string, object> s in state)
+            {
+                if (s.Equals(t))
+                {
+                    match = true;
+                    break;
+                }
+            }
+        }
+        return match;
+    }
+
 
     /**
 	 * Check that all items in 'test' are in 'state'. If just one does not match or is not there

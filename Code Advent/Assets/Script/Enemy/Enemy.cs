@@ -31,7 +31,7 @@ namespace Advent.Enemies
         {
             if (stamina <= maxStamina)
             {
-                Invoke("passiveRegen", 1.0f);
+                Invoke("PassiveRegen", 1.0f);
             }
             else
             {

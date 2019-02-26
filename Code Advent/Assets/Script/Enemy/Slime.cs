@@ -14,11 +14,15 @@ namespace Advent.Enemies
 
         private void Awake()
         {
-            
+            player = PlayerController.instance;
         }
         void Start()
         {
+            maxStamina = stamina;
 
+            terminalSpeed = speed.GetValue() / 10;
+            initialSpeed = (speed.GetValue() / 10) / 2;
+            acceleration = (speed.GetValue() / 10) / 4;
         }
         public override void Die()
         {
