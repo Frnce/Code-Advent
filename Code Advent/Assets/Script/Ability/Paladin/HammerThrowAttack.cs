@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Player;
-
 namespace Advent.Abilities
 {
-    [CreateAssetMenu(menuName = "Abilities/Paladin/DefaultAttack")]
-    public class DefaultAttack : Ability
+    [CreateAssetMenu(menuName = "Abilities/Paladin/Hammer Throw")]
+    public class HammerThrowAttack : Ability
     {
-        private PaladinDefaultAttack paladinDefault;
+        private PaladinHammerThrow hammerthrow;
         public override void Initialize(GameObject obj)
         {
-            paladinDefault = obj.GetComponent<PaladinDefaultAttack>();
+            hammerthrow = obj.GetComponent<PaladinHammerThrow>();
         }
+
         public override void TriggerAbility()
         {
-            paladinDefault.Attack();
+            hammerthrow.Throw();
         }
     }
 }

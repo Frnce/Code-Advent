@@ -16,7 +16,7 @@ namespace Advent.Enemies
 
         private void Awake()
         {
-            player = PlayerController.instance;
+            player = FindObjectOfType<PlayerController>();
             loot = GetComponent<LootScript>();
         }
         void Start()

@@ -243,6 +243,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7123249443621331003, guid: 98437e985481b554993e4c6d685ded47,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7123249443621330997, guid: 98437e985481b554993e4c6d685ded47,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -367,6 +372,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1476836397075530731, guid: ef6c8a390cef81e4f8b9034e7bf0fed0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6c8a390cef81e4f8b9034e7bf0fed0, type: 3}
 --- !u!1001 &612281394
@@ -379,7 +389,7 @@ PrefabInstance:
     - target: {fileID: 7035666972377390963, guid: 11645086f94fbdc44b2c4f30d7714182,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Paladin
       objectReference: {fileID: 0}
     - target: {fileID: 7035666972377390966, guid: 11645086f94fbdc44b2c4f30d7714182,
         type: 3}
@@ -7458,6 +7468,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216988318196968358, guid: a66e10d769eb6ea48bcee7cadec92bda,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3216988318196968354, guid: a66e10d769eb6ea48bcee7cadec92bda,
         type: 3}

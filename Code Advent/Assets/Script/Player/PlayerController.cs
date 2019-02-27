@@ -25,18 +25,17 @@ namespace Advent.Player
         }
         #endregion
         [HideInInspector]
-        public PlayerStats playerStats;
-
         public GameObject weapon; //Change to scriptable objects ?
+        public PlayerStats playerStats;
+        [HideInInspector]
+        public Animator anim;
+        [HideInInspector]
+        public bool canMove = true;
 
         Vector3 worldPoint;
         float xDir;
         float yDir;
-
-        Animator anim;
         Rigidbody2D rb2d;
-
-        bool canMove = true;
         bool isMoving = false;
         bool isFacingRight;
 
@@ -93,14 +92,14 @@ namespace Advent.Player
             Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (mouse.x > transform.position.x && isFacingRight)
             {
-                flip();
+                Flip();
             }
             else if (mouse.x < transform.position.x && !isFacingRight)
             {
-                flip();
+                Flip();
             }
         }
-        void flip()
+        void Flip()
         {
             isFacingRight = !isFacingRight;
 
@@ -121,19 +120,6 @@ namespace Advent.Player
             Quaternion quat = Quaternion.identity;
             quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
             weapon.transform.rotation = quat;
-        }
-        public void Attack()
-        {
-            StartCoroutine(AttackCoroutine());
-        }
-        IEnumerator AttackCoroutine()
-        {
-            canMove = false;
-            anim.SetTrigger("Attack_1");
-
-            yield return new WaitForSeconds(0.25f);
-
-            canMove = true;
         }
     }
 }

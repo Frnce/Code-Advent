@@ -62,7 +62,7 @@ namespace Advent.Enemies
             float dist = Vector3.Distance(transform.position, nextAction.target.transform.position);
             if (dist < aggroDist)
             {
-                Vector3 moveDirection = player.transform.position - transform.position;
+                Vector3 moveDirection = PlayerController.instance.transform.position - transform.position;
 
                 SetSpeed(speed.GetValue());
 

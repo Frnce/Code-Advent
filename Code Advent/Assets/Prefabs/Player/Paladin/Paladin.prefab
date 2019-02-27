@@ -111,6 +111,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4524345981249585145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2615544822373226356}
+  m_Layer: 9
+  m_Name: AimSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2615544822373226356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4524345981249585145}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7035666972377390966}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5464080508778689689
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,9 +273,11 @@ GameObject:
   - component: {fileID: 1326509202108444844}
   - component: {fileID: 7035666972377390965}
   - component: {fileID: 7035666972377390962}
+  - component: {fileID: 1828496561}
   - component: {fileID: 5107980344445568872}
+  - component: {fileID: 1828496562}
   m_Layer: 9
-  m_Name: Player
+  m_Name: Paladin
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,6 +296,7 @@ Transform:
   m_Children:
   - {fileID: 7035666972722199637}
   - {fileID: 2228700359149684228}
+  - {fileID: 2615544822373226356}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -1.171, z: 0}
@@ -335,8 +368,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1adcd6e434b469408766b6e17460bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 0}
   weapon: {fileID: 2306212587427267790}
+  playerStats: {fileID: 0}
+  anim: {fileID: 0}
+  canMove: 1
+--- !u!114 &1828496561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035666972377390963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9db80936665aa42b0bcabe49c87b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5107980344445568872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,8 +399,8 @@ MonoBehaviour:
   characterClasses: {fileID: 11400000, guid: 9a4132e6adc5710408080ba2c983035a, type: 2}
   health:
     baseValue: 100
-  mana:
-    baseValue: 50
+  stamina:
+    baseValue: 0
   attack:
     baseValue: 5
   defense:
@@ -368,6 +415,21 @@ MonoBehaviour:
     baseValue: 0
   con:
     baseValue: 0
+--- !u!114 &1828496562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035666972377390963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f20c807057d04742906da3491fe71e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 8439858554015628305, guid: a43e096123795124196ee875ce24f9f5,
+    type: 3}
+  projectileSpeed: 15
 --- !u!1 &7035666972722199634
 GameObject:
   m_ObjectHideFlags: 0
