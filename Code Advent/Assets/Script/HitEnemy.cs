@@ -24,7 +24,7 @@ public class HitEnemy : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Slime>().TakeDamage(player.playerStats.attack.GetValue());
+            collision.GetComponent<Enemy>().TakeDamage(player.playerStats.attack.GetValue());
         }
     }
 }

@@ -380,9 +380,9 @@ MonoBehaviour:
     baseValue: 0
   dex:
     baseValue: 0
-  intelligence:
+  vit:
     baseValue: 0
-  con:
+  energy:
     baseValue: 0
 --- !u!114 &1828496562
 MonoBehaviour:
@@ -400,6 +400,7 @@ MonoBehaviour:
     type: 3}
   maxDistance: 10
   projectileSpeed: 15
+  baseDamage: 3
 --- !u!1 &7035666972722199634
 GameObject:
   m_ObjectHideFlags: 0

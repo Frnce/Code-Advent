@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Player;
+using Advent.Enemies;
 
 namespace Advent
 {
@@ -12,7 +13,7 @@ namespace Advent
         float maxDistance;
         Vector3 direction;
 
-        Rigidbody2D rb2d;
+        int baseDamage;
         PlayerController player;
         public void SetupMovement(Vector3 _direction, float _speed,float _maxDistance)
         {
@@ -20,11 +21,14 @@ namespace Advent
             speed = _speed;
             maxDistance = _maxDistance;
         }
+        public void SetupDamage(int _baseDamage)
+        {
+            baseDamage = _baseDamage;
+        }
         // Start is called before the first frame update
         void Start()
         {
             player = PlayerController.instance;
-            rb2d = GetComponent<Rigidbody2D>();
         }
 
         // Update is called once per frame
@@ -52,5 +56,13 @@ namespace Advent
             }
         }
         //add damage Dealing ;
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Enemy"))
+            {
+                collision.GetComponent<Enemy>().TakeDamage(baseDamage);
+            }
+        }
     }
 }

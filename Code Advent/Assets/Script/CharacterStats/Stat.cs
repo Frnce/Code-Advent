@@ -8,7 +8,7 @@ namespace Advent.CharacterStat
     public class Stat
     {
         [SerializeField]
-        private int baseValue;
+        private int baseValue = 0;
 
         private List<int> modifiers = new List<int>();
 

@@ -9,6 +9,7 @@ namespace Advent.Player
         public GameObject projectile;
         public float maxDistance;
         public float projectileSpeed;
+        public int baseDamage;
         PlayerController player;
 
         Vector3 mousePos, mouseVector;
@@ -30,6 +31,7 @@ namespace Advent.Player
         {
             PaladinHammer hammer = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<PaladinHammer>();
             hammer.SetupMovement(mouseVector,projectileSpeed,maxDistance);
+            hammer.SetupDamage(baseDamage);
         }
     }
 

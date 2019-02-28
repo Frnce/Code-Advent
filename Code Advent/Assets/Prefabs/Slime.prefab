@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health:
-    baseValue: 10
+    baseValue: 100
   attack:
     baseValue: 10
   defense:
