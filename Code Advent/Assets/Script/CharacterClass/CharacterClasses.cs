@@ -10,7 +10,7 @@ namespace Advent.CharacterClass
     {
         public Stat baseStr;
         public Stat baseDex;
-        public Stat baseInt;
-        public Stat baseCon;
+        public Stat baseVit;
+        public Stat baseEne;
     }
 }

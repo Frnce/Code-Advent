@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Hammer Throw Attack
   m_EditorClassIdentifier: 
   aName: Hammer Throw
-  baseCooldown: 1
+  baseCooldown: 10
+  staminaCost: 15
   icon: {fileID: 21300026, guid: e3a1234620bd695439b6cface6e26e20, type: 3}

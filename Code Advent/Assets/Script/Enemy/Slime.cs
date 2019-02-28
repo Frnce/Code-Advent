@@ -16,11 +16,11 @@ namespace Advent.Enemies
 
         private void Awake()
         {
-            player = FindObjectOfType<PlayerController>();
             loot = GetComponent<LootScript>();
         }
         void Start()
         {
+            player = PlayerController.instance;
             maxStamina = stamina;
 
             terminalSpeed = speed.GetValue() / 10;

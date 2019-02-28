@@ -16,7 +16,7 @@ namespace Advent.Enemies
         protected float terminalSpeed;
         protected float initialSpeed;
         protected float acceleration;
-        protected float minDist = 1.5f;
+        protected float minDist = 1f;
         protected float aggroDist = 5f;
         protected bool loop = false;
         protected float maxStamina;
@@ -62,7 +62,7 @@ namespace Advent.Enemies
             float dist = Vector3.Distance(transform.position, nextAction.target.transform.position);
             if (dist < aggroDist)
             {
-                Vector3 moveDirection = PlayerController.instance.transform.position - transform.position;
+                Vector3 moveDirection = player.transform.position - transform.position;
 
                 SetSpeed(speed.GetValue());
 
@@ -89,7 +89,8 @@ namespace Advent.Enemies
         {
             terminalSpeed = val / 10;
             initialSpeed = (val / 10) / 2;
-            acceleration = (val / 10) / 4;
+            //acceleration = (val / 10) / 4;
+            acceleration = (val / 10);
             return;
         }
 

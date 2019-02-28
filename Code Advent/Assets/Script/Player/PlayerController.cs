@@ -26,6 +26,7 @@ namespace Advent.Player
         #endregion
         [HideInInspector]
         public GameObject weapon; //Change to scriptable objects ?
+        [HideInInspector]
         public PlayerStats playerStats;
         [HideInInspector]
         public Animator anim;

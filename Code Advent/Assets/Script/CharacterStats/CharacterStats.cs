@@ -18,10 +18,11 @@ namespace Advent.CharacterStat
         public Stat defense;
         public Stat speed;
 
+        // remove ? instead of having min maxing abouts stats . you can have unique weapons with unique modifiers
         public Stat str;
         public Stat dex;
-        public Stat intelligence;
-        public Stat con;
+        public Stat vit;
+        public Stat energy;
 
         private void Awake()
         {
@@ -31,8 +32,8 @@ namespace Advent.CharacterStat
 
             str = characterClasses.baseStr;
             dex = characterClasses.baseDex;
-            intelligence = characterClasses.baseInt;
-            con = characterClasses.baseCon;
+            vit = characterClasses.baseVit;
+            energy = characterClasses.baseEne;
         }
         public void TakeDamage(int damage)
         {
