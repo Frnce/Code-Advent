@@ -43,6 +43,16 @@ namespace Advent.InventorySystem
                 onItemChangedCallBack.Invoke();
             }
         }
+
+        public int maxCoins;
+        public void AddCoins(int coins)
+        {
+            maxCoins += coins;
+        }
+        public void RemoveCoins(int coins)
+        {
+            maxCoins -= coins;
+        }
     }
 
 }

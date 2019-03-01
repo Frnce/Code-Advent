@@ -31,7 +31,7 @@ namespace Advent.Enemies
         {
             base.Die();
             //Drop loot here
-            loot.CalculateLoot();
+            loot.LootDrop();
             Destroy(gameObject);
         }
 

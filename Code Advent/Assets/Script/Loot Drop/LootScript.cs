@@ -9,7 +9,12 @@ namespace Advent.Loot
         public LootTable lootTable;
         List<GameObject> droppedItems = new List<GameObject>();
         public int dropChance = 50;
-        public void CalculateLoot()
+        public void LootDrop()
+        {
+            CalculateLoot();
+            dropCoins();
+        }
+        private void CalculateLoot()
         {
             for (int k = 0; k < lootTable.maxItemDrop; k++)
             {
@@ -42,7 +47,16 @@ namespace Advent.Loot
                 }
             }
         }
-        void ScrambleItems(GameObject item) // Scramble the positions of the items on a radius
+        private void dropCoins()
+        {
+            float amount = Random.Range(lootTable.minCoinDrop, lootTable.maxCoinDrop);
+            for (int i = 0; i < amount; i++)
+            {
+                GameObject go = Instantiate(lootTable.coinObject, transform.position, Quaternion.identity);
+                ScrambleItems(go);
+            }
+        }
+        private void ScrambleItems(GameObject item) // Scramble the positions of the items on a radius
         {
             float randomX = Mathf.Round(Random.Range(-3f, 3f));
             float randomY = Random.Range(-3f, 3f);

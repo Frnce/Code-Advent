@@ -1,12 +1,21 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Advent.Enemies;
+using System.Collections.Generic;
 
 namespace Advent.Levels
 {
     public class DungeonGenerator : MonoBehaviour
     {
+
+        public Canvas canvas;
+        public Camera mainCamera;
+        public GameManager gameManager;
+
+        public int enemyCount;
+        public Enemy[] enemies;
+
         [SerializeField]
         private Tile groundTile = null;
         [SerializeField]
@@ -34,9 +43,7 @@ namespace Advent.Levels
 
         private int routeCount = 0;
 
-        public Canvas canvas;
-        public Camera mainCamera;
-        public GameManager gameManager;
+        List<Vector2> vacantTiles;
         // Start is called before the first frame update
         void Start()
         {
@@ -54,7 +61,39 @@ namespace Advent.Levels
             Instantiate(gameManager);
             Instantiate(mainCamera);
             Instantiate(player);
+
+            GetAvailableTiles();
+            GenerateEnemies();
         }
+
+        private void GetAvailableTiles() //YOu can really improve this in the future
+        {
+            BoundsInt bounds = groundMap.cellBounds;
+            TileBase[] allTiles = groundMap.GetTilesBlock(bounds);
+            vacantTiles = new List<Vector2>();
+
+            for (int x = 0; x < bounds.size.x; x++)
+            {
+                for (int y = 0; y < bounds.size.y; y++)
+                {
+                    TileBase tile = allTiles[x + y * bounds.size.x];
+                    if (tile != null)
+                    {
+                        vacantTiles.Add(new Vector2(x, y));
+                    }
+                }
+            }
+        }
+        private void GenerateEnemies()
+        {
+            for (int i = 0; i < enemyCount; i++)
+            {
+                int selectedAvailableTile = Random.Range(0, vacantTiles.Count);
+                GameObject go = Instantiate(enemies[0].gameObject, vacantTiles[selectedAvailableTile], Quaternion.identity); //TODO Have different types of enemy spawned
+                vacantTiles.Remove(vacantTiles[selectedAvailableTile]);
+            }
+        }
+
         private void FillWalls()
         {
             BoundsInt bounds = groundMap.cellBounds;

@@ -9,7 +9,11 @@ namespace Advent.Loot
     public class LootTable : ScriptableObject
     {
         public List<Item> items = new List<Item>();
+
+        public GameObject coinObject;
+        public int minCoinDrop;
+        public int maxCoinDrop;
+
         public int maxItemDrop;
     }
-
 }

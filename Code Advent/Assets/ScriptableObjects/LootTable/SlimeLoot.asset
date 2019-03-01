@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 11400000, guid: adb642856ece6f042872645674c444d4, type: 2}
+  coinObject: {fileID: 884519244348953797, guid: 71d515eb95642b24fa847c3df804e03a,
+    type: 3}
+  minCoinDrop: 5
+  maxCoinDrop: 15
   maxItemDrop: 5

@@ -17,7 +17,7 @@ public class ChestScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                lootScript.CalculateLoot();
+                lootScript.LootDrop();
                 Destroy(gameObject);
             }
         }
