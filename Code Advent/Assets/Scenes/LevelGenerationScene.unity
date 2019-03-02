@@ -195,5 +195,29 @@ PrefabInstance:
       propertyPath: enemyCount
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6930510626671196959, guid: 1eaeb46d2d3862845b6cbd6d48b2a66a,
+        type: 3}
+      propertyPath: groundTile
+      value: 
+      objectReference: {fileID: 11400000, guid: c41b335083012b343bfa2c9823264885,
+        type: 2}
+    - target: {fileID: 6930510626671196959, guid: 1eaeb46d2d3862845b6cbd6d48b2a66a,
+        type: 3}
+      propertyPath: pitTile
+      value: 
+      objectReference: {fileID: 11400000, guid: a81fe3ff4c5798d4fac8d5f5bae5efa0,
+        type: 2}
+    - target: {fileID: 6930510626671196959, guid: 1eaeb46d2d3862845b6cbd6d48b2a66a,
+        type: 3}
+      propertyPath: topWallTile
+      value: 
+      objectReference: {fileID: 11400000, guid: 4657c28a4c38e7242b1270e770d8f794,
+        type: 2}
+    - target: {fileID: 6930510626671196959, guid: 1eaeb46d2d3862845b6cbd6d48b2a66a,
+        type: 3}
+      propertyPath: botWallTile
+      value: 
+      objectReference: {fileID: 11400000, guid: 75d8e7b23342ad044b9d74b69d49b98c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eaeb46d2d3862845b6cbd6d48b2a66a, type: 3}
