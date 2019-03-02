@@ -44,9 +44,12 @@ namespace Advent.Levels
         private int routeCount = 0;
 
         List<Vector2> vacantTiles;
+
+        GridLayout gridLayout;
         // Start is called before the first frame update
         void Start()
         {
+            gridLayout = GetComponent<GridLayout>();
             int x = 0;
             int y = 0;
             int routeLength = 0;
@@ -68,18 +71,21 @@ namespace Advent.Levels
 
         private void GetAvailableTiles() //YOu can really improve this in the future
         {
-            BoundsInt bounds = groundMap.cellBounds;
-            TileBase[] allTiles = groundMap.GetTilesBlock(bounds);
             vacantTiles = new List<Vector2>();
-
-            for (int x = 0; x < bounds.size.x; x++)
+            for (int n = groundMap.cellBounds.xMin; n < groundMap.cellBounds.xMax; n++)
             {
-                for (int y = 0; y < bounds.size.y; y++)
+                for (int p = groundMap.cellBounds.yMin; p < groundMap.cellBounds.yMax; p++)
                 {
-                    TileBase tile = allTiles[x + y * bounds.size.x];
-                    if (tile != null)
+                    Vector3Int localPlace = (new Vector3Int(n, p, (int)groundMap.transform.position.y));
+                    Vector3 place = groundMap.CellToWorld(localPlace);
+                    if (groundMap.HasTile(localPlace))
                     {
-                        vacantTiles.Add(new Vector2(x, y));
+                        //Tile at "place"
+                        vacantTiles.Add(place);
+                    }
+                    else
+                    {
+                        //No tile at "place"
                     }
                 }
             }
