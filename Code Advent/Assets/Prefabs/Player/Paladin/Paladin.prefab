@@ -375,7 +375,7 @@ MonoBehaviour:
   defense:
     baseValue: 3
   speed:
-    baseValue: 5
+    baseValue: 6
   str:
     baseValue: 0
   dex:
@@ -469,7 +469,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300006, guid: 87cf9a2458d87ce498ed32855aa77a01, type: 3}
+  m_Sprite: {fileID: 21300006, guid: 52aa3efa16c12904ab64dfdc63260b11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

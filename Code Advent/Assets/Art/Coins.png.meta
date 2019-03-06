@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: f5d975ace8439834db4e3743560ed49e
+guid: a7ec5e2ee40afda49948bd853ea70fe2
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Dummy
+    21300000: Coins_0
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -96,13 +96,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dummy
+      name: Coins_0
       rect:
         serializedVersion: 2
-        x: 322
-        y: 32
-        width: 12
-        height: 16
+        x: 6
+        y: 6
+        width: 4
+        height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -110,7 +110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ff36c5cbce1aaf4bb871abd878635d3
+      spriteID: 2fdd3723194956d4a9cdfebb05b94f1e
       vertices: []
       indices: 
       edges: []
@@ -118,7 +118,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2130735b17485ad498182d7d6445a81f
+    spriteID: 844d2bebe9e72d54bac58714035be58f
     vertices: []
     indices: 
     edges: []

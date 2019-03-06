@@ -17,5 +17,8 @@ namespace Advent.Abilities
         {
             hammerthrow.Throw();
         }
+        private void OnTriggerEnter2D(Collider2D other) {
+            
+        }
     }
 }

@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: e2d4157224d142747b3123177972f1b8
+guid: 65f905676af9273449a2f47a9211a699
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Ptp_01_0
-    21300002: Ptp_01_1
+    21300000: Door_Close
+    21300002: Door_Open
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ptp_01_0
+      name: Door_Close
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
-        width: 16
-        height: 16
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,19 +111,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24dcde8f50f5cfb4d8c6d54f5b03b585
+      spriteID: 8acf7d3460d4a224981018baf526414c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ptp_01_1
+      name: Door_Open
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,7 +131,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d09447b86fac80b4f8f8d014ded1cbfa
+      spriteID: 147f6a364abb74347bfc5f7ca95bed4a
       vertices: []
       indices: 
       edges: []
@@ -139,7 +139,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a8f8b5b3e89a7f24bb2794e65e072e5b
+    spriteID: c2f64a35c43a5b345b28285a121dce98
     vertices: []
     indices: 
     edges: []

@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: 8f0e56ef4bc58e2459fb35d714d0e722
+guid: 52aa3efa16c12904ab64dfdc63260b11
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ptp_Tiles_0
-    21300002: ptp_Tiles_1
+    21300000: Paladin_v0.1_0
+    21300002: Paladin_v0.1_1
+    21300004: Paladin_v0.1_2
+    21300006: Paladin_v0.1_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -47,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +99,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ptp_Tiles_0
+      name: Paladin_v0.1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 8
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,19 +113,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0758594df0142dc42bb89af5f4ecfde6
+      spriteID: 02f077d47e7ad194a895761dd9255950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ptp_Tiles_1
+      name: Paladin_v0.1_1
       rect:
         serializedVersion: 2
-        x: 8
+        x: 24
         y: 0
-        width: 8
-        height: 8
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,7 +133,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f618bd6c12a4434096ceb12ad8f8523
+      spriteID: b4afdae72b978e04d94f64a185dad120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paladin_v0.1_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4f69ad1245c4ba4a83071d4edf76c1f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paladin_v0.1_3
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19534e70cc917464aa5f9a4f523dad5d
       vertices: []
       indices: 
       edges: []
@@ -139,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 41067f957d8a1e040963efa41394793c
+    spriteID: 66a95dd8dd8bf934899f2d6ae99bf24f
     vertices: []
     indices: 
     edges: []
