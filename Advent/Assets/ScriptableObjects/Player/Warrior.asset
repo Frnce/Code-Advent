@@ -13,13 +13,8 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   name: Warrior
-  baseStr:
-    baseValue: 15
-  baseDex:
-    baseValue: 10
-  baseInt:
-    baseValue: 10
-  baseVit:
-    baseValue: 15
-  baseSpeed:
-    baseValue: 5
+  baseStr: 15
+  baseDex: 10
+  baseInt: 10
+  baseVit: 15
+  baseSpeed: 5
