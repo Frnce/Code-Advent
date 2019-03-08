@@ -10,6 +10,8 @@ TextureImporter:
     21300010: Ptp_Enemy_Sides
     21300012: Ptp_Wall
     21300014: Ptp_Ground
+    21300016: Ptp_Player_Diagonal_Down
+    21300018: Ptp_Player_Diagonal_Up
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -246,7 +248,7 @@ TextureImporter:
       name: Ptp_Ground
       rect:
         serializedVersion: 2
-        x: 16
+        x: 32
         y: 0
         width: 16
         height: 16
@@ -258,6 +260,46 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 7b908624d14a2254382f35153ee562d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ptp_Player_Diagonal_Down
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92672c404e82b7f42a25fe555b41cbbc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ptp_Player_Diagonal_Up
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 821f6699109b2364d907c637628f8a92
       vertices: []
       indices: 
       edges: []
