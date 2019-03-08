@@ -2,17 +2,12 @@
 2D action roguelike
 Code Advent - not final title
 Game Concept
-- Code Advent is a 2D action roguelite with RPG elements. with a focus on player / character customizability. The basic story will be you are one of the refugee group called the "The peacekeepers" and you're the only one left who is capable of dispersing the the advents. The Advents are evil creatures that reigns the place.
+- Code Advent is a 2D action RPG. with a focus on player / character customizability. The basic story will be you are one of the refugee group called the "The peacekeepers" and you're the only one left who is capable of dispersing the the advents. The Advents are evil creatures that reigns the place.
 The peacekeepers needs to defeat and kill all the advents.
 
 Inspirations
-- Tangledeep
-- Final fantasy 2
-- final fantasy 5
-- wizard of legend
-- Heroes of hammerwatch
-- Chrono trigger
-- crossCode
+- Shining Soul
+- Diablo series
 
 
 
