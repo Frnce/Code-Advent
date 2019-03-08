@@ -5,7 +5,7 @@ using Advent.Stats;
 
 namespace Advent.Character
 {
-    [CreateAssetMenu(fileName = "New Character", menuName = "Entity/Character")]
+    [CreateAssetMenu(fileName = "New Character", menuName = "Entities")]
     public class CharacterClass : ScriptableObject
     {
         new public string name = "New Character";

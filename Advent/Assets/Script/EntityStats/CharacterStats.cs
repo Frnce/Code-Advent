@@ -24,18 +24,19 @@ namespace Advent.Stats
         public Stat vitality;
         public Stat speed;
 
-        public virtual void Start()
+        public void InitStats()
         {
-            InitStats();
-        }
-        private void InitStats()
-        {
-            //TODO Consider using delegate when adding stats
             strength.AddStat(character.baseStr);
             dexterity.AddStat(character.baseDex);
             intelligence.AddStat(character.baseInt);
             vitality.AddStat(character.baseVit);
             speed.AddStat(character.baseSpeed);
+
+            SetHP();
+            SetST();
+            SetStat();
+            CurrentHealth = MaxHealth;
+            CurrentStamina = MaxStamina;
         }
         public void SetStat()
         {

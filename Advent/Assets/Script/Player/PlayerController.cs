@@ -21,21 +21,12 @@ namespace Advent.Player
         bool canMove = true;
 
         // Start is called before the first frame update
-        public override void Start()
+        public void Start()
         {
-            base.Start();
             rb2d = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
 
             InitStats();
-        }
-        void InitStats()
-        {
-            SetHP();
-            SetST();
-            SetStat();
-            CurrentHealth = MaxHealth;
-            CurrentStamina = MaxStamina;
         }
         private void Update()
         {
@@ -87,8 +78,8 @@ namespace Advent.Player
         }
         void SetMovementAnimation()
         {
-            anim.SetFloat("xMove",movement.x);
-            anim.SetFloat("yMove",movement.y);
+            anim.SetFloat("xMove", movement.x);
+            anim.SetFloat("yMove", movement.y);
         }
     }
 }
