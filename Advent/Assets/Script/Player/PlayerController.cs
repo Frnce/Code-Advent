@@ -5,7 +5,7 @@ using Advent.Stats;
 
 namespace Advent.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : CharacterStats
     {
         #region singleton
         public static PlayerController instance;
@@ -14,21 +14,45 @@ namespace Advent.Player
             instance = this;
         }
         #endregion
-        PlayerStats stats;
         Vector3 movement;
         Rigidbody2D rb2d;
         Animator anim;
         bool isMoving;
+        bool canMove = true;
+
         // Start is called before the first frame update
-        void Start()
+        public override void Start()
         {
+            base.Start();
             rb2d = GetComponent<Rigidbody2D>();
-            stats = GetComponent<PlayerStats>();
             anim = GetComponent<Animator>();
+
+            InitStats();
+        }
+        void InitStats()
+        {
+            SetHP();
+            SetST();
+            SetStat();
+            CurrentHealth = MaxHealth;
+            CurrentStamina = MaxStamina;
         }
         private void Update()
         {
             GetInput();
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                StartCoroutine(CourAttack());
+            }
+        }
+        IEnumerator CourAttack()
+        {
+            canMove = false;
+            anim.SetTrigger("attack1");
+            yield return new WaitForSeconds(0.25f);
+
+            canMove = true;
         }
         public void GetInput()
         {
@@ -38,23 +62,31 @@ namespace Advent.Player
         }
         private void FixedUpdate()
         {
-            if (movement != Vector3.zero)
+            if (canMove)
             {
-                isMoving = true;
-                Move();
-                SetMovementAnimation();
+                if (movement != Vector3.zero)
+                {
+                    isMoving = true;
+                    Move();
+                    SetMovementAnimation();
+                }
+                else
+                {
+                    isMoving = false;
+                }
             }
-            else{
-                isMoving = false;
+            else
+            {
+                rb2d.MovePosition(transform.position);
             }
+            anim.SetBool("isMoving", isMoving);
         }
         private void Move()
         {
-            rb2d.MovePosition(transform.position + movement * stats.speed.GetValue() * Time.deltaTime);
+            rb2d.MovePosition(transform.position + movement * speed.GetValue() * Time.deltaTime);
         }
         void SetMovementAnimation()
         {
-            anim.SetBool("isMoving",isMoving);
             anim.SetFloat("xMove",movement.x);
             anim.SetFloat("yMove",movement.y);
         }

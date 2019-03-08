@@ -12,6 +12,13 @@ TextureImporter:
     21300014: Ptp_Ground
     21300016: Ptp_Player_Diagonal_Down
     21300018: Ptp_Player_Diagonal_Up
+    21300020: Ptp_Player_Attack_Up
+    21300022: Ptp_Player_Attack_Down
+    21300024: Ptp_Player_Attack_Sides
+    21300026: Ptp_Player_Diagonal_Attack_Down
+    21300028: Ptp_Player_Diagonal_Attack_Up
+    21300030: Ptp_Enemy_Diagonal_Down
+    21300032: Ptp_Enemy_Diagonal_Up
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -109,7 +116,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -129,7 +136,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 32
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -149,7 +156,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -169,7 +176,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -189,7 +196,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -209,7 +216,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -229,7 +236,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -249,7 +256,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -269,11 +276,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 32
+        y: 64
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,7 +296,127 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 821f6699109b2364d907c637628f8a92
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ptp_Player_Attack_Up
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 9
+        width: 16
+        height: 22
+      alignment: 9
+      pivot: {x: 0.50994754, y: 0.35168812}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b9cd1de46ed9634eb24c15e87a34bc3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ptp_Player_Attack_Down
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 16
+        height: 22
+      alignment: 9
+      pivot: {x: 0.50994766, y: 0.73512805}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b46b1d7391300dc449143410a5caaac5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ptp_Player_Attack_Sides
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 8
+        width: 18
+        height: 16
+      alignment: 9
+      pivot: {x: 0.27893913, y: 0.5149213}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e66e0dc561a015a4d9dae339e9e2b372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ptp_Player_Diagonal_Attack_Down
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 19
+        height: 24
+      alignment: 9
+      pivot: {x: 0.25085932, y: 0.74403834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1bc0f01b85c3f4eab03232870c7cef
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ptp_Player_Diagonal_Attack_Up
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 17
+        width: 19
+        height: 24
+      alignment: 9
+      pivot: {x: 0.25930464, y: 0.30276346}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9e975680a851fc4da6277233dd6c465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ptp_Enemy_Diagonal_Down
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -299,7 +426,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 821f6699109b2364d907c637628f8a92
+      spriteID: 77e96fc54c1ea6242a28c35ae38be262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ptp_Enemy_Diagonal_Up
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef4e0a3df92c2ab438f1dbcadee245c0
       vertices: []
       indices: 
       edges: []

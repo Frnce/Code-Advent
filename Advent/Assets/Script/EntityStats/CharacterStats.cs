@@ -1,43 +1,63 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent.Character;
+using System;
+
 namespace Advent.Stats
 {
     public class CharacterStats : MonoBehaviour
     {
-        [Header("HP and ST")]
-        public Stat health;
-        public int currentHealth { get; set; }
+        public CharacterClass character;
 
-        public Stat stamina;
-        public int currentStamina { get; set; }
+        public int MaxHealth { get; set; }
+        public int MaxStamina { get; set; }
+        public int CurrentHealth { get; set; }
+        public int CurrentStamina { get; set; }
 
-        [Header("Attack and Def")]
         public Stat physicalAttack;
         public Stat magicalAttack;
         public Stat defense;
-
-        [Header("Stats")]
         public Stat strength;
         public Stat dexterity;
         public Stat intelligence;
         public Stat vitality;
         public Stat speed;
 
-        private void Awake()
+        public virtual void Start()
         {
-            currentHealth = health.GetValue();
-            currentStamina = stamina.GetValue();
+            InitStats();
+        }
+        private void InitStats()
+        {
+            //TODO Consider using delegate when adding stats
+            strength.AddStat(character.baseStr);
+            dexterity.AddStat(character.baseDex);
+            intelligence.AddStat(character.baseInt);
+            vitality.AddStat(character.baseVit);
+            speed.AddStat(character.baseSpeed);
+        }
+        public void SetStat()
+        {
+            physicalAttack.AddStat(strength.GetValue());
+        }
+        public void SetHP() //Set new max HP when updating vit stat // Use this method after inserting a new stat on VIT
+        {
+            MaxHealth = 3 * (1 + vitality.GetValue()); // TODO Change 1 to a level value
+        }
+        public void SetST() //Set new max ST when updating int stat // // Use this method after inserting a new stat on INT
+        {
+            MaxStamina = 2 * (1 + intelligence.GetValue()); // TODO Change 1 to a level value
         }
         public void TakeDamage(int damage)
         {
             damage -= defense.GetValue();
             damage = Mathf.Clamp(damage, 0, int.MaxValue); //have room for improvements ,. ,balancing shits
 
-            currentHealth -= damage;
+            CurrentHealth -= damage;
             Debug.Log("Take Damage" + transform.name);
 
-            if (currentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
                 Die();
             }
