@@ -1,27 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Advent.Enemy
+using Advent.Player;
+namespace Advent.Enemies
 {
     public class MeleeTypeEnemy : Enemy
     {
-        Rigidbody2D rb2d;
-
-        public GameObject target;
         // Start is called before the first frame update
         public override void Start()
         {
+            regenRate = .5f;
+            maxStamina = 100f;
+
             base.Start();
-            rb2d = GetComponent<Rigidbody2D>();
+            terminalSpeed = speed.GetValue() / 10;
+            initialSpeed = (speed.GetValue() / 10) / 2;
+            acceleration = (speed.GetValue() / 10) / 4;
         }
-        private void FixedUpdate()
+        public override HashSet<KeyValuePair<string, object>> createGoalState()
         {
-            Movement();
+            HashSet<KeyValuePair<string, object>> goal = new HashSet<KeyValuePair<string, object>>
+            {
+                new KeyValuePair<string, object>("damagePlayer", true),
+                new KeyValuePair<string, object>("stayAlive", true)
+            };
+            return goal;
         }
-        public override void Movement()
+
+        public override void PassiveRegen()
         {
-            // base.Movement();
-            rb2d.MovePosition(Vector2.MoveTowards(transform.position, target.transform.position, speed.GetValue() * Time.deltaTime));
+            stamina += regenRate;
+        }
+        public override void Die()
+        {
+            base.Die();
+            Destroy(gameObject);
         }
     }
 
