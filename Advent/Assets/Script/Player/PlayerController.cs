@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Stats;
+using Advent.Inventories;
+using Advent.Items;
 
 namespace Advent.Player
 {
@@ -19,6 +21,10 @@ namespace Advent.Player
         Animator anim;
         bool isMoving;
         bool canMove = true;
+        bool isAttack = false;
+
+        [HideInInspector]
+        public bool onMenu = false;
 
         // Start is called before the first frame update
         public void Start()
@@ -27,12 +33,17 @@ namespace Advent.Player
             anim = GetComponent<Animator>();
 
             InitStats();
+
+            EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
         }
         private void Update()
         {
-            GetInput();
+            if (!onMenu)
+            {
+                GetInput();
+            }
 
-            if (Input.GetKeyDown(KeyCode.K))
+            if (isAttack)
             {
                 StartCoroutine(CourAttack());
             }
@@ -50,6 +61,7 @@ namespace Advent.Player
             movement = Vector3.zero;
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
+            isAttack = Input.GetKeyDown(KeyCode.K);
         }
         private void FixedUpdate()
         {
@@ -71,6 +83,19 @@ namespace Advent.Player
                 rb2d.MovePosition(transform.position);
             }
             anim.SetBool("isMoving", isMoving);
+        }
+        void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
+        {
+            if(newItem != null)
+            {
+                defense.AddModifier(newItem.defenseModifier);
+                physicalAttack.AddModifier(newItem.pAttackModifier);
+            }
+            if(oldItem != null)
+            {
+                defense.RemoveModifier(newItem.defenseModifier);
+                physicalAttack.RemoveModifier(newItem.pAttackModifier);
+            }
         }
         private void Move()
         {
