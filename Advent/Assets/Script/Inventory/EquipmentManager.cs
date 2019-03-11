@@ -48,7 +48,7 @@ namespace Advent.Inventories
 
             currentEquipment[slotIndex] = newItem;
         }
-        public void Unequip(int slotIndex)
+        public void SwapEquip(int slotIndex)
         {
             if(currentEquipment[slotIndex] != null)
             {
@@ -62,12 +62,14 @@ namespace Advent.Inventories
                 }
             }
         }
-
         public void UnequipAll()
         {
             for (int i = 0; i < currentEquipment.Length; i++)
             {
-                Unequip(i);
+                if(currentEquipment[i] != null)
+                {
+                    SwapEquip(i);
+                }
             }
         }
     }

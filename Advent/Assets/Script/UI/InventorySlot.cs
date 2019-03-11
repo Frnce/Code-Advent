@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Advent.Items;
+using UnityEngine.EventSystems;
+
 
 namespace Advent.UI
 {
@@ -28,9 +30,17 @@ namespace Advent.UI
 
         public void UseItem()
         {
-            if(item != null)
+            if (item != null)
             {
                 item.Use();
+            }
+        }
+
+        public void DropItem()
+        {
+            if(item != null)
+            {
+                item.DropFromInventory();
             }
         }
     }

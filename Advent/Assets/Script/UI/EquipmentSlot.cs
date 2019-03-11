@@ -10,6 +10,7 @@ namespace Advent.UI
     {
         Equipment equipment;
         public Image icon;
+        public int thisIndex;
         public void AddItem(Equipment newItem,Equipment oldItem)
         {
             equipment = newItem;
@@ -31,6 +32,14 @@ namespace Advent.UI
             if (equipment != null)
             {
                 equipment.Use();
+            }
+        }
+        public void UnequipItem()
+        {
+            if(equipment != null)
+            {
+                equipment.Unequip(thisIndex);
+                ClearSlot();
             }
         }
     }

@@ -15,6 +15,8 @@ MonoBehaviour:
   name: Sword
   icon: {fileID: 21300000, guid: b49efc7e5f993494b933bd3ae771aac2, type: 3}
   isDefaultItem: 0
+  gameobject: {fileID: 7944501515271174958, guid: e027830ffd87cd040a415de404f19910,
+    type: 3}
   equipSlot: 3
   defenseModifier: 0
   pAttackModifier: 5

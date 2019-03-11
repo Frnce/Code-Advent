@@ -19,6 +19,10 @@ namespace Advent.Items
             EquipmentManager.instance.Equip(this);
             RemoveFromInventory();
         }
+        public void Unequip(int index)
+        {
+            EquipmentManager.instance.SwapEquip(index);
+        }
     }
     public enum EquipSlot
     {

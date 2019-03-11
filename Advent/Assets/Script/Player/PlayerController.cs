@@ -93,8 +93,8 @@ namespace Advent.Player
             }
             if(oldItem != null)
             {
-                defense.RemoveModifier(newItem.defenseModifier);
-                physicalAttack.RemoveModifier(newItem.pAttackModifier);
+                defense.RemoveModifier(oldItem.defenseModifier);
+                physicalAttack.RemoveModifier(oldItem.pAttackModifier);
             }
         }
         private void Move()

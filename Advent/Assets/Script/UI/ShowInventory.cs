@@ -23,6 +23,10 @@ namespace Advent.UI
         private EquipmentManager equipmentManager;
         private EquipmentSlot[] equipmentSlot;
 
+        public int index; // get current index selected
+        bool keyDown; 
+        int maxIndex;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -51,6 +55,43 @@ namespace Advent.UI
                 player.onMenu = false;
             }
             SetActiveInventoryBox();
+            MenuControls();
+        }
+        void MenuControls()
+        {
+            if (Input.GetAxisRaw("Vertical") != 0)
+            {
+                if (!keyDown)
+                {
+                    if (Input.GetAxisRaw("Vertical") < 0)
+                    {
+                        if (index < itemSlot.Length)
+                        {
+                            index++;
+                        }
+                        else
+                        {
+                            index = 0;
+                        }
+                    }
+                    else if (Input.GetAxisRaw("Vertical") > 0)
+                    {
+                        if (index > 0)
+                        {
+                            index--;
+                        }
+                        else
+                        {
+                            index = itemSlot.Length;
+                        }
+                    }
+                    keyDown = true;
+                }
+            }
+            else
+            {
+                keyDown = false;
+            }
         }
         void SetActiveInventoryBox()
         {
@@ -77,16 +118,19 @@ namespace Advent.UI
         }
         void UpdateEquipmentUI(Equipment newItem, Equipment oldItem)
         {
-            int slotIndex = (int)newItem.equipSlot;
-            for (int i = 0; i < equipmentSlot.Length; i++)
+            if(newItem != null)
             {
-                if(i < equipmentManager.currentEquipment.Length)
+                int slotIndex = (int)newItem.equipSlot;
+                for (int i = 0; i < equipmentSlot.Length; i++)
                 {
-                    equipmentSlot[slotIndex].AddItem(newItem, oldItem);
-                }
-                else
-                {
-                    equipmentSlot[i].ClearSlot();
+                    if (i < equipmentManager.currentEquipment.Length)
+                    {
+                        equipmentSlot[slotIndex].AddItem(newItem, oldItem);
+                    }
+                    else
+                    {
+                        equipmentSlot[i].ClearSlot();
+                    }
                 }
             }
         }
