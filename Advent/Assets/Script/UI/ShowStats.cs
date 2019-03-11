@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Advent.Player;
+using Advent.Stats;
 namespace Advent.UI
 {
     public class ShowStats : MonoBehaviour
@@ -24,11 +25,16 @@ namespace Advent.UI
         [SerializeField]
         private Text vitalityText = null;
 
-        private PlayerController player;
+        [SerializeField]
+        private GameObject statButtonPanel;
+        [SerializeField]
+        private Text addPointsText;
+
+        private StatSystem statSystem;
         // Start is called before the first frame update
         void Start()
         {
-            player = PlayerController.instance;
+            statSystem = StatSystem.instance;
             panel.SetActive(isActive);
         }
 
@@ -37,6 +43,18 @@ namespace Advent.UI
         {
             SetActiveStatBox();
             SetStatValues();
+            ShowAddStatButton();
+        }
+        void ShowAddStatButton()
+        {
+            if(statSystem.availablePoints > 0)
+            {
+                statButtonPanel.SetActive(true);
+            }
+            else
+            {
+                statButtonPanel.SetActive(false);
+            }
         }
         void SetActiveStatBox()
         {
@@ -48,13 +66,32 @@ namespace Advent.UI
         }
         void SetStatValues()
         {
-            attackText.text = player.physicalAttack.GetValue().ToString();
-            defenseText.text = player.defense.GetValue().ToString();
+            attackText.text = statSystem.physicalAttack.GetValue().ToString();
+            defenseText.text = statSystem.defense.GetValue().ToString();
 
-            strengthText.text = player.strength.GetValue().ToString();
-            dexterityText.text = player.dexterity.GetValue().ToString();
-            intelligenceText.text = player.intelligence.GetValue().ToString();
-            vitalityText.text = player.vitality.GetValue().ToString();
+            strengthText.text = statSystem.strength.GetValue().ToString();
+            dexterityText.text = statSystem.dexterity.GetValue().ToString();
+            intelligenceText.text = statSystem.intelligence.GetValue().ToString();
+            vitalityText.text = statSystem.vitality.GetValue().ToString();
+
+            addPointsText.text = statSystem.availablePoints.ToString();
+        }
+
+        public void OnPointToStr()
+        {
+            statSystem.AddPointsToStr();
+        }
+        public void OnPointsToDex()
+        {
+            statSystem.AddPointsToDex();
+        }
+        public void OnPointsToInt()
+        {
+            statSystem.AddPointsToInt();
+        }
+        public void OnPointsToVit()
+        {
+            statSystem.AddPointsToVit();
         }
     }
 

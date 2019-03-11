@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent.Stats;
 using Advent.Player;
 namespace Advent.Enemies
 {
     public class MeleeTypeEnemy : Enemy
     {
+        LevelSystemController levelSystem;
         // Start is called before the first frame update
         public override void Start()
         {
+            levelSystem = LevelSystemController.instance;
             regenRate = .5f;
             maxStamina = 100f;
 
@@ -34,6 +37,7 @@ namespace Advent.Enemies
         public override void Die()
         {
             base.Die();
+            levelSystem.GainExp(character.expGiven);
             Destroy(gameObject);
         }
     }

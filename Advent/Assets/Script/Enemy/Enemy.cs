@@ -8,6 +8,7 @@ namespace Advent.Enemies
 {
     public abstract class Enemy : CharacterStats , IGOAP
     {
+
         Rigidbody2D rb2d;
 
         [HideInInspector]
@@ -23,11 +24,14 @@ namespace Advent.Enemies
 
         [HideInInspector]
         public PlayerController player;
+        [HideInInspector]
+        public StatSystem statSystem;
 
         public virtual void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
             player = PlayerController.instance;
+            statSystem = StatSystem.instance;
             InitStats();
         }
         public virtual void Update()

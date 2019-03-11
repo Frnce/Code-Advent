@@ -18,3 +18,4 @@ MonoBehaviour:
   baseInt: 15
   baseVit: 15
   baseSpeed: 3
+  expGiven: 500

@@ -15,5 +15,7 @@ namespace Advent.Character
         public int baseInt;
         public int baseVit;
         public int baseSpeed;
+
+        public int expGiven; //For enemies only else , leave it to zero
     }
 }

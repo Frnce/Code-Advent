@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Enemies;
-using Advent.Player;
+using Advent.Stats;
 
 namespace Advent
 {
     public class HitEnemy : MonoBehaviour
     {
-        PlayerController player;
+        StatSystem statSystem;
         private void Start()
         {
-            player = PlayerController.instance;
+            statSystem = StatSystem.instance;
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Enemy"))
             {
-                other.GetComponent<Enemy>().TakeDamage(player.physicalAttack.GetValue());
+                other.GetComponent<Enemy>().TakeDamage(statSystem.physicalAttack.GetValue());
             }
         }
     }

@@ -7,7 +7,7 @@ using Advent.Items;
 
 namespace Advent.Player
 {
-    public class PlayerController : CharacterStats
+    public class PlayerController : MonoBehaviour
     {
         #region singleton
         public static PlayerController instance;
@@ -26,15 +26,13 @@ namespace Advent.Player
         [HideInInspector]
         public bool onMenu = false;
 
+        StatSystem statSystem;
         // Start is called before the first frame update
         public void Start()
         {
+            statSystem = StatSystem.instance;
             rb2d = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
-
-            InitStats();
-
-            EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
         }
         private void Update()
         {
@@ -84,22 +82,9 @@ namespace Advent.Player
             }
             anim.SetBool("isMoving", isMoving);
         }
-        void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
-        {
-            if(newItem != null)
-            {
-                defense.AddModifier(newItem.defenseModifier);
-                physicalAttack.AddModifier(newItem.pAttackModifier);
-            }
-            if(oldItem != null)
-            {
-                defense.RemoveModifier(oldItem.defenseModifier);
-                physicalAttack.RemoveModifier(oldItem.pAttackModifier);
-            }
-        }
         private void Move()
         {
-            rb2d.MovePosition(transform.position + movement * speed.GetValue() * Time.deltaTime);
+            rb2d.MovePosition(transform.position + movement * statSystem.speed.GetValue()* Time.deltaTime);
         }
         void SetMovementAnimation()
         {

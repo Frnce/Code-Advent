@@ -40,7 +40,7 @@ namespace Advent.Enemies
                 //}
 
                 //currentSlime.player.playerStats.currentHealth -= damage;
-                currentEnemy.player.TakeDamage(damage);
+                currentEnemy.statSystem.TakeDamage(damage);
                 currentEnemy.stamina -= cost;
 
                 attacked = true;

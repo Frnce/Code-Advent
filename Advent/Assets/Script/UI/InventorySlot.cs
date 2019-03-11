@@ -26,8 +26,6 @@ namespace Advent.UI
             icon.enabled = false;
         }
 
-        //TODO Add remove Item that drops to the ground
-
         public void UseItem()
         {
             if (item != null)

@@ -24,6 +24,8 @@ namespace Advent.Stats
         public Stat vitality;
         public Stat speed;
 
+        public int availablePoints;
+
         public void InitStats()
         {
             strength.AddStat(character.baseStr);
@@ -44,11 +46,11 @@ namespace Advent.Stats
         }
         public void SetHP() //Set new max HP when updating vit stat // Use this method after inserting a new stat on VIT
         {
-            MaxHealth = 3 * (1 + vitality.GetValue()); // TODO Change 1 to a level value
+            MaxHealth = 3 * (LevelSystemController.instance.currentLevel + vitality.GetValue());
         }
         public void SetST() //Set new max ST when updating int stat // // Use this method after inserting a new stat on INT
         {
-            MaxStamina = 2 * (1 + intelligence.GetValue()); // TODO Change 1 to a level value
+            MaxStamina = 2 * (LevelSystemController.instance.currentLevel + intelligence.GetValue());
         }
         public void TakeDamage(int damage)
         {

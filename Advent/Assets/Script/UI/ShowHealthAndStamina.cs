@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Advent.Player;
+using Advent.Stats;
 
 namespace Advent.UI
 {
@@ -11,17 +11,17 @@ namespace Advent.UI
         public Text hpText;
         public Text stText;
 
-        PlayerController player;
+        StatSystem statSystem;
         // Start is called before the first frame update
         void Start()
         {
-            player = PlayerController.instance;
+            statSystem = StatSystem.instance;
         }
         // Update is called once per frame
         void Update()
         {
-            hpText.text = player.CurrentHealth + " / " + player.MaxHealth;
-            stText.text = player.CurrentStamina + " / " + player.MaxStamina;
+            hpText.text = statSystem.CurrentHealth + " / " + statSystem.MaxHealth;
+            stText.text = statSystem.CurrentStamina + " / " + statSystem.MaxStamina;
         }
     }
 }
