@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,8 +36,9 @@ namespace Advent.Stats
                 //Add skillpoints
                 //Add stat points
 
-                currentExperience -= experienceNeeded;
-                experienceNeeded *= 2;
+                //currentExperience -= experienceNeeded;
+                //experienceNeeded *= 2;
+                experienceNeeded = Mathf.RoundToInt(100 * currentLevel * Mathf.Pow(currentLevel, 1.5f));
                 if(currentLevel <= maxLevel)
                 {
                     currentLevel++;

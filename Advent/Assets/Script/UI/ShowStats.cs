@@ -26,7 +26,7 @@ namespace Advent.UI
         private Text vitalityText = null;
 
         [SerializeField]
-        private GameObject statButtonPanel;
+        private GameObject statButtonPanel = null;
         [SerializeField]
         private Text addPointsText;
 

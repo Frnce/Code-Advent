@@ -8,7 +8,7 @@ namespace Advent.UI
     public class InventoryButton : MonoBehaviour
     {
         [SerializeField] ShowInventory inventory;
-        [SerializeField] int thisIndex;
+        [SerializeField] int thisIndex = 0;
         InventorySlot inventorySlot;
         // Start is called before the first frame update
         void Start()
