@@ -58,7 +58,7 @@ namespace Advent.Stats
             damage = Mathf.Clamp(damage, 0, int.MaxValue); //have room for improvements ,. ,balancing shits
 
             CurrentHealth -= damage;
-            Debug.Log("Take Damage" + transform.name);
+            Debug.Log("Take Damage");
 
             if (CurrentHealth <= 0)
             {
