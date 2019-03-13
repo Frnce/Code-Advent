@@ -38,10 +38,11 @@ namespace Advent.Stats
 
                 //currentExperience -= experienceNeeded;
                 //experienceNeeded *= 2;
-                experienceNeeded = Mathf.RoundToInt(100 * currentLevel * Mathf.Pow(currentLevel, 1.5f));
+                experienceNeeded = Mathf.RoundToInt(100 * currentLevel * Mathf.Pow(currentLevel, 0.5f));
                 if(currentLevel <= maxLevel)
                 {
                     currentLevel++;
+                    currentExperience -= experienceNeeded;
                     AddStatPoints();
                     Debug.Log("Leveled UP! insert ff levelup music");
                 }
