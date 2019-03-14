@@ -22,6 +22,8 @@ namespace Advent.Player
         bool isMoving;
         bool canMove = true;
         bool isAttack = false;
+        bool isXAxisUsed = false;
+        bool isYAxisUsed = false;
 
         [HideInInspector]
         public bool onMenu = false;
@@ -36,6 +38,7 @@ namespace Advent.Player
         }
         private void Update()
         {
+            SetMovementAnimation();
             if (!onMenu)
             {
                 GetInput();
@@ -69,7 +72,6 @@ namespace Advent.Player
                 {
                     isMoving = true;
                     Move();
-                    SetMovementAnimation();
                 }
                 else
                 {
@@ -88,8 +90,34 @@ namespace Advent.Player
         }
         void SetMovementAnimation()
         {
-            anim.SetFloat("xMove", movement.x);
-            anim.SetFloat("yMove", movement.y);
+            if (Input.GetAxisRaw("Horizontal") != 0)
+            {
+                isXAxisUsed = true;
+            }
+            else
+            {
+                isXAxisUsed = false;
+            }
+
+            if(Input.GetAxisRaw("Vertical") != 0)
+            {
+                isYAxisUsed = true;
+            }
+            else
+            {
+                isYAxisUsed = false;
+            }
+
+            if (isXAxisUsed && !isYAxisUsed)
+            {
+                anim.SetFloat("xMove", movement.x);
+                anim.SetFloat("yMove", 0f);
+            }
+            if (isYAxisUsed && !isXAxisUsed)
+            {
+                anim.SetFloat("xMove", 0f);
+                anim.SetFloat("yMove", movement.y);
+            }
         }
     }
 }
