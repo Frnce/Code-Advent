@@ -17,4 +17,5 @@ MonoBehaviour:
   baseDex: 10
   baseInt: 10
   baseVit: 15
-  baseSpeed: 5
+  baseSpeed: 4
+  expGiven: 0
