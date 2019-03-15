@@ -33668,6 +33668,7 @@ GameObject:
   - component: {fileID: 1974683829}
   - component: {fileID: 1974683830}
   - component: {fileID: 1974683831}
+  - component: {fileID: 1974683832}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -33763,6 +33764,19 @@ MonoBehaviour:
   speed:
     baseValue: 0
   availablePoints: 0
+--- !u!114 &1974683832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974683826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c20412e5cb0a546ab1bdd041bda76f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillTree: {fileID: 11400000, guid: c76e36b4b46373e4db1ac1c585d41d9f, type: 2}
 --- !u!1 &1975316965
 GameObject:
   m_ObjectHideFlags: 0
@@ -35895,7 +35909,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1080871010, guid: ffc30355eb771a64884f771fa93087c0, type: 3}
+      propertyPath: spellsList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1080871010, guid: ffc30355eb771a64884f771fa93087c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ffc30355eb771a64884f771fa93087c0, type: 3}
 --- !u!1001 &8354661319058576224
 PrefabInstance:
