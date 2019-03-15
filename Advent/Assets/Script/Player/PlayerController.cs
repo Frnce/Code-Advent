@@ -21,6 +21,7 @@ namespace Advent.Player
         Animator anim;
         bool isMoving;
         bool canMove = true;
+        bool canAttack = true;
         bool isAttack = false;
         bool isXAxisUsed = false;
         bool isYAxisUsed = false;
@@ -38,28 +39,32 @@ namespace Advent.Player
         }
         private void Update()
         {
-            SetMovementAnimation();
             if (!onMenu)
             {
                 GetInput();
             }
-
+            SetMovementAnimation();
             if (isAttack)
             {
-                StartCoroutine(CourAttack());
+                if (canAttack)
+                {
+                    StartCoroutine(CourAttack());
+                }
             }
         }
         IEnumerator CourAttack()
         {
             canMove = false;
-            anim.SetTrigger("attack1");
-            yield return new WaitForSeconds(0.25f);
-
+            canAttack = false;
+            anim.SetTrigger("defaultAttackTrigger");
+            yield return new WaitForSeconds(0.483f); // inline with attack animation length
+            anim.ResetTrigger("defaultAttackTrigger");
             canMove = true;
+            canAttack = true;
         }
         public void GetInput()
         {
-            movement = Vector3.zero;
+            movement = Vector3.down;
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
             isAttack = Input.GetKeyDown(KeyCode.K);

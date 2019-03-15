@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: 2962f31274a37f54b8a8a5fec41d1703
+guid: 467bfaa3751e95241899b9d01ee136c5
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Grass_0
+    21300000: Sword-left_0
+    21300002: Sword-left_1
+    21300004: Sword-left_2
+    21300006: Sword-left_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -85,21 +88,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Grass_0
+      name: Sword-left_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3
+        y: 9
+        width: 5
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9f4125f58e45474fb03e26bda2eeb4e
+      spriteID: 5b37a4f74bf62594aa38329d4a390250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword-left_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 8
+        width: 8
+        height: 9
+      alignment: 9
+      pivot: {x: 0.94934344, y: 0.15903473}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 813338cf380ac684b8f811c28118cfd6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword-left_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 2
+        width: 8
+        height: 8
+      alignment: 9
+      pivot: {x: 0.80960846, y: 0.8123485}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63ba7bc822f621849a6f50873cb37e24
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword-left_3
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 6
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5036526, y: 0.8387511}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d35d48353e96a345a0ff79ccbb6d8df
       vertices: []
       indices: 
       edges: []
@@ -107,7 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ef4ddf4733ea8a441807e0859ac36127
+    spriteID: d85332f165c023841b74123460adba51
     vertices: []
     indices: 
     edges: []

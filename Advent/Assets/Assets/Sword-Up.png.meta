@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: 2962f31274a37f54b8a8a5fec41d1703
+guid: 25599986e0f79ae448303ad752c9d1ac
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Grass_0
+    21300000: Sword-Up_0
+    21300002: Sword-Up_1
+    21300004: Sword-Up_2
+    21300006: Sword-Up_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -85,21 +88,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Grass_0
+      name: Sword-Up_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 12
+        y: 3
+        width: 11
+        height: 4
+      alignment: 9
+      pivot: {x: 0.0956609, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9f4125f58e45474fb03e26bda2eeb4e
+      spriteID: 02cf1391c668c9c408f1007d6607d25a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword-Up_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 9
+        width: 10
+        height: 9
+      alignment: 9
+      pivot: {x: 0.100112155, y: 0.110086866}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 145e7bda962c33347b0663d0615aaaa5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword-Up_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 4
+        width: 9
+        height: 9
+      alignment: 9
+      pivot: {x: 0.96698844, y: 0.03754494}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d6b503557dbec648ab31cb244107e00
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword-Up_3
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 2
+        width: 12
+        height: 6
+      alignment: 9
+      pivot: {x: 0.8978469, y: 0.44559368}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c863b0a05aa0f2448a633ebef840fd1
       vertices: []
       indices: 
       edges: []
@@ -107,7 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ef4ddf4733ea8a441807e0859ac36127
+    spriteID: 1db97c0a864df0948b6bc71ec7e322cd
     vertices: []
     indices: 
     edges: []
