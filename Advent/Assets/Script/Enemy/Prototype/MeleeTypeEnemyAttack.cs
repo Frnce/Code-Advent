@@ -30,16 +30,7 @@ namespace Advent.Enemies
             MeleeTypeEnemy currentEnemy = agent.GetComponent<MeleeTypeEnemy>();
             if (currentEnemy.stamina >= (cost))
             {
-
-                //                currentSlime.animator.Play("wolfAttack");
-
                 int damage = currentEnemy.physicalAttack.GetValue();
-                //if (currentSlime.player.isBlocking)
-                //{
-                //    damage -= currentSlime.player.defense;
-                //}
-
-                //currentSlime.player.playerStats.currentHealth -= damage;
                 currentEnemy.statSystem.TakeDamage(damage);
                 currentEnemy.stamina -= cost;
 

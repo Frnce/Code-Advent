@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7428d20fccbbebc4c8ecfbf8e625849a, type: 3}
-  m_Name: New Skill tree
+  m_Script: {fileID: 11500000, guid: cde2a26dd775f54448f5b57ebb2e29ef, type: 3}
+  m_Name: Sample Ability Config
   m_EditorClassIdentifier: 
-  allSkills:
-  - {fileID: 11400000, guid: 5d4e7c30eb756804fb448d8b0eb38bec, type: 2}
+  cost: 0
+  extraDamage: 10
