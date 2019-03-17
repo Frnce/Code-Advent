@@ -15,17 +15,16 @@ namespace Advent.UI
         private void Start()
         {
             abilitySystem = AbilitiesSystem.instance;
-            icon.sprite = ability.getIcon();
+            icon.sprite = ability.GetIcon();
             icon.enabled = true;
         }
 
         public void LearnAbility()
         {
-            if (abilitySystem.GetAllLearnedAbility().Contains(abilitySystem.GetAllAbilities()[thisIndex]))
-            {
-
-            }
-            abilitySystem.GetAllLearnedAbility().Add(abilitySystem.GetAllAbilities()[thisIndex]);
+            //Show Sub menu. 
+            //Learn
+            //Add to key
+            abilitySystem.GetAllLearnedAbility()[thisIndex] = abilitySystem.GetAllAbilities()[thisIndex];
             Debug.Log("Ability learned : " + abilitySystem.GetAllLearnedAbility()[thisIndex].name);
         }
     }

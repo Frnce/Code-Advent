@@ -36183,6 +36183,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7275922439478135280, guid: 3cc434233ce4b384e8bcfc23c30a674d,
+        type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 40f7d8991576c144e822a886c0ca1cab,
+        type: 2}
     - target: {fileID: 973948668305480604, guid: 3cc434233ce4b384e8bcfc23c30a674d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -36218,12 +36224,6 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7275922439478135280, guid: 3cc434233ce4b384e8bcfc23c30a674d,
-        type: 3}
-      propertyPath: ability
-      value: 
-      objectReference: {fileID: 11400000, guid: 40f7d8991576c144e822a886c0ca1cab,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cc434233ce4b384e8bcfc23c30a674d, type: 3}
 --- !u!1001 &7920207746576955100
@@ -36291,6 +36291,10 @@ PrefabInstance:
     - target: {fileID: 7920207747151416650, guid: ffc30355eb771a64884f771fa93087c0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194610079, guid: ffc30355eb771a64884f771fa93087c0, type: 3}
+      propertyPath: learnedAbilities.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

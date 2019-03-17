@@ -21,13 +21,17 @@ namespace Advent.Abilities
             behavior.Use(useParams);
         }
 
-        public int getCost()
+        public int GetCost()
         {
             return cost;
         }
-        public Sprite getIcon()
+        public Sprite GetIcon()
         {
             return Icon;
+        }
+        public bool GetIsLearned()
+        {
+            return isLearned;
         }
     }
     public interface IAbilities

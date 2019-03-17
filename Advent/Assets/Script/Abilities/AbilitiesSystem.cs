@@ -8,9 +8,9 @@ namespace Advent.Abilities
 {
     public class AbilitiesSystem : MonoBehaviour
     {
-        [SerializeField] List<Ability> allAbilities = new List<Ability>(); // list of all the available ability a certain class can used
-        [SerializeField] List<Ability> learnedAbilities = new List<Ability>(); // Learned skills/Abilities of the character and this are all that can be used currently of the player
-        [SerializeField] List<Ability> activeAbilities = new List<Ability>(); // SKills that are active and can be used
+        [SerializeField] Ability[] allAbilities; // list of all the available ability a certain class can used
+        [SerializeField] Ability[] learnedAbilities; // Learned skills/Abilities of the character and this are all that can be used currently of the player
+        [SerializeField] Ability[] activeAbilities; // SKills that are active and can be used
         StatSystem statSystem;
 
         public static AbilitiesSystem instance;
@@ -23,6 +23,7 @@ namespace Advent.Abilities
         void Start()
         {
             statSystem = StatSystem.instance;
+            learnedAbilities = new Ability[allAbilities.Length];
         }
         // Update is called once per frame
         void Update()
@@ -42,7 +43,7 @@ namespace Advent.Abilities
             //TODO Implement Energy usage
             //TODO Check if Energy is enough
             var abilityParams = new AbilityUseParams(statSystem.physicalAttack.GetValue());
-            if (activeAbilities.Count > 0)
+            if (activeAbilities.Length > 0)
             {
                 activeAbilities[abilityIndex].Use(abilityParams);
             }
@@ -52,15 +53,15 @@ namespace Advent.Abilities
             }
         }
 
-        public List<Ability> GetAllAbilities()
+        public Ability[] GetAllAbilities()
         {
             return allAbilities;
         }
-        public List<Ability> GetAllLearnedAbility()
+        public Ability[] GetAllLearnedAbility()
         {
             return learnedAbilities;
         }
-        public List<Ability> GetActiveAbilities()
+        public Ability[] GetActiveAbilities()
         {
             return activeAbilities;
         }

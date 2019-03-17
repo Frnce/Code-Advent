@@ -14,7 +14,7 @@ namespace Advent.Abilities
         }
         public void Use(AbilityUseParams useParams)
         {
-            print("Used Stamina : " + config.getCost());
+            print("Used Stamina : " + config.GetCost());
             print("Sample Ability Used, Damage :" + config.GetExtraDamage());
             print("Player base damage :" + useParams.baseDamage);
         }
