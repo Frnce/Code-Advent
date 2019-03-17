@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde2a26dd775f54448f5b57ebb2e29ef, type: 3}
   m_Name: Sample Ability Config
   m_EditorClassIdentifier: 
-  cost: 0
+  Icon: {fileID: 21300000, guid: 9259a31d316d3c04dab7f45e52efb33b, type: 3}
+  cost: 15
+  cooldown: 3
+  isLearned: 0
   extraDamage: 10

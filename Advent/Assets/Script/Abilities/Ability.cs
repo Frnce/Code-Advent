@@ -10,6 +10,7 @@ namespace Advent.Abilities
         [SerializeField] Sprite Icon;
         [SerializeField] int cost;
         [SerializeField] float cooldown;
+        [SerializeField] bool isLearned;
 
         protected IAbilities behavior;
 
@@ -23,6 +24,10 @@ namespace Advent.Abilities
         public int getCost()
         {
             return cost;
+        }
+        public Sprite getIcon()
+        {
+            return Icon;
         }
     }
     public interface IAbilities

@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 6161516977261984807}
   - component: {fileID: 642120599}
   - component: {fileID: 3649865952375447389}
-  - component: {fileID: 1080871010}
+  - component: {fileID: 194610079}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onMenu: 0
---- !u!114 &1080871010
+--- !u!114 &194610079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -505,29 +505,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7920207747151416649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50f49ef72dba6424b986ac75f9b4e6c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 34c34cc17f90ed64b95ff9fda9338966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sampleSpells:
-  - id: 0
-    name: Hek
-    description: 
-  - id: 1
-    name: Muk
-    description: 
-  - id: 2
-    name: Luk
-    description: 
-  playerSpells:
-  - id: 0
-    name: 
-    description: 
-  - id: 0
-    name: 
-    description: 
-  - id: 0
-    name: 
-    description: 
+  allAbilities:
+  - {fileID: 11400000, guid: 40f7d8991576c144e822a886c0ca1cab, type: 2}
+  learnedAbilities: []
+  activeAbilities:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &9214579602898464265
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,8 +24,7 @@ namespace Advent.UI
         private EquipmentSlot[] equipmentSlot;
 
         public int index; // get current index selected
-        bool keyDown; 
-        int maxIndex;
+        bool keyDown;
 
         // Start is called before the first frame update
         void Start()
