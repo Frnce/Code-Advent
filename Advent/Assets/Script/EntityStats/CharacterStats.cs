@@ -24,6 +24,7 @@ namespace Advent.Stats
         public Stat vitality;
         public Stat speed;
 
+        [Header("For Player Character Only")]
         public int availablePoints;
 
         public void InitStats()

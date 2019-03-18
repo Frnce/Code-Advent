@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf8e0e0cfd0670c41ab61a6978118d98, type: 3}
-  m_Name: Melee Type Enemy
+  m_Name: Skeleton
   m_EditorClassIdentifier: 
-  name: MeleeType Enemy
-  baseStr: 5
-  baseDex: 15
-  baseInt: 15
+  name: Skeleton
+  baseStr: 10
+  baseDex: 5
+  baseInt: 0
   baseVit: 15
   baseSpeed: 3
-  expGiven: 500
+  expGiven: 80

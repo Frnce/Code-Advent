@@ -6,21 +6,24 @@ using Advent.Player;
 
 namespace Advent.Enemies
 {
-    public abstract class Enemy : CharacterStats , IGOAP
+    public abstract class MeleeEnemy : CharacterStats , IGOAP
     {
 
         Rigidbody2D rb2d;
-
         [HideInInspector]
+        public Animator anim;
+        [Header("For GOAP AI")]
+        public float maxStamina;
         public float stamina;
-        public float regenRate;
         protected float terminalSpeed;
         protected float initialSpeed;
         protected float acceleration;
         protected float minDist = 1f;
         protected float aggroDist = 5f;
         protected bool loop = false;
-        public float maxStamina;
+        protected float regenRate;
+
+        protected Vector3 entityPosition;
 
         [HideInInspector]
         public PlayerController player;
@@ -33,6 +36,7 @@ namespace Advent.Enemies
             player = PlayerController.instance;
             statSystem = StatSystem.instance;
             InitStats();
+            stamina = maxStamina;
         }
         public virtual void Update()
         {
@@ -90,6 +94,7 @@ namespace Advent.Enemies
             float dist = Vector3.Distance(transform.position, nextAction.target.transform.position);
             if (dist < aggroDist)
             {
+                anim.SetBool("isMoving", true);
                 Vector3 moveDirection = player.transform.position - transform.position;
 
                 SetSpeed(speed.GetValue());
@@ -99,8 +104,10 @@ namespace Advent.Enemies
                     initialSpeed += acceleration;
                 }
 
-                Vector3 newPosition = moveDirection * initialSpeed * Time.deltaTime;
-                transform.position += newPosition;
+                entityPosition = moveDirection * initialSpeed * Time.deltaTime;
+                transform.position += entityPosition;
+                anim.SetFloat("xMove", entityPosition.normalized.x);
+                anim.SetFloat("yMove", entityPosition.normalized.y);
             }
             if (dist <= minDist)
             {
@@ -109,6 +116,7 @@ namespace Advent.Enemies
             }
             else
             {
+                anim.SetBool("isMoving", false);
                 return false;
             }
         }

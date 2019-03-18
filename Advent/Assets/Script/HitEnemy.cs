@@ -9,6 +9,7 @@ namespace Advent
     public class HitEnemy : MonoBehaviour
     {
         StatSystem statSystem;
+        public float knockback;
         private void Start()
         {
             statSystem = StatSystem.instance;
@@ -17,7 +18,7 @@ namespace Advent
         {
             if (other.CompareTag("Enemy"))
             {
-                other.GetComponent<Enemy>().TakeDamage(statSystem.physicalAttack.GetValue());
+                other.GetComponent<MeleeEnemy>().TakeDamage(statSystem.physicalAttack.GetValue());
             }
         }
     }

@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Player;
-
 namespace Advent.Enemies
 {
-    public class MeleeTypeEnemyAttack : GOAPAction
+    public class SkeletonEnemyAttack : GOAPAction
     {
         private bool attacked = false;
 
-        public MeleeTypeEnemyAttack()
+        public SkeletonEnemyAttack()
         {
             AddEffect("damagePlayer", true);
             cost = 100f;
         }
+
         public override bool CheckProceduralPrecondition(GameObject agent)
         {
             target = PlayerController.instance.gameObject;
@@ -27,12 +27,12 @@ namespace Advent.Enemies
 
         public override bool Perform(GameObject agent)
         {
-            MeleeTypeEnemy currentEnemy = agent.GetComponent<MeleeTypeEnemy>();
-            if (currentEnemy.stamina >= (cost))
+            SkeletonEnemy currentEntity = agent.GetComponent<SkeletonEnemy>();
+            if (currentEntity.stamina >= (cost))
             {
-                int damage = currentEnemy.physicalAttack.GetValue();
-                currentEnemy.statSystem.TakeDamage(damage);
-                currentEnemy.stamina -= cost;
+                int damage = currentEntity.physicalAttack.GetValue();
+                currentEntity.statSystem.TakeDamage(damage);
+                currentEntity.stamina -= cost;
 
                 attacked = true;
                 return true;
@@ -54,5 +54,4 @@ namespace Advent.Enemies
             target = null;
         }
     }
-
 }

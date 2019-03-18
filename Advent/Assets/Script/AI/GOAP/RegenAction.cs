@@ -39,7 +39,7 @@ namespace Advent
 
         public override bool Perform(GameObject agent)
         {
-            Enemy e = agent.GetComponent<Enemy>();
+            MeleeEnemy e = agent.GetComponent<MeleeEnemy>();
             e.PassiveRegen();
             regened = true;
             return true;

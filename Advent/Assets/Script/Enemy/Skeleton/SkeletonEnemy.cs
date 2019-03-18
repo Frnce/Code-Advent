@@ -2,24 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Stats;
-using Advent.Player;
+
 namespace Advent.Enemies
 {
-    public class MeleeTypeEnemy : Enemy
+    public class SkeletonEnemy : MeleeEnemy
     {
         LevelSystemController levelSystem;
         // Start is called before the first frame update
         public override void Start()
         {
             levelSystem = LevelSystemController.instance;
-            regenRate = .5f;
-            maxStamina = 100f;
-
+            anim = GetComponent<Animator>();
             base.Start();
-            terminalSpeed = speed.GetValue() / 10;
-            initialSpeed = (speed.GetValue() / 10) / 2;
-            acceleration = (speed.GetValue() / 10) / 4;
         }
+
         public override HashSet<KeyValuePair<string, object>> createGoalState()
         {
             HashSet<KeyValuePair<string, object>> goal = new HashSet<KeyValuePair<string, object>>
@@ -34,6 +30,7 @@ namespace Advent.Enemies
         {
             stamina += regenRate;
         }
+
         public override void Die()
         {
             base.Die();
