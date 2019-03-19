@@ -27,6 +27,8 @@ namespace Advent.Stats
         [Header("For Player Character Only")]
         public int availablePoints;
 
+        protected bool isHit;
+
         public void InitStats()
         {
             strength.AddStat(character.baseStr);
@@ -57,7 +59,7 @@ namespace Advent.Stats
         {
             damage -= defense.GetValue();
             damage = Mathf.Clamp(damage, 0, int.MaxValue); //have room for improvements ,. ,balancing shits
-
+            isHit = true;
             CurrentHealth -= damage;
             Debug.Log("Take Damage");
 

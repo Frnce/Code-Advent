@@ -208,6 +208,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   maxStamina: 100
   stamina: 0
+  knockBackRate: 500
   player: {fileID: 0}
   statSystem: {fileID: 0}
 --- !u!114 &1945895348890335808

@@ -13,6 +13,7 @@ namespace Advent.Enemies
         {
             levelSystem = LevelSystemController.instance;
             anim = GetComponent<Animator>();
+            rb2d = GetComponent<Rigidbody2D>();
             base.Start();
         }
 

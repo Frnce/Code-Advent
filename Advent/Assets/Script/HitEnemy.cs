@@ -9,7 +9,6 @@ namespace Advent
     public class HitEnemy : MonoBehaviour
     {
         StatSystem statSystem;
-        public float knockback;
         private void Start()
         {
             statSystem = StatSystem.instance;

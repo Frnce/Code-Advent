@@ -9,9 +9,9 @@ namespace Advent.Enemies
     public abstract class MeleeEnemy : CharacterStats , IGOAP
     {
 
-        Rigidbody2D rb2d;
+        protected Rigidbody2D rb2d;
         [HideInInspector]
-        public Animator anim;
+        protected Animator anim;
         [Header("For GOAP AI")]
         public float maxStamina;
         public float stamina;
@@ -30,9 +30,10 @@ namespace Advent.Enemies
         [HideInInspector]
         public StatSystem statSystem;
 
+        Vector3 moveDirection;
+
         public virtual void Start()
         {
-            rb2d = GetComponent<Rigidbody2D>();
             player = PlayerController.instance;
             statSystem = StatSystem.instance;
             InitStats();
@@ -40,6 +41,7 @@ namespace Advent.Enemies
         }
         public virtual void Update()
         {
+            moveDirection = player.transform.position - transform.position;
             if (stamina <= maxStamina)
             {
                 Invoke("PassiveRegen", 1.0f);
@@ -94,9 +96,6 @@ namespace Advent.Enemies
             float dist = Vector3.Distance(transform.position, nextAction.target.transform.position);
             if (dist < aggroDist)
             {
-                anim.SetBool("isMoving", true);
-                Vector3 moveDirection = player.transform.position - transform.position;
-
                 SetSpeed(speed.GetValue());
 
                 if (initialSpeed < terminalSpeed)
@@ -104,13 +103,14 @@ namespace Advent.Enemies
                     initialSpeed += acceleration;
                 }
 
-                entityPosition = moveDirection * initialSpeed * Time.deltaTime;
-                transform.position += entityPosition;
-                anim.SetFloat("xMove", entityPosition.normalized.x);
-                anim.SetFloat("yMove", entityPosition.normalized.y);
+                //entityPosition = moveDirection * initialSpeed * Time.deltaTime;
+                rb2d.MovePosition(Vector2.MoveTowards(transform.position, player.transform.position, initialSpeed * Time.deltaTime));
+                anim.SetFloat("xMove", moveDirection.normalized.x);
+                anim.SetFloat("yMove", moveDirection.normalized.y);
             }
             if (dist <= minDist)
             {
+                anim.SetBool("isMoving", true);
                 nextAction.SetInRange(true);
                 return true;
             }
