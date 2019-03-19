@@ -29,6 +29,11 @@ namespace Advent.Stats
 
         protected bool isHit;
 
+        [Header("Sprite Flash")]
+        [SerializeField] protected Material defaultSpriteMaterial;
+        [SerializeField] protected Material flashSpriteMaterial;
+        [SerializeField] protected SpriteRenderer spriteRenderer;
+
         public void InitStats()
         {
             strength.AddStat(character.baseStr);
@@ -61,12 +66,20 @@ namespace Advent.Stats
             damage = Mathf.Clamp(damage, 0, int.MaxValue); //have room for improvements ,. ,balancing shits
             isHit = true;
             CurrentHealth -= damage;
+            StartCoroutine(SpriteFlashCour());
             Debug.Log("Take Damage");
 
             if (CurrentHealth <= 0)
             {
                 Die();
             }
+        }
+        IEnumerator SpriteFlashCour() //for sprite flash when taking damage
+        {
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.material = flashSpriteMaterial;
+            yield return new WaitForSeconds(0.2f);
+            spriteRenderer.material = defaultSpriteMaterial;
         }
         public virtual void Die()
         {

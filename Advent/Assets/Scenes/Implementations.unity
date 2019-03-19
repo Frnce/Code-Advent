@@ -1803,6 +1803,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &139027808 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1945895348796954172, guid: 85f3cdb51ac327f498e4885d96622c62,
+    type: 3}
+  m_PrefabInstance: {fileID: 1945895350710960125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &140619470
 GameObject:
   m_ObjectHideFlags: 0
@@ -9532,6 +9538,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &515519456 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1089171915692959422, guid: ffc30355eb771a64884f771fa93087c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7920207746576955100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -33914,6 +33926,9 @@ MonoBehaviour:
   speed:
     baseValue: 0
   availablePoints: 0
+  defaultSpriteMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  flashSpriteMaterial: {fileID: 2100000, guid: 6540a08d56f6a9440ac51e4d8bd69a6d, type: 2}
+  spriteRenderer: {fileID: 515519456}
 --- !u!1 &1975316965
 GameObject:
   m_ObjectHideFlags: 0
@@ -35912,6 +35927,26 @@ PrefabInstance:
       propertyPath: knockBackRate
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 1945895348890335811, guid: 85f3cdb51ac327f498e4885d96622c62,
+        type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 139027808}
+    - target: {fileID: 1945895348890335811, guid: 85f3cdb51ac327f498e4885d96622c62,
+        type: 3}
+      propertyPath: defaultSpriteMaterial
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1945895348890335811, guid: 85f3cdb51ac327f498e4885d96622c62,
+        type: 3}
+      propertyPath: flashSpriteMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 6540a08d56f6a9440ac51e4d8bd69a6d, type: 2}
+    - target: {fileID: 1945895348796954172, guid: 85f3cdb51ac327f498e4885d96622c62,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85f3cdb51ac327f498e4885d96622c62, type: 3}
 --- !u!224 &2575041965688785340 stripped
