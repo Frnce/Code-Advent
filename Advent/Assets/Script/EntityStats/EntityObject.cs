@@ -12,12 +12,20 @@ namespace Advent.Entities
         private BoxCollider2D boxCollider;
         private Rigidbody2D rb2d;
         private float inverseMoveTime; //used to make movement more effiecient;
-        // Start is called before the first frame update
+
+
+        public int MaxHealth;
+        public int CurrentHealth { get; set; }
+
+        public Stat attack;
+
         protected virtual void Start()
         {
             boxCollider = GetComponent<BoxCollider2D>();
             rb2d = GetComponent<Rigidbody2D>();
             inverseMoveTime = 1f / moveTime;
+
+            CurrentHealth = MaxHealth;
         }
 
         protected bool Move(int xDir,int yDir, out RaycastHit2D hit)
@@ -63,7 +71,7 @@ namespace Advent.Entities
                 OnCantMove(hitComponent);
             }
         }
-        public void DamageEntity(int loss)
+        public void DamageEntity(int damage)
         {
             ////Call the RandomizeSfx function of SoundManager to play one of two chop sounds.
             //SoundManager.instance.RandomizeSfx(chopSound1, chopSound2);
@@ -78,8 +86,22 @@ namespace Advent.Entities
             //if (hp <= 0)
             //    //Disable the gameObject.
             //    gameObject.SetActive(false);
+            damage = Mathf.Clamp(damage, 0, int.MaxValue); //have room for improvements ,. ,balancing shits
+            CurrentHealth -= damage;
+            Debug.Log("Take Damage for " + damage);
+
+            if (CurrentHealth <= 0)
+            {
+                Die();
+            }
             Debug.Log("Hit " + gameObject);
         }
         protected abstract void OnCantMove<T>(T component) where T : Component;
+        public virtual void Die()
+        {
+            //Die in some way 
+            //meant to be overwritten
+            Debug.Log("Died");
+        }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Advent.Player;
 using Advent.Stats;
+using Advent.Entities;
+
 namespace Advent.UI
 {
     public class ShowStats : MonoBehaviour
@@ -30,7 +32,7 @@ namespace Advent.UI
         [SerializeField]
         private Text addPointsText;
 
-        private StatSystem statSystem;
+        private Entities.StatSystem statSystem;
         // Start is called before the first frame update
         void Start()
         {

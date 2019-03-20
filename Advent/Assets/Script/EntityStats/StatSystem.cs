@@ -4,7 +4,7 @@ using UnityEngine;
 using Advent.Inventories;
 using Advent.Items;
 
-namespace Advent.Stats
+namespace Advent.Entities
 {
     public class StatSystem : CharacterStats
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Advent.Entities;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

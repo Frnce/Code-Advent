@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Advent.Stats
+namespace Advent.Entities
 {
     [System.Serializable]
     public class Stat

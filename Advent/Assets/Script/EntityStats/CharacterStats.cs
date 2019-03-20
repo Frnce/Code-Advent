@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Advent.Character;
 using System;
+using Advent.Stats;
 
-namespace Advent.Stats
+namespace Advent.Entities
 {
     public class CharacterStats : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Advent.Stats;
+using Advent.Entities;
 using Advent.Inventories;
 using Advent.Items;
 

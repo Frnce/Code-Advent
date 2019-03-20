@@ -7,7 +7,7 @@ namespace Advent.Entities
     public class Enemy : EntityObject
     {
         private Transform target;
-        private bool skipMove;
+        //private bool skipMove;
         // Start is called before the first frame update
         protected override void Start()
         {
@@ -23,13 +23,13 @@ namespace Advent.Entities
         }
         protected override void AttemptMove<T>(int xDir, int yDir)
         {
-            if (skipMove)
-            {
-                skipMove = false;
-                return;
-            }
+            //if (skipMove)
+            //{
+            //    skipMove = false;
+            //    return;
+            //}
             base.AttemptMove<T>(xDir, yDir);
-            skipMove = true;
+            //skipMove = true;
         }
         public void MoveEnemy()
         {
@@ -56,6 +56,10 @@ namespace Advent.Entities
             ////Set the attack trigger of animator to trigger Enemy attack animation.
             //animator.SetTrigger("enemyAttack");
         }
-
+        public override void Die()
+        {
+            base.Die();
+            Destroy(gameObject);
+        }
     }
 }

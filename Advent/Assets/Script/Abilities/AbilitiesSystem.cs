@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Advent.Enemies;
-using Advent.Stats;
+using Advent.Entities;
 
 namespace Advent.Abilities
 {

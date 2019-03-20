@@ -35,7 +35,7 @@ namespace Advent.Entities
             }
             if(horizontal != 0 || vertical != 0)
             {
-                AttemptMove<ChestScript>(horizontal, vertical); // TODO "ChestScript is temporary" change to proper function like wall or enemy;
+                AttemptMove<Enemy>(horizontal, vertical);
             }
         }
         protected override void AttemptMove<T>(int xDir, int yDir)
@@ -56,11 +56,15 @@ namespace Advent.Entities
         }
         private void CheckIfGameOver()
         {
-            int asd = 1; //TODO remove . Please fix to proper function
-            if (asd == 0)
+            if(CurrentHealth <= 0)
             {
                 gameManager.GameOver();
             }
+        }
+        public override void Die()
+        {
+            base.Die();
+            gameObject.SetActive(false);
         }
     }
 }
