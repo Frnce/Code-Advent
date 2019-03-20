@@ -63,6 +63,23 @@ namespace Advent.Entities
                 OnCantMove(hitComponent);
             }
         }
+        public void DamageEntity(int loss)
+        {
+            ////Call the RandomizeSfx function of SoundManager to play one of two chop sounds.
+            //SoundManager.instance.RandomizeSfx(chopSound1, chopSound2);
+
+            ////Set spriteRenderer to the damaged wall sprite.
+            //spriteRenderer.sprite = dmgSprite;
+
+            ////Subtract loss from hit point total.
+            //hp -= loss;
+
+            ////If hit points are less than or equal to zero:
+            //if (hp <= 0)
+            //    //Disable the gameObject.
+            //    gameObject.SetActive(false);
+            Debug.Log("Hit " + gameObject);
+        }
         protected abstract void OnCantMove<T>(T component) where T : Component;
     }
 }

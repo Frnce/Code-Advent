@@ -51,7 +51,8 @@ namespace Advent.Entities
         }
         protected override void OnCantMove<T>(T component)
         {
-            throw new System.NotImplementedException();
+            Enemy hitEnemy = component as Enemy;
+            hitEnemy.DamageEntity(1);
         }
         private void CheckIfGameOver()
         {
