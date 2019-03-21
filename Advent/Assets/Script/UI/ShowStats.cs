@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Advent.Player;
 using Advent.Stats;
 using Advent.Entities;
 

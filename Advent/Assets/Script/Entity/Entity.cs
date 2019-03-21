@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Advent.Stats;
 
-namespace Advent.Character
+namespace Advent.Entities
 {
-    [CreateAssetMenu(fileName = "New Character", menuName = "Entities")]
-    public class CharacterClass : ScriptableObject
+    [CreateAssetMenu(menuName = "Entity")]
+    public class Entity : ScriptableObject
     {
         new public string name = "New Character";
 
@@ -14,7 +14,6 @@ namespace Advent.Character
         public int baseDex;
         public int baseInt;
         public int baseVit;
-        public int baseSpeed;
 
         public int expGiven; //For enemies only else , leave it to zero
     }

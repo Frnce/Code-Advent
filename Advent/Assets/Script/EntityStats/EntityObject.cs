@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent.UI;
 
 namespace Advent.Entities
 {
@@ -8,16 +10,25 @@ namespace Advent.Entities
     {
         public float moveTime = 0.1f;
         public LayerMask blockingLayer;
+        public Entity entity;
+
+        public int maxHealth { get; set; }
+        public int currentHealth { get; set; }
+        public int maxStamina { get; set; }
+        public int currentStamina { get; set; }
+
+        public Stat attack;
+        public Stat defense;
+
+        public Stat strength;
+        public Stat dexterity;
+        public Stat intelligence;
+        public Stat vitality;
 
         private BoxCollider2D boxCollider;
         private Rigidbody2D rb2d;
         private float inverseMoveTime; //used to make movement more effiecient;
-
-
-        public int MaxHealth;
-        public int CurrentHealth { get; set; }
-
-        public Stat attack;
+        private EventLogs eventLogs;
 
         protected virtual void Start()
         {
@@ -25,7 +36,36 @@ namespace Advent.Entities
             rb2d = GetComponent<Rigidbody2D>();
             inverseMoveTime = 1f / moveTime;
 
-            CurrentHealth = MaxHealth;
+            InitStats();
+
+            eventLogs = FindObjectOfType<EventLogs>();
+        }
+        private void InitStats()
+        {
+            strength.AddStat(entity.baseStr);
+            dexterity.AddStat(entity.baseDex);
+            intelligence.AddStat(entity.baseInt);
+            vitality.AddStat(entity.baseVit);
+
+            SetAttackStat();
+            SetHP();
+            SetST();
+
+            currentHealth = maxHealth;
+            currentStamina = maxStamina;
+        }
+        public void SetAttackStat()
+        {
+            attack.AddStat(strength.GetValue());
+        }
+        private void SetST()
+        {
+            maxStamina = 2 * (intelligence.GetValue()); //TODO add level.
+        }
+
+        private void SetHP()
+        {
+            maxHealth = 3 * (vitality.GetValue()); //TODO add level .
         }
 
         protected bool Move(int xDir,int yDir, out RaycastHit2D hit)
@@ -71,7 +111,7 @@ namespace Advent.Entities
                 OnCantMove(hitComponent);
             }
         }
-        public void DamageEntity(int damage)
+        public void DamageEntity(string beenDamaged,int damage)
         {
             ////Call the RandomizeSfx function of SoundManager to play one of two chop sounds.
             //SoundManager.instance.RandomizeSfx(chopSound1, chopSound2);
@@ -87,14 +127,12 @@ namespace Advent.Entities
             //    //Disable the gameObject.
             //    gameObject.SetActive(false);
             damage = Mathf.Clamp(damage, 0, int.MaxValue); //have room for improvements ,. ,balancing shits
-            CurrentHealth -= damage;
-            Debug.Log("Take Damage for " + damage);
-
-            if (CurrentHealth <= 0)
+            currentHealth -= damage;
+            eventLogs.AddEvent(beenDamaged + " has been Hit for " + damage);
+            if (currentHealth <= 0)
             {
                 Die();
             }
-            Debug.Log("Hit " + gameObject);
         }
         protected abstract void OnCantMove<T>(T component) where T : Component;
         public virtual void Die()

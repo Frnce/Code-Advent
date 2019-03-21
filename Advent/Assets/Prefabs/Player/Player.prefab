@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 7920207747151416650}
   - component: {fileID: 5168914550992513334}
   - component: {fileID: 6161516977261984807}
-  - component: {fileID: 194610079}
   - component: {fileID: 1140777865}
   m_Layer: 8
   m_Name: Player
@@ -161,32 +160,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &194610079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7920207747151416649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c34cc17f90ed64b95ff9fda9338966, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allAbilities:
-  - {fileID: 11400000, guid: 40f7d8991576c144e822a886c0ca1cab, type: 2}
-  learnedAbilities: []
-  activeAbilities:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1140777865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,3 +176,6 @@ MonoBehaviour:
   blockingLayer:
     serializedVersion: 2
     m_Bits: 256
+  MaxHealth: 0
+  attack:
+    baseValue: 1

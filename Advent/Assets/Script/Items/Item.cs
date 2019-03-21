@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Advent.Inventories;
-using Advent.Player;
 
 namespace Advent.Items
 {

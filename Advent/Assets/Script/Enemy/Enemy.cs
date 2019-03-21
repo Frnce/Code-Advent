@@ -50,7 +50,7 @@ namespace Advent.Entities
         {
             Player hitPlayer = component as Player;
 
-            hitPlayer.DamageEntity(1);
+            hitPlayer.DamageEntity(hitPlayer.name,attack.GetValue());
             //hitPlayer.LoseFood(playerDamage);
 
             ////Set the attack trigger of animator to trigger Enemy attack animation.

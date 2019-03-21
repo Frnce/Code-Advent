@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Advent.Character;
 using System;
 using Advent.Stats;
 
@@ -9,7 +8,7 @@ namespace Advent.Entities
 {
     public class CharacterStats : MonoBehaviour
     {
-        public CharacterClass character;
+        public Entity character;
 
         public int MaxHealth { get; set; }
         public int MaxStamina { get; set; }
@@ -41,7 +40,6 @@ namespace Advent.Entities
             dexterity.AddStat(character.baseDex);
             intelligence.AddStat(character.baseInt);
             vitality.AddStat(character.baseVit);
-            speed.AddStat(character.baseSpeed);
 
             SetHP();
             SetST();

@@ -5,7 +5,7 @@ using Advent.Entities;
 using Advent.Inventories;
 using Advent.Items;
 
-namespace Advent.Player
+namespace Advent
 {
     public class PlayerController : MonoBehaviour
     {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Advent.Entities;
-using Advent.Stats;
 
 namespace Advent.UI
 {
@@ -11,22 +10,18 @@ namespace Advent.UI
     {
         public Text hpText;
         public Text stText;
-        public Text levelText;
 
-        StatSystem statSystem;
-        LevelSystemController levelSystem;
+        Player player;
         // Start is called before the first frame update
         void Start()
         {
-            statSystem = StatSystem.instance;
-            levelSystem = LevelSystemController.instance;
+            player = Player.instance;
         }
         // Update is called once per frame
         void Update()
         {
-            hpText.text = statSystem.CurrentHealth + " / " + statSystem.MaxHealth;
-            stText.text = statSystem.CurrentStamina + " / " + statSystem.MaxStamina;
-            levelText.text = levelSystem.currentLevel.ToString();
+            hpText.text = player.currentHealth + " / " + player.maxHealth;
+            stText.text = player.currentStamina + " / " + player.maxStamina;
         }
     }
 }

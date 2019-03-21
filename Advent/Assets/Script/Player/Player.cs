@@ -6,6 +6,11 @@ namespace Advent.Entities
 {
     public class Player : EntityObject
     {
+        public static Player instance;
+        private void Awake()
+        {
+            instance = this;
+        }
         GameManager gameManager;
         protected override void Start()
         {
@@ -52,11 +57,11 @@ namespace Advent.Entities
         protected override void OnCantMove<T>(T component)
         {
             Enemy hitEnemy = component as Enemy;
-            hitEnemy.DamageEntity(1);
-        }
+            hitEnemy.DamageEntity(hitEnemy.name,attack.GetValue());
+        }   
         private void CheckIfGameOver()
         {
-            if(CurrentHealth <= 0)
+            if(currentHealth <= 0)
             {
                 gameManager.GameOver();
             }

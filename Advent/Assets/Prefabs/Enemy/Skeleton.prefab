@@ -176,6 +176,16 @@ MonoBehaviour:
   blockingLayer:
     serializedVersion: 2
     m_Bits: 256
-  MaxHealth: 6
+  entity: {fileID: 11400000, guid: 01024d0d07cac04439f5ddfe57fb027c, type: 2}
   attack:
     baseValue: 1
+  defense:
+    baseValue: 0
+  strength:
+    baseValue: 0
+  dexterity:
+    baseValue: 0
+  intelligence:
+    baseValue: 0
+  vitality:
+    baseValue: 0
