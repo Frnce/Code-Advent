@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Advent.UI
 {
     public class EventLogs : MonoBehaviour
     {
-        public Text logText;
+        public TextMeshProUGUI textMesh;
         public int maxLines = 10;
         private List<string> eventLog = new List<string>();
-        private string guiText = "";
+        private string guiLogText = "";
 
         public void AddEvent(string eventString)
         {
@@ -21,14 +22,14 @@ namespace Advent.UI
                 eventLog.RemoveAt(0);
             }
 
-            guiText = "";
+            guiLogText = "";
 
             foreach (string logEvent in eventLog)
             {
-                guiText += logEvent;
-                guiText += "\n";
+                guiLogText += logEvent;
+                guiLogText += "\n";
             }
-            logText.text = guiText;
+            textMesh.text = guiLogText;
         }
     }
 }

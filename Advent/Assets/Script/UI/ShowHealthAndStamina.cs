@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Advent.Entities;
+using TMPro;
 
 namespace Advent.UI
 {
     public class ShowHealthAndStamina : MonoBehaviour
     {
-        public Text hpText;
-        public Text stText;
+        public TextMeshProUGUI hpText;
+        public TextMeshProUGUI stText;
 
         Player player;
         // Start is called before the first frame update
