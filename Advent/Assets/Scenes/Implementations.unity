@@ -1104,10 +1104,10 @@ RectTransform:
   m_Father: {fileID: 1103988533}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 112.5, y: -43}
+  m_SizeDelta: {x: 175, y: 15.999998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &63104774
 MonoBehaviour:
@@ -2563,10 +2563,10 @@ RectTransform:
   m_Father: {fileID: 1209195816}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 112.5, y: -75}
+  m_SizeDelta: {x: 175, y: 15.999998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &179860105
 MonoBehaviour:
@@ -5396,10 +5396,10 @@ RectTransform:
   m_Father: {fileID: 1209195816}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 112.5, y: -43}
+  m_SizeDelta: {x: 175, y: 15.999998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498690355
 MonoBehaviour:
@@ -6586,10 +6586,10 @@ RectTransform:
   m_Father: {fileID: 1209195816}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 112.5, y: -59}
+  m_SizeDelta: {x: 175, y: 15.999998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &632791863
 MonoBehaviour:
@@ -7396,10 +7396,10 @@ RectTransform:
   m_Father: {fileID: 1209195816}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 112.5, y: -27}
+  m_SizeDelta: {x: 175, y: 15.999998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &720867511
 MonoBehaviour:
@@ -9349,10 +9349,10 @@ RectTransform:
   m_Father: {fileID: 1103988533}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 112.5, y: -27}
+  m_SizeDelta: {x: 175, y: 15.999998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934666479
 MonoBehaviour:
@@ -10341,10 +10341,10 @@ RectTransform:
   m_Father: {fileID: 1103988533}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 112.5, y: -75}
+  m_SizeDelta: {x: 175, y: 15.999998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1088837732 stripped
 Transform:
@@ -14264,10 +14264,10 @@ RectTransform:
   m_Father: {fileID: 1103988533}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 112.5, y: -59}
+  m_SizeDelta: {x: 175, y: 15.999998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1695704256
 CanvasRenderer:
@@ -17586,6 +17586,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 5347c5438667e1f43bdb9a10aeb983a0,
         type: 2}
+    - target: {fileID: 1739170204251500244, guid: ffc30355eb771a64884f771fa93087c0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 08ffc674744532f4ca30e0e28904b563, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffc30355eb771a64884f771fa93087c0, type: 3}
 --- !u!1001 &8354661319058576224
