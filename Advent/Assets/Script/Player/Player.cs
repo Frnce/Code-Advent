@@ -12,9 +12,12 @@ namespace Advent.Entities
             instance = this;
         }
         GameManager gameManager;
+        private bool isMoving = false;
+        private Animator anim;
         protected override void Start()
         {
             gameManager = GameManager.instance;
+            anim = GetComponent<Animator>();
             base.Start();
         }
         private void OnDisable()
@@ -41,13 +44,21 @@ namespace Advent.Entities
             if(horizontal != 0 || vertical != 0)
             {
                 AttemptMove<Enemy>(horizontal, vertical);
+                isMoving = true;
             }
+            else
+            {
+                isMoving = false;
+            }
+            anim.SetBool("isMoving", isMoving);
         }
         protected override void AttemptMove<T>(int xDir, int yDir)
         {
             base.AttemptMove<T>(xDir, yDir);
             RaycastHit2D hit;
             CheckIfGameOver();
+            anim.SetFloat("xMove", xDir);
+            anim.SetFloat("yMove", yDir);
             if (Move(xDir, yDir, out hit))
             {
                 //Call RandomizeSfx of SoundManager to play the move sound, passing in two audio clips to choose from.
@@ -56,6 +67,7 @@ namespace Advent.Entities
         }
         protected override void OnCantMove<T>(T component)
         {
+            isMoving = false;
             Enemy hitEnemy = component as Enemy;
             hitEnemy.DamageEntity(hitEnemy.name,attack.GetValue());
         }   
