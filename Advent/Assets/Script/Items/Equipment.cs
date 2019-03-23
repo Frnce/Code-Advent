@@ -26,9 +26,9 @@ namespace Advent.Items
     }
     public enum EquipSlot
     {
-        ARM,
         HEAD,
         BODY,
-        HANDS
+        ACCESORY,
+        WEAPON
     }
 }

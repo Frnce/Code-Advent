@@ -14,7 +14,6 @@ namespace Advent.UI
 
         public Transform itemsParent;
         public Transform equipParent;
-        bool isActive = false;
 
         private PlayerController player;
         private Inventory inventory;
@@ -22,15 +21,10 @@ namespace Advent.UI
         private EquipmentManager equipmentManager;
         private EquipmentSlot[] equipmentSlot;
 
-        public int index; // get current index selected
-        bool keyDown;
-
         // Start is called before the first frame update
         void Start()
         {
             player = PlayerController.instance;
-            inventoryPanel.SetActive(isActive);
-            equipmentPanel.SetActive(isActive);
 
             inventory = Inventory.instance;
             inventory.onItemChangedCallback += UpdateInventoryUI;
@@ -44,61 +38,7 @@ namespace Advent.UI
         // Update is called once per frame
         void Update()
         {
-            if (isActive)
-            {
-                player.onMenu = true;
-            }
-            else
-            {
-                player.onMenu = false;
-            }
-            SetActiveInventoryBox();
-            MenuControls();
-        }
-        void MenuControls()
-        {
-            if (Input.GetAxisRaw("Vertical") != 0)
-            {
-                if (!keyDown)
-                {
-                    if (Input.GetAxisRaw("Vertical") < 0)
-                    {
-                        if (index < itemSlot.Length)
-                        {
-                            index++;
-                        }
-                        else
-                        {
-                            index = 0;
-                        }
-                    }
-                    else if (Input.GetAxisRaw("Vertical") > 0)
-                    {
-                        if (index > 0)
-                        {
-                            index--;
-                        }
-                        else
-                        {
-                            index = itemSlot.Length;
-                        }
-                    }
-                    keyDown = true;
-                }
-            }
-            else
-            {
-                keyDown = false;
-            }
-        }
-        void SetActiveInventoryBox()
-        {
-            inventoryPanel.SetActive(isActive);
-            equipmentPanel.SetActive(isActive);
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                isActive = !isActive;
-            }
+
         }
         void UpdateInventoryUI()
         {

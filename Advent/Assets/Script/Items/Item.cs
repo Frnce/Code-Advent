@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Advent.Inventories;
+using Advent.Entities;
 
 namespace Advent.Items
 {
@@ -24,9 +25,8 @@ namespace Advent.Items
         }
         public void DropFromInventory()
         {
-            Debug.Log("Drop Item " + name);
-            Inventory.instance.RemoveItem(this);
-            Instantiate(gameobject,PlayerController.instance.transform.position, Quaternion.identity);
+            RemoveFromInventory();
+            Instantiate(gameobject,Player.instance.transform.position, Quaternion.identity);
         }
     }
 }
