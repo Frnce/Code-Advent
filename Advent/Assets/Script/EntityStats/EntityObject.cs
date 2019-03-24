@@ -25,6 +25,8 @@ namespace Advent.Entities
         public Stat intelligence;
         public Stat vitality;
 
+        private int availablePoints;
+
         private BoxCollider2D boxCollider;
         private Rigidbody2D rb2d;
         private float inverseMoveTime; //used to make movement more effiecient;
@@ -38,7 +40,7 @@ namespace Advent.Entities
 
             InitStats();
 
-            eventLogs = FindObjectOfType<EventLogs>();
+            eventLogs = EventLogs.instance;
         }
         private void InitStats()
         {
@@ -58,6 +60,20 @@ namespace Advent.Entities
         {
             attack.AddStat(strength.GetValue());
         }
+
+        public int GetAvailablePoints()
+        {
+            return availablePoints;
+        }
+        public void AddAvailablePoints(int additionalPoints)
+        {
+            availablePoints += additionalPoints;
+        }
+        public void UseAvailablePoint()
+        {
+            availablePoints--;
+        }
+
         private void SetST()
         {
             maxStamina = 2 * (intelligence.GetValue()); //TODO add level.
@@ -67,6 +83,7 @@ namespace Advent.Entities
         {
             maxHealth = 3 * (vitality.GetValue()); //TODO add level .
         }
+
 
         protected bool Move(int xDir,int yDir, out RaycastHit2D hit)
         {

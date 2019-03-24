@@ -9,13 +9,9 @@ namespace Advent.UI
 {
     public class ShowInventory : MonoBehaviour
     {
-        public GameObject inventoryPanel;
-        public GameObject equipmentPanel;
-
         public Transform itemsParent;
         public Transform equipParent;
 
-        private PlayerController player;
         private Inventory inventory;
         private InventorySlot[] itemSlot;
         private EquipmentManager equipmentManager;
@@ -24,13 +20,11 @@ namespace Advent.UI
         // Start is called before the first frame update
         void Start()
         {
-            player = PlayerController.instance;
-
             inventory = Inventory.instance;
             inventory.onItemChangedCallback += UpdateInventoryUI;
 
             equipmentManager = EquipmentManager.instance;
-            equipmentManager.onEquipmentChanged += UpdateEquipmentUI;
+            equipmentManager.onEquipmentChangedCallback += UpdateEquipmentUI;
 
             itemSlot = itemsParent.GetComponentsInChildren<InventorySlot>();
             equipmentSlot = equipParent.GetComponentsInChildren<EquipmentSlot>();
@@ -40,7 +34,7 @@ namespace Advent.UI
         {
 
         }
-        void UpdateInventoryUI()
+        public void UpdateInventoryUI()
         {
             for (int i = 0; i < itemSlot.Length; i++)
             {
@@ -54,7 +48,7 @@ namespace Advent.UI
                 }
             }
         }
-        void UpdateEquipmentUI(Equipment newItem, Equipment oldItem)
+        public void UpdateEquipmentUI(Equipment newItem, Equipment oldItem)
         {
             if(newItem != null)
             {

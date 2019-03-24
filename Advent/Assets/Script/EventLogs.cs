@@ -13,6 +13,12 @@ namespace Advent.UI
         private List<string> eventLog = new List<string>();
         private string guiLogText = "";
 
+        public static EventLogs instance;
+        private void Awake()
+        {
+            instance = this;
+        }
+
         public void AddEvent(string eventString)
         {
             eventLog.Add(eventString);

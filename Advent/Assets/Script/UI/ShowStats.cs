@@ -2,53 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Advent.Stats;
 using Advent.Entities;
+using TMPro;
 
 namespace Advent.UI
 {
     public class ShowStats : MonoBehaviour
     {
-        public GameObject panel;
         bool isActive = false;
         [Space]
         [SerializeField]
-        private Text attackText = null;
+        private TextMeshProUGUI attackText = null;
         [SerializeField]
-        private Text defenseText = null;
+        private TextMeshProUGUI defenseText = null;
         [Space]
         [SerializeField]
-        private Text strengthText = null;
+        private TextMeshProUGUI strengthText = null;
         [SerializeField]
-        private Text dexterityText = null;
+        private TextMeshProUGUI dexterityText = null;
         [SerializeField]
-        private Text intelligenceText = null;
+        private TextMeshProUGUI intelligenceText = null;
         [SerializeField]
-        private Text vitalityText = null;
+        private TextMeshProUGUI vitalityText = null;
 
         [SerializeField]
         private GameObject statButtonPanel = null;
         [SerializeField]
-        private Text addPointsText;
+        private TextMeshProUGUI addPointsText = null;
 
-        private Entities.StatSystem statSystem;
+        Player player;
         // Start is called before the first frame update
         void Start()
         {
-            statSystem = StatSystem.instance;
-            panel.SetActive(isActive);
+            player = Player.instance;
         }
 
         // Update is called once per frame
         void Update()
         {
-            SetActiveStatBox();
             SetStatValues();
             ShowAddStatButton();
         }
         void ShowAddStatButton()
         {
-            if(statSystem.availablePoints > 0)
+            if(player.GetAvailablePoints() > 0)
             {
                 statButtonPanel.SetActive(true);
             }
@@ -57,42 +54,56 @@ namespace Advent.UI
                 statButtonPanel.SetActive(false);
             }
         }
-        void SetActiveStatBox()
-        {
-            panel.SetActive(isActive);
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                isActive = !isActive;
-            }
-        }
         void SetStatValues()
         {
-            attackText.text = statSystem.physicalAttack.GetValue().ToString();
-            defenseText.text = statSystem.defense.GetValue().ToString();
+            attackText.text = player.attack.GetValue().ToString();
+            defenseText.text = player.defense.GetValue().ToString();
 
-            strengthText.text = statSystem.strength.GetValue().ToString();
-            dexterityText.text = statSystem.dexterity.GetValue().ToString();
-            intelligenceText.text = statSystem.intelligence.GetValue().ToString();
-            vitalityText.text = statSystem.vitality.GetValue().ToString();
+            strengthText.text = player.strength.GetValue().ToString();
+            dexterityText.text = player.dexterity.GetValue().ToString();
+            intelligenceText.text = player.intelligence.GetValue().ToString();
+            vitalityText.text = player.vitality.GetValue().ToString();
 
-            addPointsText.text = statSystem.availablePoints.ToString();
+            addPointsText.text = player.GetAvailablePoints().ToString();
         }
 
         public void OnPointToStr()
         {
-            statSystem.AddPointsToStr();
+            AddPointsToStr();
         }
         public void OnPointsToDex()
         {
-            statSystem.AddPointsToDex();
+            AddPointsToDex();
         }
         public void OnPointsToInt()
         {
-            statSystem.AddPointsToInt();
+            AddPointsToInt();
         }
         public void OnPointsToVit()
         {
-            statSystem.AddPointsToVit();
+            AddPointsToVit();
+        }
+
+        public void AddPointsToStr()
+        {
+            player.strength.AddStat(1);
+            player.attack.AddStat(1);
+            player.UseAvailablePoint();
+        }
+        public void AddPointsToDex()
+        {
+            player.dexterity.AddStat(1);
+            player.UseAvailablePoint();
+        }
+        public void AddPointsToInt()
+        {
+            player.intelligence.AddStat(1);
+            player.UseAvailablePoint();
+        }
+        public void AddPointsToVit()
+        {
+            player.vitality.AddStat(1);
+            player.UseAvailablePoint();
         }
     }
 

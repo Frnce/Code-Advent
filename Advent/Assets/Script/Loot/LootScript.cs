@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent.UI;
 
 namespace Advent.Loot
 {
@@ -8,8 +9,11 @@ namespace Advent.Loot
     {
         public LootTable lootTable;
         public int dropChance;
-
-
+        private EventLogs eventLogs;
+        private void Start()
+        {
+            eventLogs = EventLogs.instance;
+        }
         public void DropLoot()
         {
             CalculateLoot();
@@ -40,6 +44,7 @@ namespace Advent.Loot
                     if(randomDropValue <= lootTable.items[i].dropRate)
                     {
                         Instantiate(lootTable.items[i].gameobject, transform.position, Quaternion.identity);
+                        eventLogs.AddEvent(lootTable.items[i].name + " Dropped");
                         return;
                     }
                     randomDropValue -= lootTable.items[i].dropRate; //increased drop rate

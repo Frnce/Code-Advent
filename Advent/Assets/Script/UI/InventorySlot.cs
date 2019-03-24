@@ -62,7 +62,6 @@ namespace Advent.UI
                 DropItem();
             }
         }
-
         public void OnPointerEnter(PointerEventData eventData)
         {
             panel.color = Color.cyan;
