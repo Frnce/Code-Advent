@@ -7,7 +7,8 @@ namespace Advent.Items
     [CreateAssetMenu(fileName ="New Item", menuName = "Inventory/Item")]
     public class Item : ScriptableObject
     {
-        public float level; 
+        public float level;
+        public ItemType ItemType;
         new public string name = "New Item";
         public Sprite icon = null;
         public bool isDefaultItem = false;
@@ -28,5 +29,10 @@ namespace Advent.Items
             RemoveFromInventory();
             Instantiate(gameobject,Player.instance.transform.position, Quaternion.identity);
         }
+    }
+    public enum ItemType
+    {
+        EQUIPMENT,
+        CONSUMABLE
     }
 }

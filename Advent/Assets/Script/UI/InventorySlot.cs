@@ -35,7 +35,6 @@ namespace Advent.UI
                 item.Use();
             }
         }
-
         public void DropItem()
         {
             if(item != null)

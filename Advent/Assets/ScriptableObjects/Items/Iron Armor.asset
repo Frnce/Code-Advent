@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Iron Armor
   m_EditorClassIdentifier: 
   level: 0
+  itemType: 1
   name: Iron Armor
   icon: {fileID: 21300010, guid: d9724c3903d5d2742b967ae1b8a055ec, type: 3}
   isDefaultItem: 0

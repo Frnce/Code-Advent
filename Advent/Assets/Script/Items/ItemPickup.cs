@@ -11,10 +11,13 @@ namespace Advent.Items
         public Item item;
         private bool isStepOn = false; //Checks if Player is inside the tile of the item
         private EventLogs eventlogs;
+        private SpriteRenderer spriteRenderer;
         // Start is called before the first frame update
         void Start()
         {
             eventlogs = EventLogs.instance;
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = item.icon;
         }
 
         // Update is called once per frame
