@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Items;
+using Advent.Entities;
 
 namespace Advent.Inventories
 {
@@ -21,16 +22,34 @@ namespace Advent.Inventories
 
         public Equipment[] currentEquipment;
         public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
-        public OnEquipmentChanged onEquipmentChanged;
+        public OnEquipmentChanged onEquipmentChangedCallback;
+
+        Player player;
         Inventory inventory;
         // Start is called before the first frame update
         void Start()
         {
+            player = Player.instance;
             inventory = Inventory.instance;
             int numOfSlots = System.Enum.GetNames(typeof(EquipSlot)).Length;
             currentEquipment = new Equipment[numOfSlots];
+
+            onEquipmentChangedCallback += OnEquipmentChange;
         }
 
+        void OnEquipmentChange(Equipment newItem, Equipment oldItem)
+        {
+            if (newItem != null)
+            {
+                player.defense.AddModifier(newItem.defenseModifier);
+                player.attack.AddModifier(newItem.pAttackModifier);
+            }
+            if (oldItem != null)
+            {
+                player.defense.RemoveModifier(oldItem.defenseModifier);
+                player.attack.RemoveModifier(oldItem.pAttackModifier);
+            }
+        }
         public void Equip(Equipment newItem)
         {
             int slotIndex = (int)newItem.equipSlot;
@@ -41,9 +60,9 @@ namespace Advent.Inventories
                 inventory.AddItem(oldItem);
             }
 
-            if(onEquipmentChanged != null)
+            if(onEquipmentChangedCallback != null)
             {
-                onEquipmentChanged.Invoke(newItem, oldItem);
+                onEquipmentChangedCallback.Invoke(newItem, oldItem);
             }
 
             currentEquipment[slotIndex] = newItem;
@@ -56,9 +75,9 @@ namespace Advent.Inventories
                 inventory.AddItem(oldItem);
                 currentEquipment[slotIndex] = null;
 
-                if (onEquipmentChanged != null)
+                if (onEquipmentChangedCallback != null)
                 {
-                    onEquipmentChanged.Invoke(null, oldItem);
+                    onEquipmentChangedCallback.Invoke(null, oldItem);
                 }
             }
         }

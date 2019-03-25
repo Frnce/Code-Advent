@@ -2,37 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Inventories;
+using Advent.UI;
 
 namespace Advent.Items
 {
     public class ItemPickup : MonoBehaviour
     {
         public Item item;
+        private bool isStepOn = false; //Checks if Player is inside the tile of the item
+        private EventLogs eventlogs;
         // Start is called before the first frame update
         void Start()
         {
-
+            eventlogs = EventLogs.instance;
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            if (Input.GetKeyDown(KeyCode.F) && isStepOn)
+            {
+                Pickup();
+            }
         }
-        private void OnTriggerStay2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Player"))
             {
-                Debug.Log("Item Spotted");
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    Pickup();
-                }
+                eventlogs.AddEvent(item.name + " is on the floor.");
+                isStepOn = true;
+            }
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                isStepOn = false;
             }
         }
         void Pickup()
         {
-            Debug.Log("Picked up item " + item.name);
+            eventlogs.AddEvent("Picked up " + item.name);
             bool isPickedUp = Inventory.instance.AddItem(item);
 
             if (isPickedUp)

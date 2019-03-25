@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Advent.Stats
+namespace Advent.Entities
 {
     public class LevelSystemController : MonoBehaviour
     {
@@ -18,14 +18,15 @@ namespace Advent.Stats
         public int maxLevel = 100;
         public int currentLevel = 1;
 
-        public int experienceNeeded = 23;
+        public int experienceNeeded = 250;
         public int currentExperience;
 
         public int PointsAddedToStats = 4;
-        private StatSystem statSystem;
+
+        Player player;
         private void Start()
         {
-            statSystem = StatSystem.instance;
+            player = Player.instance;
         }
         //TODO add skillpoints;
         public void GainExp(int expToAdd)
@@ -51,7 +52,7 @@ namespace Advent.Stats
         }
         void AddStatPoints()
         {
-            statSystem.availablePoints += PointsAddedToStats;
+            player.AddAvailablePoints(PointsAddedToStats);
         }
     }
 }

@@ -8,10 +8,12 @@ using UnityEngine.EventSystems;
 
 namespace Advent.UI
 {
-    public class InventorySlot : MonoBehaviour
+    public class InventorySlot : MonoBehaviour,IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler
     {
         Item item;
+        public Image panel;
         public Image icon;
+
         public void AddItem(Item newItem)
         {
             item = newItem;
@@ -40,6 +42,36 @@ namespace Advent.UI
             {
                 item.DropFromInventory();
             }
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            panel.color = Color.blue;
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                //Left mouse button
+                UseItem();
+            }
+            else if (eventData.button == PointerEventData.InputButton.Middle)
+            {
+                //Middle Mouse Button
+            }
+            else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                //Right Mouse Button
+                DropItem();
+            }
+        }
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            panel.color = Color.cyan;
+            //Add Item Information on UI
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            panel.color = Color.white;
+            //Remove item info on UI
         }
     }
 }

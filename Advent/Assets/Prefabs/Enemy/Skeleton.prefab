@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 1945895348890335814}
   - component: {fileID: 1945895348890335815}
   - component: {fileID: 617443813}
+  - component: {fileID: 2729145489528992952}
   m_Layer: 8
   m_Name: Skeleton
   m_TagString: Enemy
@@ -189,3 +190,17 @@ MonoBehaviour:
     baseValue: 0
   vitality:
     baseValue: 0
+--- !u!114 &2729145489528992952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945895348890335813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b351b69acc48ad4784892972c0e0f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable: {fileID: 11400000, guid: 5200cb6d9a628d043b903a3614088066, type: 2}
+  dropChance: 100

@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Advent.Loot;
 
 namespace Advent.Entities
 {
     public class Enemy : EntityObject
     {
         private Transform target;
+        private LootScript lootDrop;
+        private LevelSystemController levelSystem;
         //private bool skipMove;
         // Start is called before the first frame update
         protected override void Start()
         {
             GameManager.instance.AddEnemyToList(this);
             target = GameObject.FindGameObjectWithTag("Player").transform;
+            lootDrop = GetComponent<LootScript>();
+            levelSystem = LevelSystemController.instance;
             base.Start();
         }
 
@@ -59,6 +64,8 @@ namespace Advent.Entities
         public override void Die()
         {
             base.Die();
+            lootDrop.DropLoot();
+            levelSystem.GainExp(entity.expGiven);
             Destroy(gameObject);
         }
     }

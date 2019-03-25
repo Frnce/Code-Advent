@@ -21,12 +21,6 @@ namespace Advent
             {
                 instance = this;
             }
-            else if( instance != this)
-            {
-                Destroy(gameObject);
-            }
-
-            DontDestroyOnLoad(gameObject);
 
             enemies = new List<Enemy>();
             boardManager = GetComponent<BoardManager>();
