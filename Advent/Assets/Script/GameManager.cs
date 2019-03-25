@@ -13,7 +13,6 @@ namespace Advent
         [HideInInspector] public bool playersTurn = true;
 
         private List<Enemy> enemies;
-        private BoardManager boardManager;
         private bool enemiesMoving;
         private void Awake()
         {
@@ -23,7 +22,6 @@ namespace Advent
             }
 
             enemies = new List<Enemy>();
-            boardManager = GetComponent<BoardManager>();
             InitGame();
         }
         // Start is called before the first frame update
@@ -33,7 +31,6 @@ namespace Advent
         }
         void InitGame()
         {
-            boardManager.SetupScene(level);
             enemies.Clear();
         }
 
