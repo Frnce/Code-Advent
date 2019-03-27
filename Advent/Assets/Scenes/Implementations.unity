@@ -112,46 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &927254065 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5026057843306073331, guid: 39cf37347aafde940a056526d1c0b505,
-    type: 3}
-  m_PrefabInstance: {fileID: 5026057843650872385}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &927254072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 927254065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c5e551d6a42b3498745b4f956900f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  columns: 150
-  rows: 150
-  numOfRooms:
-    m_Min: 10
-    m_Max: 15
-  roomWidth:
-    m_Min: 8
-    m_Max: 15
-  roomHeight:
-    m_Min: 8
-    m_Max: 15
-  corridorLength:
-    m_Min: 10
-    m_Max: 15
-  floorTiles:
-  - {fileID: 6089344682907256976, guid: 16ba4de45fe43d640b5960e4d534f5a8, type: 3}
-  wallTiles:
-  - {fileID: 5465602626480883003, guid: ad634a0811dbe8a4cbd9cc3b9f2d629f, type: 3}
-  outerWallTiles:
-  - {fileID: 5465602626480883003, guid: ad634a0811dbe8a4cbd9cc3b9f2d629f, type: 3}
-  player: {fileID: 7920207747151416649, guid: ffc30355eb771a64884f771fa93087c0, type: 3}
-  GUI: {fileID: 6943077866530286310, guid: 78e3b145af1ada847b4a77ce185f8822, type: 3}
 --- !u!1001 &5026057843650872385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -219,10 +179,100 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5026057843306073334, guid: 39cf37347aafde940a056526d1c0b505,
-        type: 3}
-      propertyPath: textMesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39cf37347aafde940a056526d1c0b505, type: 3}
+--- !u!4 &7235591102759644967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7235591102759645147}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &7235591102759645144
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7235591102759645147}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.0627451, g: 0.039215688, b: 0.09019608, a: 1}
+  m_projectionMatrixMode: 1
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 0
+  m_HDR: 1
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 0
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &7235591102759645146
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7235591102759645147}
+  m_Enabled: 1
+--- !u!1 &7235591102759645147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7235591102759644967}
+  - component: {fileID: 7235591102759645144}
+  - component: {fileID: 7235591102759645146}
+  - component: {fileID: 7235591102759645148}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &7235591102759645148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7235591102759645147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf90ed6893f89843bf7342d90cb7d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

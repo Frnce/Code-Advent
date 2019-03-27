@@ -12,18 +12,12 @@ namespace Advent.Dungeons
             WALL,
             FLOOR,
         }
-        public int columns = 100;
-        public int rows = 100;
-        public IntRange numOfRooms = new IntRange(15, 20);
-        public IntRange roomWidth = new IntRange(3, 10);
-        public IntRange roomHeight = new IntRange(3, 10);
-        public IntRange corridorLength = new IntRange(6, 10);
-        public GameObject[] floorTiles;
-        public GameObject[] wallTiles;
-        public GameObject[] outerWallTiles;
         public GameObject player;
+        public GameObject nextLevelObject;
         public GameObject GUI;
 
+        [SerializeField]
+        private BoardParameters boardParameters;
         private TileType[][] tiles;
         private Room[] rooms;
         private Corridor[] corridors;
@@ -43,45 +37,53 @@ namespace Advent.Dungeons
             InstantiateTiles();
             InstantiateOuterWalls();
 
+            InstantiatePlayer();
+
             InstantiateUI();
+            InstantiateNextLevelObject();
+
+            InstantiateEnemies();
+        }
+
+        private void InstantiatePlayer()
+        {
+            int randomRoom = Random.Range(0, rooms.Length);
+            int randomWidth = Random.Range(0, rooms[randomRoom].roomWidth) + rooms[randomRoom].xPosition;
+            int randomHeight = Random.Range(0, rooms[randomRoom].roomHeight) + rooms[randomRoom].yPosition;
+            Vector3 playerPos = new Vector3(randomWidth, randomHeight, 0);
+            Instantiate(player, playerPos, Quaternion.identity);
         }
 
         private void SetupTilesArray()
         {
-            tiles = new TileType[columns][];
+            tiles = new TileType[boardParameters.columns][];
 
             for (int i = 0; i < tiles.Length; i++)
             {
-                tiles[i] = new TileType[rows];
+                tiles[i] = new TileType[boardParameters.rows];
             }
         }
 
         private void CreateRoomsAndCorridors()
         {
-            rooms = new Room[numOfRooms.Random];
+            rooms = new Room[boardParameters.numOfRooms.Random];
             corridors = new Corridor[rooms.Length - 1];
 
             rooms[0] = new Room();
             corridors[0] = new Corridor();
 
-            rooms[0].SetupRoom(roomWidth, roomHeight, columns, rows);
-            corridors[0].SetupCorridor(rooms[0], corridorLength, roomWidth, roomHeight, columns, rows, true);
+            rooms[0].SetupRoom(boardParameters.roomWidth, boardParameters.roomHeight, boardParameters.columns, boardParameters.rows);
+            corridors[0].SetupCorridor(rooms[0], boardParameters.corridorLength, boardParameters.roomWidth, boardParameters.roomHeight, boardParameters.columns, boardParameters.rows, true);
 
             for (int i = 1; i < rooms.Length; i++)
             {
                 rooms[i] = new Room();
-                rooms[i].SetupRoom(roomWidth, roomHeight, columns, rows, corridors[i - 1]);
+                rooms[i].SetupRoom(boardParameters.roomWidth, boardParameters.roomHeight, boardParameters.columns, boardParameters.rows, corridors[i - 1]);
 
                 if(i < corridors.Length)
                 {
                     corridors[i] = new Corridor();
-                    corridors[i].SetupCorridor(rooms[i], corridorLength, roomWidth, roomHeight, columns, rows, false);
-                }
-
-                if (i == rooms.Length * 0.5f)
-                {
-                    Vector3 playerPos = new Vector3(rooms[i].xPosition, rooms[i].yPosition, 0);
-                    Instantiate(player, playerPos, Quaternion.identity);
+                    corridors[i].SetupCorridor(rooms[i], boardParameters.corridorLength, boardParameters.roomWidth, boardParameters.roomHeight, boardParameters.columns, boardParameters.rows, false);
                 }
             }
         }
@@ -141,10 +143,10 @@ namespace Advent.Dungeons
             {
                 for (int j = 0; j < tiles[i].Length; j++)
                 {
-                    InstantiateFromArray(floorTiles, i, j);
+                    InstantiateFromArray(boardParameters.floorTiles, i, j);
                     if (tiles[i][j] == TileType.WALL)
                     {
-                        InstantiateFromArray(wallTiles, i, j);
+                        InstantiateFromArray(boardParameters.wallTiles, i, j);
                     }
                 }
             }
@@ -152,9 +154,9 @@ namespace Advent.Dungeons
         private void InstantiateOuterWalls()
         {
             float leftEdgeX = -1f;
-            float rightEdgeX = columns + 0f;
+            float rightEdgeX = boardParameters.columns + 0f;
             float bottomEdgeY = -1f;
-            float topEdgeY = rows + 0f;
+            float topEdgeY = boardParameters.rows + 0f;
 
             InstantiateVerticalOuterWall(leftEdgeX, bottomEdgeY, topEdgeY);
             InstantiateVerticalOuterWall(rightEdgeX, bottomEdgeY, topEdgeY);
@@ -166,12 +168,31 @@ namespace Advent.Dungeons
         {
             Instantiate(GUI);
         }
+        private void InstantiateEnemies()
+        {
+            for (int i = 0; i < boardParameters.enemyCount.m_Max; i++)
+            {
+                int randomRoom = Random.Range(0, rooms.Length);
+                int randomWidth = Random.Range(0, rooms[randomRoom].roomWidth) + rooms[randomRoom].xPosition;
+                int randomHeight = Random.Range(0, rooms[randomRoom].roomHeight) + rooms[randomRoom].yPosition;
+
+                InstantiateFromArray(boardParameters.enemies, randomWidth, randomHeight);
+            }
+        }
+        private void InstantiateNextLevelObject()
+        {
+            int randomRoom = Random.Range(0, rooms.Length);
+            int randomWidth = Random.Range(0, rooms[randomRoom].roomWidth) + rooms[randomRoom].xPosition;
+            int randomHeight = Random.Range(0, rooms[randomRoom].roomHeight) + rooms[randomRoom].yPosition;
+            Vector3 ladderPos = new Vector3(randomWidth, randomHeight, 0);
+            Instantiate(nextLevelObject, ladderPos, Quaternion.identity);
+        }
         private void InstantiateVerticalOuterWall(float xCoordinate, float startingY,float endingY)
         {
             float currentY = startingY;
             while(currentY <= endingY)
             {
-                InstantiateFromArray(outerWallTiles, xCoordinate, currentY);
+                InstantiateFromArray(boardParameters.outerWallTiles, xCoordinate, currentY);
                 currentY++;
             }
         }
@@ -180,7 +201,7 @@ namespace Advent.Dungeons
             float currentX = startingX;
             while(currentX <= endingX)
             {
-                InstantiateFromArray(outerWallTiles, currentX, yCoord);
+                InstantiateFromArray(boardParameters.outerWallTiles, currentX, yCoord);
                 currentX++;
             }
         }
@@ -197,6 +218,10 @@ namespace Advent.Dungeons
 
             // Set the tile's parent to the board holder.
             tileInstance.transform.parent = boardHolder.transform;
+        }
+        public Vector2 GetMaxBoardPosition()
+        {
+            return new Vector2(boardParameters.rows, boardParameters.columns);
         }
     }
 }

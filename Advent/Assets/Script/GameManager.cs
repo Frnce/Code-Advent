@@ -48,6 +48,10 @@ namespace Advent
             //Add Enemy to List enemies.
             enemies.Add(script);
         }
+        public void RemoveEnemyToList(Enemy enemy)
+        {
+            enemies.Remove(enemy);
+        }
         public void GameOver()
         {
             enabled = false;
@@ -75,14 +79,15 @@ namespace Advent
                 //Call the MoveEnemy function of Enemy at index i in the enemies List.
                 if(enemies[i] == null)
                 {
-                    yield return new WaitForSeconds(enemies[i].moveTime);
+                    //yield return new WaitForSeconds(enemies[i].moveTime);
                     break;
                 }
                 enemies[i].MoveEnemy();
                 //Wait for Enemy's moveTime before moving next Enemy, 
-                yield return new WaitForSeconds(enemies[i].moveTime);
+                //
             }
             //Once Enemies are done moving, set playersTurn to true so player can move.
+            yield return new WaitForSeconds(enemies[0].moveTime);
             playersTurn = true;
 
             //Enemies are done moving, set enemiesMoving to false.

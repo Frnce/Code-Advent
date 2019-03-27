@@ -148,6 +148,7 @@ namespace Advent.Entities
             eventLogs.AddEvent(beenDamaged + " has been Hit for " + damage);
             if (currentHealth <= 0)
             {
+                currentHealth = 0;
                 Die();
             }
         }

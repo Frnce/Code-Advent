@@ -66,6 +66,7 @@ namespace Advent.Entities
             base.Die();
             lootDrop.DropLoot();
             levelSystem.GainExp(entity.expGiven);
+            GameManager.instance.RemoveEnemyToList(this);
             Destroy(gameObject);
         }
     }
