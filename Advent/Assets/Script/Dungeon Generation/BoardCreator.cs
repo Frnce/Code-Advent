@@ -15,6 +15,7 @@ namespace Advent.Dungeons
         public GameObject player;
         public GameObject nextLevelObject;
         public GameObject GUI;
+        public GameObject chest;
 
         [SerializeField]
         private BoardParameters boardParameters = null;
@@ -54,6 +55,8 @@ namespace Advent.Dungeons
             int randomHeight = Random.Range(0, rooms[randomRoom].roomHeight) + rooms[randomRoom].yPosition;
             Vector3 playerPos = new Vector3(randomWidth, randomHeight, 0);
             Instantiate(player, playerPos, Quaternion.identity);
+
+            Instantiate(chest, new Vector3(playerPos.x + 3,playerPos.y + 3,0), Quaternion.identity);
         }
 
         private void SetupTilesArray()

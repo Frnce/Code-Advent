@@ -6,7 +6,7 @@ namespace Advent
 {
     public class LevelLoader : MonoBehaviour
     {
-        public GameObject gameManager;          //GameManager prefab to instantiate.
+        public GameObject gameManager;
         void Awake()
         {
             if (GameManager.instance == null)
