@@ -14,6 +14,7 @@ namespace Advent.Dungeons
         public IntRange roomHeight = new IntRange(3, 10);
         public IntRange corridorLength = new IntRange(6, 10);
         public IntRange enemyCount = new IntRange(0, 10);
+        public IntRange chestCount = new IntRange(3, 5);
         public GameObject[] floorTiles;
         public GameObject[] wallTiles;
         public GameObject[] outerWallTiles;

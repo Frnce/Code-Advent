@@ -157,6 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 5026057843306073331, guid: 39cf37347aafde940a056526d1c0b505,
     type: 3}
+  player: {fileID: 2958945074295361554, guid: 9650f574fcbd7b6428043e083d7a4902, type: 3}
+  gui: {fileID: 6943077866530286310, guid: 78e3b145af1ada847b4a77ce185f8822, type: 3}
 --- !u!4 &7235591102759644967
 Transform:
   m_ObjectHideFlags: 0

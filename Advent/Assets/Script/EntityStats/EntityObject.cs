@@ -25,14 +25,12 @@ namespace Advent.Entities
         public Stat intelligence;
         public Stat vitality;
 
-        private int availablePoints;
-
         private BoxCollider2D boxCollider;
         private Rigidbody2D rb2d;
         private float inverseMoveTime; //used to make movement more effiecient;
         private EventLogs eventLogs;
 
-        private LevelSystemController levelSystem;
+        protected LevelSystemController levelSystem;
 
         protected virtual void Start()
         {
@@ -62,19 +60,6 @@ namespace Advent.Entities
         public void SetAttackStat()
         {
             attack.AddStat(strength.GetValue());
-        }
-
-        public int GetAvailablePoints()
-        {
-            return availablePoints;
-        }
-        public void AddAvailablePoints(int additionalPoints)
-        {
-            availablePoints += additionalPoints;
-        }
-        public void UseAvailablePoint()
-        {
-            availablePoints--;
         }
 
         private void SetST()

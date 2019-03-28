@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent;
+using Advent.Entities;
 
 namespace Advent.Dungeons
 {
@@ -12,10 +13,8 @@ namespace Advent.Dungeons
             WALL,
             FLOOR,
         }
-        public GameObject player;
         public GameObject nextLevelObject;
-        public GameObject GUI;
-        public GameObject chest;
+        public GameObject[] chest;
 
         [SerializeField]
         private BoardParameters boardParameters = null;
@@ -40,23 +39,21 @@ namespace Advent.Dungeons
             InstantiateTiles();
             InstantiateOuterWalls();
 
-            InstantiatePlayer();
+            MovePlayerToStartPosition();
 
-            InstantiateUI();
             InstantiateNextLevelObject();
 
             InstantiateEnemies();
+            InstantiateChest();
         }
 
-        private void InstantiatePlayer()
+        private void MovePlayerToStartPosition()
         {
             int randomRoom = Random.Range(0, rooms.Length);
             int randomWidth = Random.Range(0, rooms[randomRoom].roomWidth) + rooms[randomRoom].xPosition;
             int randomHeight = Random.Range(0, rooms[randomRoom].roomHeight) + rooms[randomRoom].yPosition;
             Vector3 playerPos = new Vector3(randomWidth, randomHeight, 0);
-            Instantiate(player, playerPos, Quaternion.identity);
-
-            Instantiate(chest, new Vector3(playerPos.x + 3,playerPos.y + 3,0), Quaternion.identity);
+            Player.instance.transform.position = playerPos;
         }
 
         private void SetupTilesArray()
@@ -169,10 +166,6 @@ namespace Advent.Dungeons
             InstantiateHorizontalOuterWall(leftEdgeX + 1f, rightEdgeX - 1f, bottomEdgeY);
             InstantiateHorizontalOuterWall(leftEdgeX + 1f, rightEdgeX - 1f, topEdgeY);
         }
-        private void InstantiateUI()
-        {
-            Instantiate(GUI);
-        }
         private void InstantiateEnemies()
         {
             List<int> enemyWidthPosition = new List<int>();
@@ -188,7 +181,24 @@ namespace Advent.Dungeons
             for (int i = 0; i < enemyWidthPosition.Count; i++)
             {
                 InstantiateFromArray(boardParameters.enemies, enemyWidthPosition[i], enemyHeightPosition[i]);
-                Debug.Log(enemyWidthPosition[i] + " | " + enemyHeightPosition[i]);
+            }
+        }
+        private void InstantiateChest()
+        {
+            List<int> chestWidthPosition = new List<int>();
+            List<int> chestHeightPosition = new List<int>();
+
+            for (int i = 0; i < boardParameters.chestCount.m_Max; i++)
+            {
+                int randomRoom = Random.Range(0, rooms.Length);
+                int randomWidth = Random.Range(0, rooms[randomRoom].roomWidth) + rooms[randomRoom].xPosition;
+                int randomHeight = Random.Range(0, rooms[randomRoom].roomHeight) + rooms[randomRoom].yPosition;
+                chestWidthPosition.Add(randomWidth);
+                chestHeightPosition.Add(randomHeight);
+            }
+            for (int i = 0; i < chestWidthPosition.Count; i++)
+            {
+                InstantiateFromArray(chest, chestWidthPosition[i], chestHeightPosition[i]);
             }
         }
         private void InstantiateNextLevelObject()

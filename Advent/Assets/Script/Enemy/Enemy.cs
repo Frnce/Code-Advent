@@ -9,7 +9,6 @@ namespace Advent.Entities
     {
         private Transform target;
         private LootScript lootDrop;
-        private LevelSystemController levelSystem;
         //private bool skipMove;
         // Start is called before the first frame update
         protected override void Start()
@@ -17,7 +16,6 @@ namespace Advent.Entities
             GameManager.instance.AddEnemyToList(this);
             target = GameObject.FindGameObjectWithTag("Player").transform;
             lootDrop = GetComponent<LootScript>();
-            levelSystem = LevelSystemController.instance;
             base.Start();
         }
 

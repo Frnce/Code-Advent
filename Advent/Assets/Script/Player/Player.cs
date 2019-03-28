@@ -14,6 +14,8 @@ namespace Advent.Entities
         GameManager gameManager;
         private bool isMoving = false;
         private Animator anim;
+        private int availablePoints = 0;
+
         protected override void Start()
         {
             gameManager = GameManager.instance;
@@ -52,6 +54,19 @@ namespace Advent.Entities
                 isMoving = false;
             }
             anim.SetBool("isMoving", isMoving);
+        }
+
+        public int GetAvailablePoints()
+        {
+            return availablePoints;
+        }
+        public void AddAvailablePoints(int additionalPoints)
+        {
+            availablePoints += additionalPoints;
+        }
+        public void UseAvailablePoint()
+        {
+            availablePoints--;
         }
         protected override void AttemptMove<T>(int xDir, int yDir)
         {
