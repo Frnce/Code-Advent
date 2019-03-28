@@ -17,16 +17,18 @@ namespace Advent.Dungeons
         public GameObject GUI;
 
         [SerializeField]
-        private BoardParameters boardParameters;
+        private BoardParameters boardParameters = null;
         private TileType[][] tiles;
         private Room[] rooms;
         private Corridor[] corridors;
         private GameObject boardHolder;
+        private GameObject enemyHolder;
 
         // Start is called before the first frame update
         void Start()
         {
             boardHolder = new GameObject("BoardHolder");
+            enemyHolder = new GameObject("EnemyHolder");
 
             SetupTilesArray();
             CreateRoomsAndCorridors();
@@ -170,13 +172,20 @@ namespace Advent.Dungeons
         }
         private void InstantiateEnemies()
         {
+            List<int> enemyWidthPosition = new List<int>();
+            List<int> enemyHeightPosition = new List<int>();
             for (int i = 0; i < boardParameters.enemyCount.m_Max; i++)
             {
                 int randomRoom = Random.Range(0, rooms.Length);
                 int randomWidth = Random.Range(0, rooms[randomRoom].roomWidth) + rooms[randomRoom].xPosition;
                 int randomHeight = Random.Range(0, rooms[randomRoom].roomHeight) + rooms[randomRoom].yPosition;
-
-                InstantiateFromArray(boardParameters.enemies, randomWidth, randomHeight);
+                enemyWidthPosition.Add(randomWidth);
+                enemyHeightPosition.Add(randomHeight);
+            }
+            for (int i = 0; i < enemyWidthPosition.Count; i++)
+            {
+                InstantiateFromArray(boardParameters.enemies, enemyWidthPosition[i], enemyHeightPosition[i]);
+                Debug.Log(enemyWidthPosition[i] + " | " + enemyHeightPosition[i]);
             }
         }
         private void InstantiateNextLevelObject()
@@ -217,7 +226,14 @@ namespace Advent.Dungeons
             GameObject tileInstance = Instantiate(prefabs[randomIndex], position, Quaternion.identity) as GameObject;
 
             // Set the tile's parent to the board holder.
-            tileInstance.transform.parent = boardHolder.transform;
+            if(prefabs == boardParameters.enemies)
+            {
+                tileInstance.transform.parent = enemyHolder.transform;
+            }
+            else
+            {
+                tileInstance.transform.parent = boardHolder.transform;
+            }
         }
         public Vector2 GetMaxBoardPosition()
         {

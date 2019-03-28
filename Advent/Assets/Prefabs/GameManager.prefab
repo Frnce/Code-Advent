@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2958945074295361554, guid: 9650f574fcbd7b6428043e083d7a4902, type: 3}
-  nextLevelObject: {fileID: 3369165870170480421, guid: bd91df58f59cc1140885f6bc0bded87e,
+  nextLevelObject: {fileID: 5953908501794941634, guid: 2da9a00799bc4a441a3909416ae775d9,
     type: 3}
   GUI: {fileID: 6943077866530286310, guid: 78e3b145af1ada847b4a77ce185f8822, type: 3}
   boardParameters: {fileID: 11400000, guid: 40fc14d1331b3b2409425630417e9bd1, type: 2}

@@ -9,7 +9,6 @@ namespace Advent
     {
         public static GameManager instance = null;
         public float turnDelay = 0.1f;
-        private int level = 3;
         [HideInInspector] public bool playersTurn = true;
 
         private List<Enemy> enemies;
@@ -86,10 +85,10 @@ namespace Advent
                 //Wait for Enemy's moveTime before moving next Enemy, 
                 //
             }
+            yield return new WaitForSeconds(0.1f);
             //Once Enemies are done moving, set playersTurn to true so player can move.
-            yield return new WaitForSeconds(enemies[0].moveTime);
             playersTurn = true;
-
+            yield return new WaitForSeconds(0.1f);
             //Enemies are done moving, set enemiesMoving to false.
             enemiesMoving = false;
         }

@@ -83,5 +83,13 @@ namespace Advent.Entities
             base.Die();
             gameObject.SetActive(false);
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Exit"))
+            {
+                Debug.Log("Exit to next floor"); //TODO Add function on Exit
+            }
+        }
     }
 }
