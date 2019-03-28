@@ -109,4 +109,5 @@ MonoBehaviour:
   nextLevelObject: {fileID: 3369165870170480421, guid: bd91df58f59cc1140885f6bc0bded87e,
     type: 3}
   GUI: {fileID: 6943077866530286310, guid: 78e3b145af1ada847b4a77ce185f8822, type: 3}
+  chest: {fileID: 254484702860795624, guid: f64facbc56d59da41a13e6b8d3e6b75b, type: 3}
   boardParameters: {fileID: 11400000, guid: 40fc14d1331b3b2409425630417e9bd1, type: 2}

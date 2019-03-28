@@ -44,6 +44,7 @@ namespace Advent.Entities
             if(horizontal != 0 || vertical != 0)
             {
                 AttemptMove<Enemy>(horizontal, vertical);
+                AttemptMove<ChestScript>(horizontal, vertical);
                 isMoving = true;
             }
             else
@@ -69,8 +70,17 @@ namespace Advent.Entities
         {
             isMoving = false;
             Enemy hitEnemy = component as Enemy;
-            hitEnemy.DamageEntity(hitEnemy.name,attack.GetValue());
-        }   
+            ChestScript chest = component as ChestScript;
+
+            if(component == hitEnemy)
+            {
+                hitEnemy.DamageEntity(hitEnemy.name, attack.GetValue());
+            }
+            if(component == chest)
+            {
+                chest.OpenChest();
+            }
+        }
         private void CheckIfGameOver()
         {
             if(currentHealth <= 0)
