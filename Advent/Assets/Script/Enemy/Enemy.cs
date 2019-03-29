@@ -24,9 +24,9 @@ namespace Advent.Entities
         {
 
         }
-        protected override void AttemptMove<T>(int xDir, int yDir)
+        protected override void AttemptMove<Enemy,Chest>(int xDir, int yDir)
         {
-            base.AttemptMove<T>(xDir, yDir);
+            base.AttemptMove<Enemy,Chest>(xDir, yDir);
         }
         public void MoveEnemy()
         {
@@ -41,7 +41,7 @@ namespace Advent.Entities
             {
                 xDir = target.position.x > transform.position.x ? 1 : -1;
             }
-            AttemptMove<Player>(xDir, yDir);
+            AttemptMove<Player,ChestScript>(xDir, yDir);
         }
         protected override void OnCantMove<T>(T component)
         {

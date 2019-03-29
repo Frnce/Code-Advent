@@ -55,8 +55,8 @@ namespace Advent.Entities
             }
             if (horizontal != 0 || vertical != 0)
             {
-                AttemptMove<Enemy>(horizontal, vertical);
-                AttemptMove<ChestScript>(horizontal, vertical);
+                AttemptMove<Enemy,ChestScript>(horizontal, vertical);
+                //AttemptMove<ChestScript>(horizontal, vertical);
                 isMoving = true;
             }
             else
@@ -70,7 +70,7 @@ namespace Advent.Entities
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     isOnDoor = false;
-                    SceneManager.LoadScene(0);
+                    gameManager.ReloadScene();
                 }
             }
         }
@@ -87,14 +87,13 @@ namespace Advent.Entities
         {
             availablePoints--;
         }
-        protected override void AttemptMove<T>(int xDir, int yDir)
+        protected override void AttemptMove<Enemy,Chest>(int xDir, int yDir)
         {
-            base.AttemptMove<T>(xDir, yDir);
-            RaycastHit2D hit;
+            base.AttemptMove<Enemy,Chest>(xDir, yDir);
             CheckIfGameOver();
             anim.SetFloat("xMove", xDir);
             anim.SetFloat("yMove", yDir);
-            if (Move(xDir, yDir, out hit))
+            if (canMove)
             {
                 //Call RandomizeSfx of SoundManager to play the move sound, passing in two audio clips to choose from.
             }

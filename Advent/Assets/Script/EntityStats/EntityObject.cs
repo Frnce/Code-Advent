@@ -30,6 +30,8 @@ namespace Advent.Entities
         private float inverseMoveTime; //used to make movement more effiecient;
         private EventLogs eventLogs;
 
+        protected bool canMove;
+
         protected LevelSystemController levelSystem;
 
         protected virtual void Start()
@@ -101,18 +103,23 @@ namespace Advent.Entities
                 yield return null;
             }
         }
-        protected virtual void AttemptMove<T>(int xDir, int yDir) where T : Component
+        protected virtual void AttemptMove<Enemy,Chest>(int xDir, int yDir) where Enemy : Component where Chest : Component
         {
             RaycastHit2D hit;
-            bool canMove = Move(xDir, yDir, out hit);
+            canMove = Move(xDir, yDir, out hit);
             if (hit.transform == null)
             {
                 return;
             }
-            T hitComponent = hit.transform.GetComponent<T>();
-            if (!canMove && hitComponent != null)
+            Enemy enemyComponent = hit.transform.GetComponent<Enemy>();
+            Chest chestComponent = hit.transform.GetComponent<Chest>();
+            if (!canMove && enemyComponent != null)
             {
-                OnCantMove(hitComponent);
+                OnCantMove(enemyComponent);
+            }
+            else if(!canMove && chestComponent != null)
+            {
+                OnCantMove(chestComponent);
             }
         }
         public void DamageEntity(string beenDamaged,int damage)

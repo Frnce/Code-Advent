@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Advent.Entities;
 using Advent.Dungeons;
-
+using UnityEngine.SceneManagement;
 namespace Advent
 {
     public class GameManager : MonoBehaviour
@@ -55,6 +55,10 @@ namespace Advent
                 return;
             }
             StartCoroutine(MoveEnemies());
+        }
+        public void ReloadScene()
+        {
+            SceneManager.LoadScene(0);
         }
         public void AddEnemyToList(Enemy script)
         {
