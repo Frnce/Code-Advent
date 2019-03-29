@@ -12,7 +12,7 @@ namespace Advent
         public GameObject gui;
         void Awake()
         {
-            if(Player.instance == null)
+            if (Player.instance == null)
             {
                 Instantiate(player);
             }

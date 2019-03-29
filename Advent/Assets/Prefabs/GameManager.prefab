@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5026057843306073332}
   - component: {fileID: 5026057843306073337}
   - component: {fileID: 5026057843306073335}
-  - component: {fileID: 927254072}
+  - component: {fileID: 1323185140}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -76,6 +76,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnDelay: 0.1
   playersTurn: 1
+  boardParameters: {fileID: 11400000, guid: 40fc14d1331b3b2409425630417e9bd1, type: 2}
+  nextLevelObject: {fileID: 5953908501794941634, guid: 2da9a00799bc4a441a3909416ae775d9,
+    type: 3}
 --- !u!114 &5026057843306073335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +96,7 @@ MonoBehaviour:
   experienceNeeded: 250
   currentExperience: 0
   PointsAddedToStats: 4
---- !u!114 &927254072
+--- !u!114 &1323185140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,10 +108,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c5e551d6a42b3498745b4f956900f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2958945074295361554, guid: 9650f574fcbd7b6428043e083d7a4902, type: 3}
-  nextLevelObject: {fileID: 5953908501794941634, guid: 2da9a00799bc4a441a3909416ae775d9,
-    type: 3}
-  GUI: {fileID: 6943077866530286310, guid: 78e3b145af1ada847b4a77ce185f8822, type: 3}
-  chest:
-  - {fileID: 254484702860795624, guid: f64facbc56d59da41a13e6b8d3e6b75b, type: 3}
-  boardParameters: {fileID: 11400000, guid: 40fc14d1331b3b2409425630417e9bd1, type: 2}

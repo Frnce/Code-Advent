@@ -19,5 +19,6 @@ namespace Advent.Dungeons
         public GameObject[] wallTiles;
         public GameObject[] outerWallTiles;
         public GameObject[] enemies;
+        public GameObject[] chests;
     }
 }

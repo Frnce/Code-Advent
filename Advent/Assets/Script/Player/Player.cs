@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Advent.Entities
 {
@@ -9,12 +10,21 @@ namespace Advent.Entities
         public static Player instance;
         private void Awake()
         {
-            instance = this;
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            DontDestroyOnLoad(gameObject);
         }
         GameManager gameManager;
         private bool isMoving = false;
         private Animator anim;
         private int availablePoints = 0;
+        private bool isOnDoor = false;
 
         protected override void Start()
         {
@@ -25,7 +35,7 @@ namespace Advent.Entities
         private void OnDisable()
         {
             //gameManager.playerFoodPoints = food;
-        }
+        }   
         private void Update()
         {
             if (!gameManager.playersTurn)
@@ -39,11 +49,11 @@ namespace Advent.Entities
             horizontal = (int)Input.GetAxisRaw("Horizontal");
             vertical = (int)Input.GetAxisRaw("Vertical");
 
-            if(horizontal != 0)
+            if (horizontal != 0)
             {
                 vertical = 0;
             }
-            if(horizontal != 0 || vertical != 0)
+            if (horizontal != 0 || vertical != 0)
             {
                 AttemptMove<Enemy>(horizontal, vertical);
                 AttemptMove<ChestScript>(horizontal, vertical);
@@ -54,6 +64,15 @@ namespace Advent.Entities
                 isMoving = false;
             }
             anim.SetBool("isMoving", isMoving);
+
+            if (isOnDoor)
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    isOnDoor = false;
+                    SceneManager.LoadScene(0);
+                }
+            }
         }
 
         public int GetAvailablePoints()
@@ -113,8 +132,13 @@ namespace Advent.Entities
         {
             if (collision.CompareTag("Exit"))
             {
-                Debug.Log("Exit to next floor"); //TODO Add function on Exit
+                Debug.Log("On Door");
+                isOnDoor = true;
             }
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            isOnDoor = false;  
         }
     }
 }

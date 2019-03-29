@@ -29,6 +29,9 @@ MonoBehaviour:
   enemyCount:
     m_Min: 5
     m_Max: 10
+  chestCount:
+    m_Min: 3
+    m_Max: 5
   floorTiles:
   - {fileID: 6089344682907256976, guid: 16ba4de45fe43d640b5960e4d534f5a8, type: 3}
   wallTiles:
@@ -37,3 +40,5 @@ MonoBehaviour:
   - {fileID: 5465602626480883003, guid: ad634a0811dbe8a4cbd9cc3b9f2d629f, type: 3}
   enemies:
   - {fileID: 1945895348890335813, guid: 85f3cdb51ac327f498e4885d96622c62, type: 3}
+  chests:
+  - {fileID: 254484702860795624, guid: f64facbc56d59da41a13e6b8d3e6b75b, type: 3}

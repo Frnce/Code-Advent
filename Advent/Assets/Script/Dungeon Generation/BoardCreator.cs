@@ -13,10 +13,7 @@ namespace Advent.Dungeons
             WALL,
             FLOOR,
         }
-        public GameObject nextLevelObject;
-        public GameObject[] chest;
-
-        [SerializeField]
+        private GameObject nextLevelObject;
         private BoardParameters boardParameters = null;
         private TileType[][] tiles;
         private Room[] rooms;
@@ -25,11 +22,16 @@ namespace Advent.Dungeons
         private GameObject enemyHolder;
 
         // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
-            boardHolder = new GameObject("BoardHolder");
-            enemyHolder = new GameObject("EnemyHolder");
+        }
+        public void SetupBoard(BoardParameters thisBoardParameters,GameObject door)
+        {
+            boardHolder = new GameObject("Board Holder");
+            enemyHolder = new GameObject("Enemy Holder");
 
+            boardParameters = thisBoardParameters;
+            nextLevelObject = door;
             SetupTilesArray();
             CreateRoomsAndCorridors();
 
@@ -198,7 +200,7 @@ namespace Advent.Dungeons
             }
             for (int i = 0; i < chestWidthPosition.Count; i++)
             {
-                InstantiateFromArray(chest, chestWidthPosition[i], chestHeightPosition[i]);
+                InstantiateFromArray(boardParameters.chests, chestWidthPosition[i], chestHeightPosition[i]);
             }
         }
         private void InstantiateNextLevelObject()

@@ -27,5 +27,4 @@ namespace Advent
             Destroy(gameObject);
         }
     }
-
 }

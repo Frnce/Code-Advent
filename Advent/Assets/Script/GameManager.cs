@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Entities;
+using Advent.Dungeons;
 
 namespace Advent
 {
@@ -13,24 +14,37 @@ namespace Advent
 
         private List<Enemy> enemies;
         private bool enemiesMoving;
+        [SerializeField]
+        private BoardParameters boardParameters = null;
+        public GameObject nextLevelObject;
         private void Awake()
         {
             if (instance == null)
             {
                 instance = this;
             }
+            else
+            {
+                Destroy(gameObject);
+            }
+
+            DontDestroyOnLoad(gameObject);
 
             enemies = new List<Enemy>();
+        }
+        private void OnLevelWasLoaded(int level)
+        {
             InitGame();
         }
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-
+            InitGame();
         }
         void InitGame()
         {
             enemies.Clear();
+            BoardCreator board = GetComponent<BoardCreator>();
+            board.SetupBoard(boardParameters,nextLevelObject);
         }
 
         // Update is called once per frame
