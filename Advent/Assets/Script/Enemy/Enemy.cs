@@ -46,8 +46,16 @@ namespace Advent.Entities
         protected override void OnCantMove<T>(T component)
         {
             Player hitPlayer = component as Player;
+            ChestScript chest = component as ChestScript;
 
-            hitPlayer.DamageEntity(hitPlayer.name,attack.GetValue());
+            if(component == hitPlayer)
+            {
+                hitPlayer.DamageEntity(hitPlayer.name, attack.GetValue());
+            }
+            if(component == chest)
+            {
+                return;
+            }
             //hitPlayer.LoseFood(playerDamage);
 
             ////Set the attack trigger of animator to trigger Enemy attack animation.

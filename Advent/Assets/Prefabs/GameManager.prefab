@@ -76,7 +76,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnDelay: 0.1
   playersTurn: 1
-  boardParameters: {fileID: 11400000, guid: 40fc14d1331b3b2409425630417e9bd1, type: 2}
+  boardParameters:
+  - {fileID: 11400000, guid: 40fc14d1331b3b2409425630417e9bd1, type: 2}
+  - {fileID: 11400000, guid: 427c4d2b720193d4787896a29d8d7c5d, type: 2}
+  - {fileID: 11400000, guid: 7ab6317950cc3514494b7ee24b951298, type: 2}
+  - {fileID: 11400000, guid: c5ee7ca5fb8ee764085a685bb9dd76de, type: 2}
   nextLevelObject: {fileID: 5953908501794941634, guid: 2da9a00799bc4a441a3909416ae775d9,
     type: 3}
 --- !u!114 &5026057843306073335

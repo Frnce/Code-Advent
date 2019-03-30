@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 270340496503719378}
   - component: {fileID: 254484702860795626}
   - component: {fileID: 254484702860795625}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Chest
   m_TagString: Chest
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 254484704264622194}
   - component: {fileID: 254484704264622195}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: SpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1945895348796954173}
   - component: {fileID: 1945895348796954172}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: SpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 1945895348890335815}
   - component: {fileID: 617443813}
   - component: {fileID: 2729145489528992952}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Skeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ MonoBehaviour:
   moveTime: 0.1
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1792
   entity: {fileID: 11400000, guid: 01024d0d07cac04439f5ddfe57fb027c, type: 2}
   attack:
     baseValue: 1

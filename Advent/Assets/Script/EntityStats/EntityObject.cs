@@ -103,7 +103,9 @@ namespace Advent.Entities
                 yield return null;
             }
         }
-        protected virtual void AttemptMove<Enemy,Chest>(int xDir, int yDir) where Enemy : Component where Chest : Component
+        protected virtual void AttemptMove<Enemy,Chest>(int xDir, int yDir)
+            where Enemy : Component
+            where Chest : Component
         {
             RaycastHit2D hit;
             canMove = Move(xDir, yDir, out hit);

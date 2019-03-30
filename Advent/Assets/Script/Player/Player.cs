@@ -70,7 +70,7 @@ namespace Advent.Entities
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     isOnDoor = false;
-                    gameManager.ReloadScene();
+                    gameManager.GoToNextLevel();
                 }
             }
         }

@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Items
   - Chest
+  - Exit
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - 
   - 
   - BlockingLayer
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Objects
   - 
   - 
   - 

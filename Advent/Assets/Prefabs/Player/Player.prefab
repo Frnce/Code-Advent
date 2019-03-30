@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1258871743082701180}
   - component: {fileID: 6690295380269020047}
   - component: {fileID: 4970410645368045266}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   moveTime: 0.1
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 3328
   entity: {fileID: 11400000, guid: 5347c5438667e1f43bdb9a10aeb983a0, type: 2}
   attack:
     baseValue: 1
@@ -140,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4861936648763487794}
   - component: {fileID: 5469610974139939813}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
