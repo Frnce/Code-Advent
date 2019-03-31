@@ -10,8 +10,10 @@ namespace Advent.Dungeons
     {
         public enum TileType
         {
-            WALL,
+            BOUNDARY,
             FLOOR,
+            VERTICALWALL,
+            HORIZONTALWALL,
         }
         private GameObject nextLevelObject;
         private BoardParameters boardParameters = null;
@@ -37,6 +39,14 @@ namespace Advent.Dungeons
 
             SetTilesValuesForRooms();
             SetTilesValluesForCorridors();
+
+            SetTilesValuesForRoomWallLeft();
+            SetTilesValuesForRoomWallRight();
+
+            SetTilesValuesForRoomWallTop();
+            SetTilesValuesForRoomWallBottom();
+
+            SetTilesValluesForCorridorWalls();
 
             InstantiateTiles();
             InstantiateOuterWalls();
@@ -90,6 +100,12 @@ namespace Advent.Dungeons
                     corridors[i].SetupCorridor(rooms[i], boardParameters.corridorLength, boardParameters.roomWidth, boardParameters.roomHeight, boardParameters.columns, boardParameters.rows, false);
                 }
             }
+
+            //debug
+            for (int i = 0; i < rooms.Length; i++)
+            {
+                Debug.Log("Room Number :" + i + " Width : "+ rooms[i].roomWidth+ " Height :" + rooms[i].roomHeight);
+            }
         }
         private void SetTilesValuesForRooms()
         {
@@ -106,6 +122,70 @@ namespace Advent.Dungeons
                         int yCoordinate = currentRoom.yPosition + k;
 
                         tiles[xCoordinate][yCoordinate] = TileType.FLOOR;
+                    }
+                }
+            }
+        }
+        private void SetTilesValuesForRoomWallLeft()
+        {
+            for (int i = 0; i < rooms.Length; i++)
+            {
+                Room currentRoom = rooms[i];
+                int xCoordinate = currentRoom.xPosition - 1;
+                for (int k = 0; k < currentRoom.roomHeight; k++)
+                {
+                    int yCoordinate = currentRoom.yPosition + k;
+                    if(tiles[xCoordinate][yCoordinate] == TileType.BOUNDARY)
+                    {
+                        tiles[xCoordinate][yCoordinate] = TileType.VERTICALWALL;
+                    }
+                }
+            }
+        }
+        private void SetTilesValuesForRoomWallRight()
+        {
+            for (int i = 0; i < rooms.Length; i++)
+            {
+                Room currentRoom = rooms[i];
+                int xCoordinate = currentRoom.xPosition + currentRoom.roomWidth;
+                for (int k = 0; k < currentRoom.roomHeight; k++)
+                {
+                    int yCoordinate = currentRoom.yPosition + k;
+                    if (tiles[xCoordinate][yCoordinate] == TileType.BOUNDARY)
+                    {
+                        tiles[xCoordinate][yCoordinate] = TileType.VERTICALWALL;
+                    }
+                }
+            }
+        }
+        private void SetTilesValuesForRoomWallTop()
+        {
+            for (int i = 0; i < rooms.Length; i++)
+            {
+                Room currentRoom = rooms[i];
+                int yCoordinate = currentRoom.yPosition + currentRoom.roomHeight;
+                for (int k = 0; k < currentRoom.roomWidth; k++)
+                {
+                    int xCoordinate = currentRoom.xPosition + k;
+                    if (tiles[xCoordinate][yCoordinate] == TileType.BOUNDARY)
+                    {
+                        tiles[xCoordinate][yCoordinate] = TileType.HORIZONTALWALL;
+                    }
+                }
+            }
+        }
+        private void SetTilesValuesForRoomWallBottom()
+        {
+            for (int i = 0; i < rooms.Length; i++)
+            {
+                Room currentRoom = rooms[i];
+                int yCoordinate = currentRoom.yPosition - 1;
+                for (int k = 0; k < currentRoom.roomWidth; k++)
+                {
+                    int xCoordinate = currentRoom.xPosition + k;
+                    if (tiles[xCoordinate][yCoordinate] == TileType.BOUNDARY)
+                    {
+                        tiles[xCoordinate][yCoordinate] = TileType.HORIZONTALWALL;
                     }
                 }
             }
@@ -141,16 +221,73 @@ namespace Advent.Dungeons
                 }
             }
         }
+        private void SetTilesValluesForCorridorWalls()
+        {
+            for (int i = 0; i < corridors.Length; i++)
+            {
+                Corridor currentCorridor = corridors[i];
+
+                for (int j = 0; j < currentCorridor.corridorLength; j++)
+                {
+                    int xCoordinate = currentCorridor.startXPosition;
+                    int yCoordinate = currentCorridor.startYPosition;
+
+                    switch (currentCorridor.direction)
+                    {
+                        case Direction.NORTH:
+                            yCoordinate += j;
+                            break;
+                        case Direction.EAST:
+                            xCoordinate += j;
+                            break;
+                        case Direction.SOUTH:
+                            yCoordinate -= j;
+                            break;
+                        case Direction.WEST:
+                            xCoordinate -= j;
+                            break;
+                    }
+                    if (tiles[xCoordinate + 1][yCoordinate + 1] == TileType.BOUNDARY &&(currentCorridor.direction == Direction.NORTH || currentCorridor.direction == Direction.SOUTH))
+                    {
+                        tiles[xCoordinate + 1][yCoordinate + 1] = TileType.VERTICALWALL;
+                    }
+                    if (tiles[xCoordinate - 1][yCoordinate - 1] == TileType.BOUNDARY && (currentCorridor.direction == Direction.NORTH || currentCorridor.direction == Direction.SOUTH))
+                    {
+                        tiles[xCoordinate - 1][yCoordinate - 1] = TileType.VERTICALWALL;
+                    }
+
+                    if (tiles[xCoordinate + 1][yCoordinate + 1] == TileType.BOUNDARY && (currentCorridor.direction == Direction.EAST || currentCorridor.direction == Direction.WEST))
+                    {
+                        tiles[xCoordinate + 1][yCoordinate + 1] = TileType.HORIZONTALWALL;
+                    }
+                    if (tiles[xCoordinate - 1][yCoordinate - 1] == TileType.BOUNDARY && (currentCorridor.direction == Direction.EAST || currentCorridor.direction == Direction.WEST))
+                    {
+                        tiles[xCoordinate - 1][yCoordinate - 1] = TileType.HORIZONTALWALL;
+                    }
+                }
+            }
+        }
         private void InstantiateTiles()
         {
             for (int i = 0; i < tiles.Length; i++)
             {
                 for (int j = 0; j < tiles[i].Length; j++)
                 {
-                    InstantiateFromArray(boardParameters.floorTiles, i, j);
-                    if (tiles[i][j] == TileType.WALL)
+                    if (tiles[i][j] == TileType.BOUNDARY)
                     {
                         InstantiateFromArray(boardParameters.wallTiles, i, j);
+                    }
+                    else if(tiles[i][j] == TileType.VERTICALWALL)
+                    {
+                        InstantiateFromArray(boardParameters.outerVerticalWallTiles, i, j);
+                    }
+                    else if(tiles[i][j] == TileType.HORIZONTALWALL)
+                    {
+                        InstantiateFromArray(boardParameters.outerHorizontalWallTiles, i, j);
+                    }
+                    else if(tiles[i][j] == TileType.FLOOR)
+                    {
+                        InstantiateFromArray(boardParameters.floorTiles, i, j);
                     }
                 }
             }
@@ -216,7 +353,7 @@ namespace Advent.Dungeons
             float currentY = startingY;
             while(currentY <= endingY)
             {
-                InstantiateFromArray(boardParameters.outerWallTiles, xCoordinate, currentY);
+                InstantiateFromArray(boardParameters.outerVerticalWallTiles, xCoordinate, currentY);
                 currentY++;
             }
         }
@@ -225,7 +362,7 @@ namespace Advent.Dungeons
             float currentX = startingX;
             while(currentX <= endingX)
             {
-                InstantiateFromArray(boardParameters.outerWallTiles, currentX, yCoord);
+                InstantiateFromArray(boardParameters.outerHorizontalWallTiles, currentX, yCoord);
                 currentX++;
             }
         }

@@ -25,6 +25,7 @@ namespace Advent.Entities
         private Animator anim;
         private int availablePoints = 0;
         private bool isOnDoor = false;
+        private bool isFacingRight = false;
 
         protected override void Start()
         {
@@ -57,13 +58,19 @@ namespace Advent.Entities
             {
                 AttemptMove<Enemy,ChestScript>(horizontal, vertical);
                 //AttemptMove<ChestScript>(horizontal, vertical);
-                isMoving = true;
+            }
+            if(horizontal > 0 && !isFacingRight)
+            {
+                Flip();
+            }
+            else if(horizontal < 0 && isFacingRight)
+            {
+                Flip();
             }
             else
             {
                 isMoving = false;
             }
-            anim.SetBool("isMoving", isMoving);
 
             if (isOnDoor)
             {
@@ -95,6 +102,7 @@ namespace Advent.Entities
             anim.SetFloat("yMove", yDir);
             if (canMove)
             {
+                anim.SetTrigger("Move");
                 //Call RandomizeSfx of SoundManager to play the move sound, passing in two audio clips to choose from.
             }
             gameManager.playersTurn = false;
@@ -104,8 +112,8 @@ namespace Advent.Entities
             isMoving = false;
             Enemy hitEnemy = component as Enemy;
             ChestScript chest = component as ChestScript;
-
-            if(component == hitEnemy)
+            anim.SetTrigger("Attack");
+            if (component == hitEnemy)
             {
                 hitEnemy.DamageEntity(hitEnemy.name, attack.GetValue());
             }
@@ -126,7 +134,15 @@ namespace Advent.Entities
             base.Die();
             gameObject.SetActive(false);
         }
+        private void Flip()
+        {
+            isFacingRight = !isFacingRight;
 
+            //GetChild 0 is the sprite renderer Gameobject
+            Vector3 theScale = transform.GetChild(0).localScale;
+            theScale.x *= -1;
+            transform.GetChild(0).localScale = theScale;
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Exit"))

@@ -17,7 +17,7 @@ namespace Advent
         private int level = 0;
         private int maxLevel = 0;
         [SerializeField]
-        private BoardParameters[] boardParameters = null;
+        private BoardLevels boardLevel = null;
         public GameObject nextLevelObject;
         private void OnEnable()
         {
@@ -54,7 +54,7 @@ namespace Advent
             DontDestroyOnLoad(gameObject);
 
             enemies = new List<Enemy>();
-            maxLevel = boardParameters.Length -1;
+            maxLevel = boardLevel.boardParameters.Length -1;
         }
         private void Start()
         {
@@ -64,7 +64,7 @@ namespace Advent
         {
             enemies.Clear();
             BoardCreator board = GetComponent<BoardCreator>();
-            board.SetupBoard(boardParameters[level],nextLevelObject);
+            board.SetupBoard(boardLevel.boardParameters[level],nextLevelObject);
             level++;
         }
 

@@ -35,9 +35,11 @@ MonoBehaviour:
   floorTiles:
   - {fileID: 6089344682907256976, guid: 16ba4de45fe43d640b5960e4d534f5a8, type: 3}
   wallTiles:
-  - {fileID: 5465602626480883003, guid: ad634a0811dbe8a4cbd9cc3b9f2d629f, type: 3}
-  outerWallTiles:
-  - {fileID: 5465602626480883003, guid: ad634a0811dbe8a4cbd9cc3b9f2d629f, type: 3}
+  - {fileID: 3149980321514589918, guid: 1ae5262d09d29344cb8c52ac440653c3, type: 3}
+  outerHorizontalWallTiles:
+  - {fileID: 3714628266347524079, guid: abe003e1fd5a32f46be4e931cb053b87, type: 3}
+  outerVerticalWallTiles:
+  - {fileID: 4915243568045617568, guid: 161aa09d2f0e1a847b9c9459bff4386a, type: 3}
   enemies:
   - {fileID: 1945895348890335813, guid: 85f3cdb51ac327f498e4885d96622c62, type: 3}
   chests:

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5953908501794941632}
   - component: {fileID: 5953908501794941633}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Stairs
   m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,10 +92,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1439889715
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e21d1a6b4efc48d4abb4d9b96dfb5bc9, type: 3}
+  m_Sprite: {fileID: 21300058, guid: c7c1fcbcfa6f80c4cbb7403807fe8a85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

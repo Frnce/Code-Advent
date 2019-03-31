@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Advent.Dungeons
 {
-    [CreateAssetMenu(fileName = "New Board", menuName = "Dungeonboard")]
+    [CreateAssetMenu(fileName = "New Board", menuName = "Dungeon/board parameters")]
     public class BoardParameters : ScriptableObject
     {
         public int columns = 100;
@@ -17,7 +17,8 @@ namespace Advent.Dungeons
         public IntRange chestCount = new IntRange(3, 5);
         public GameObject[] floorTiles;
         public GameObject[] wallTiles;
-        public GameObject[] outerWallTiles;
+        public GameObject[] outerHorizontalWallTiles;
+        public GameObject[] outerVerticalWallTiles;
         public GameObject[] enemies;
         public GameObject[] chests;
     }
