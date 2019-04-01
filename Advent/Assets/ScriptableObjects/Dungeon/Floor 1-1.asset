@@ -12,34 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78ec78fc7c76d54ea0d4fec8de02926, type: 3}
   m_Name: Floor 1-1
   m_EditorClassIdentifier: 
-  columns: 50
-  rows: 50
-  numOfRooms:
-    m_Min: 3
-    m_Max: 5
-  roomWidth:
-    m_Min: 3
-    m_Max: 7
-  roomHeight:
-    m_Min: 3
-    m_Max: 7
-  corridorLength:
-    m_Min: 6
-    m_Max: 10
   enemyCount:
     m_Min: 1
     m_Max: 5
   chestCount:
     m_Min: 1
     m_Max: 2
-  floorTiles:
-  - {fileID: 6089344682907256976, guid: 16ba4de45fe43d640b5960e4d534f5a8, type: 3}
-  wallTiles:
-  - {fileID: 3149980321514589918, guid: 1ae5262d09d29344cb8c52ac440653c3, type: 3}
-  outerHorizontalWallTiles:
-  - {fileID: 3714628266347524079, guid: abe003e1fd5a32f46be4e931cb053b87, type: 3}
-  outerVerticalWallTiles:
-  - {fileID: 4915243568045617568, guid: 161aa09d2f0e1a847b9c9459bff4386a, type: 3}
+  groundTile:
+  - {fileID: 11400000, guid: 42a8fb1d9eca09348955acb8d0f4e023, type: 2}
+  - {fileID: 11400000, guid: f8d4db9d8c58c6640b15d1e9666e1078, type: 2}
+  pitTile:
+  - {fileID: 11400000, guid: c5238195a9dc322468f6221e4de8b8d2, type: 2}
+  topWallTile:
+  - {fileID: 11400000, guid: a47cef2cb3e044a4baf67f817873b8a1, type: 2}
+  botWallTile:
+  - {fileID: 11400000, guid: c5238195a9dc322468f6221e4de8b8d2, type: 2}
+  deviationRate:
+    m_Min: 10
+    m_Max: 15
+  roomRate:
+    m_Min: 15
+    m_Max: 25
+  maxRouteLength:
+    m_Min: 100
+    m_Max: 150
+  maxRoutes:
+    m_Min: 20
+    m_Max: 25
   enemies:
   - {fileID: 1945895348890335813, guid: 85f3cdb51ac327f498e4885d96622c62, type: 3}
   chests:

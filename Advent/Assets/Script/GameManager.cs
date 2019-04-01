@@ -16,8 +16,6 @@ namespace Advent
         private bool enemiesMoving;
         private int level = 0;
         private int maxLevel = 0;
-        [SerializeField]
-        private BoardLevels boardLevel = null;
         public GameObject nextLevelObject;
         private void OnEnable()
         {
@@ -54,7 +52,6 @@ namespace Advent
             DontDestroyOnLoad(gameObject);
 
             enemies = new List<Enemy>();
-            maxLevel = boardLevel.boardParameters.Length -1;
         }
         private void Start()
         {
@@ -63,9 +60,7 @@ namespace Advent
         void InitGame()
         {
             enemies.Clear();
-            BoardCreator board = GetComponent<BoardCreator>();
-            board.SetupBoard(boardLevel.boardParameters[level],nextLevelObject);
-            level++;
+            //level++;
         }
 
         // Update is called once per frame

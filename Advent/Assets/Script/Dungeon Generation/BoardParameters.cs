@@ -1,24 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Advent.Dungeons
 {
     [CreateAssetMenu(fileName = "New Board", menuName = "Dungeon/board parameters")]
     public class BoardParameters : ScriptableObject
     {
-        public int columns = 100;
-        public int rows = 100;
-        public IntRange numOfRooms = new IntRange(15, 20);
-        public IntRange roomWidth = new IntRange(3, 10);
-        public IntRange roomHeight = new IntRange(3, 10);
-        public IntRange corridorLength = new IntRange(6, 10);
         public IntRange enemyCount = new IntRange(0, 10);
         public IntRange chestCount = new IntRange(3, 5);
-        public GameObject[] floorTiles;
-        public GameObject[] wallTiles;
-        public GameObject[] outerHorizontalWallTiles;
-        public GameObject[] outerVerticalWallTiles;
+        public Tile[] groundTile = null;
+        public Tile[] pitTile = null;
+        public Tile[] topWallTile = null;
+        public Tile[] botWallTile = null;
+        public IntRange deviationRate = new IntRange(10,15);
+        public IntRange roomRate = new IntRange(10,15);
+        public IntRange maxRouteLength = new IntRange(100, 150);
+        public IntRange maxRoutes = new IntRange(20, 25);
         public GameObject[] enemies;
         public GameObject[] chests;
     }
