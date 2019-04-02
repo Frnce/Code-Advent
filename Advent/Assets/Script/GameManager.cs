@@ -17,6 +17,7 @@ namespace Advent
         private int level = 0;
         private int maxLevel = 0;
         public GameObject nextLevelObject;
+        public int turns = 0;
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;

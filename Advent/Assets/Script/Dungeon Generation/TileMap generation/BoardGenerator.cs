@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Advent.Entities;
+using Advent.Utilities;
 
 namespace Advent.Dungeons
 {
     public class BoardGenerator : MonoBehaviour
     {
         [SerializeField]
-        private BoardParameters boardParameters;
+        private BoardParameters boardParameters = null;
         [SerializeField]
         private Tilemap groundMap = null;
         [SerializeField]
@@ -25,6 +26,7 @@ namespace Advent.Dungeons
         {
             player = Player.instance;
             SetupBoard();
+            GameTiles.instance.GetWorldTiles();
         }
         public void SetupBoard()
         {

@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
+using Advent.Utilities;
 
 namespace Advent.Entities
 {
@@ -20,12 +21,14 @@ namespace Advent.Entities
             }
             DontDestroyOnLoad(gameObject);
         }
+        public Vector2 currentTilePosition;
         GameManager gameManager;
-        private bool isMoving = false;
+        private bool isMoving;
         private Animator anim;
         private int availablePoints = 0;
         private bool isOnDoor = false;
         private bool isFacingRight = false;
+        private WorldTile currentTile;
 
         protected override void Start()
         {
@@ -103,6 +106,8 @@ namespace Advent.Entities
             if (canMove)
             {
                 anim.SetTrigger("Move");
+                gameManager.turns++;
+                GetTilePosition();
                 //Call RandomizeSfx of SoundManager to play the move sound, passing in two audio clips to choose from.
             }
             gameManager.playersTurn = false;
@@ -120,6 +125,18 @@ namespace Advent.Entities
             if(component == chest)
             {
                 chest.OpenChest();
+            }
+        }
+        private void GetTilePosition()
+        {
+            Vector3 point = transform.position;
+            var worldPoint = new Vector3Int(Mathf.FloorToInt(point.x), Mathf.FloorToInt(point.y), 0);
+
+            var tiles = GameTiles.instance.tiles; // This is our Dictionary of tiles
+
+            if (tiles.TryGetValue(worldPoint, out currentTile))
+            {
+                Debug.Log("Tile " + currentTile.Name + " Position: X: " + currentTile.LocalPlace.x + " Y: " + currentTile.LocalPlace.y);
             }
         }
         private void CheckIfGameOver()
