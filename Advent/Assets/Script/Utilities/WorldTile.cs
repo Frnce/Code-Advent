@@ -23,5 +23,12 @@ namespace Advent.Utilities
         public WorldTile ExploredFrom { get; set; }
 
         public int Cost { get; set; }
+        
+        public TileStatus tileStatus { get; set; }
+    }
+    public enum TileStatus
+    {
+        OCCUPIED,
+        EMPTY
     }
 }

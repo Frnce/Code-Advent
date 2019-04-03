@@ -21,7 +21,6 @@ namespace Advent.Entities
             }
             DontDestroyOnLoad(gameObject);
         }
-        public Vector2 currentTilePosition;
         GameManager gameManager;
         private bool isMoving;
         private Animator anim;
@@ -136,7 +135,8 @@ namespace Advent.Entities
 
             if (tiles.TryGetValue(worldPoint, out currentTile))
             {
-                Debug.Log("Tile " + currentTile.Name + " Position: X: " + currentTile.LocalPlace.x + " Y: " + currentTile.LocalPlace.y);
+                currentTile.tileStatus = TileStatus.OCCUPIED;
+                Debug.Log("Tile " + currentTile.Name + " Position: X: " + currentTile.LocalPlace.x + " Y: " + currentTile.LocalPlace.y + " Status :" + currentTile.tileStatus);
             }
         }
         private void CheckIfGameOver()

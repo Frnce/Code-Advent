@@ -42,7 +42,8 @@ namespace Advent.Utilities
                     TileBase = Tilemap.GetTile(localPlace),
                     TilemapMember = Tilemap,
                     Name = localPlace.x + "," + localPlace.y,
-                    Cost = 1
+                    Cost = 1,
+                    tileStatus = TileStatus.EMPTY
                 };
                 tiles.Add(tile.WorldLocation, tile);
             }
