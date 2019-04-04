@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Advent.Entities;
 
 namespace Advent.Utilities
 {
@@ -12,8 +13,13 @@ namespace Advent.Utilities
         public Tilemap tilemap;
 
         public Dictionary<Vector3, WorldTile> tiles;
-        public delegate void OnTileStatusChange();
+        public delegate void OnTileStatusChange(TileStatus status);
         public OnTileStatusChange onTileChange;
+
+        private WorldTile currentTile;
+        private WorldTile pastTile;
+        private Vector3Int tileLocation;
+        private Vector3Int pastTileLocation;
 
         private void Awake()
         {
@@ -28,7 +34,13 @@ namespace Advent.Utilities
         }
         private void Start()
         {
-            onTileChange += SeekTileStatus;
+            onTileChange += GetEntityLocation;
+        }
+        public void GetEntityLocation(TileStatus status)
+        {
+            StartCoroutine(EnterNewTile(status));
+            pastTileLocation = tileLocation;
+            StartCoroutine(ExitTile(TileStatus.EMPTY));
         }
         public void SeekTileStatus()
         {
@@ -76,6 +88,33 @@ namespace Advent.Utilities
         public void SetTileStatus(WorldTile currentTile,TileStatus status)
         {
             currentTile.tileStatus = status;
+        }
+        IEnumerator EnterNewTile(TileStatus status)
+        {
+            yield return new WaitForSeconds(GameManager.instance.turnDelay);
+            Vector3 point = Player.instance.transform.position;
+            var worldPoint = new Vector3Int(Mathf.FloorToInt(point.x), Mathf.FloorToInt(point.y), 0);
+
+            var newTile = tiles; // This is our Dictionary of tiles
+            if (newTile.TryGetValue(worldPoint, out currentTile))
+            {
+                tileLocation = currentTile.LocalPlace;
+                currentTile.tileStatus = status;
+                SeekTileStatus();
+            }
+        }
+        IEnumerator ExitTile(TileStatus status)
+        {
+            yield return new WaitForSeconds(GameManager.instance.turnDelay);
+            Vector3 point = pastTileLocation;
+            var worldPoint = new Vector3Int(Mathf.FloorToInt(point.x), Mathf.FloorToInt(point.y), 0);
+
+            var tiles = GameTiles.instance.tiles; // This is our Dictionary of tiles
+            if (tiles.TryGetValue(worldPoint, out currentTile))
+            {
+                currentTile.tileStatus = status;
+                SeekTileStatus();
+            }
         }
     }
 }
