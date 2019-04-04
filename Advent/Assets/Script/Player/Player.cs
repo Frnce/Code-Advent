@@ -21,13 +21,16 @@ namespace Advent.Entities
             }
             DontDestroyOnLoad(gameObject);
         }
+        public GameObject selector;
+        [SerializeField]
+        private Tilemap gridViewer = null;
         GameManager gameManager;
-        private bool isMoving;
+        private bool isMoving = true;
+        private bool isSelectionMode = false;
         private Animator anim;
         private int availablePoints = 0;
         private bool isOnDoor = false;
         private bool isFacingRight = false;
-        private WorldTile currentTile;
 
         protected override void Start()
         {
@@ -35,10 +38,6 @@ namespace Advent.Entities
             anim = GetComponent<Animator>();
             base.Start();
         }
-        private void OnDisable()
-        {
-            //gameManager.playerFoodPoints = food;
-        }   
         private void Update()
         {
             if (!gameManager.playersTurn)
@@ -46,15 +45,28 @@ namespace Advent.Entities
                 return;
             }
 
+            if (Input.GetKeyDown(KeyCode.T) && isSelectionMode == false)
+            {
+                isSelectionMode = true;
+                selector.SetActive(true);
+                gridViewer.gameObject.SetActive(true);
+                Debug.Log(isSelectionMode);
+            }
+            else if(Input.GetKeyDown(KeyCode.T) && isSelectionMode == true)
+            {
+                isSelectionMode = false;
+                selector.SetActive(false);
+                gridViewer.gameObject.SetActive(false);
+                Debug.Log(isSelectionMode);
+            }
+
             int horizontal = 0;
             int vertical = 0;
 
-            horizontal = (int)Input.GetAxisRaw("Horizontal");
-            vertical = (int)Input.GetAxisRaw("Vertical");
-
-            if (horizontal != 0)
+            if (!isSelectionMode)
             {
-                vertical = 0;
+                horizontal = (int)Input.GetAxisRaw("Horizontal");
+                vertical = (int)Input.GetAxisRaw("Vertical");
             }
             if (horizontal != 0 || vertical != 0)
             {
@@ -104,6 +116,7 @@ namespace Advent.Entities
             anim.SetFloat("yMove", yDir);
             if (canMove)
             {
+                isMoving = true;
                 anim.SetTrigger("Move");
                 gameManager.turns++;
                 //Call RandomizeSfx of SoundManager to play the move sound, passing in two audio clips to choose from.
@@ -125,19 +138,6 @@ namespace Advent.Entities
                 chest.OpenChest();
             }
         }
-        //private void GetTilePosition()
-        //{
-        //    Vector3 point = transform.position;
-        //    var worldPoint = new Vector3Int(Mathf.FloorToInt(point.x), Mathf.FloorToInt(point.y), 0);
-
-        //    var tiles = GameTiles.instance.tiles; // This is our Dictionary of tiles
-
-        //    if (tiles.TryGetValue(worldPoint, out currentTile))
-        //    {
-        //        currentTile.tileStatus = TileStatus.OCCUPIED;
-        //        Debug.Log("Tile " + currentTile.Name + " Position: X: " + currentTile.LocalPlace.x + " Y: " + currentTile.LocalPlace.y + " Status :" + currentTile.tileStatus);
-        //    }
-        //}
         private void CheckIfGameOver()
         {
             if(currentHealth <= 0)
@@ -171,5 +171,6 @@ namespace Advent.Entities
         {
             isOnDoor = false;  
         }
+        public bool GetIsSelectionMode(){return isSelectionMode;}
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Items
   - Chest
   - Exit
+  - Indicator
   layers:
   - Default
   - TransparentFX

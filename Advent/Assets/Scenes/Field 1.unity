@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf90ed6893f89843bf7342d90cb7d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selector: {fileID: 1355022658}
 --- !u!1 &368313000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,8 +1231,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4970410645368045266, guid: 9650f574fcbd7b6428043e083d7a4902,
+        type: 3}
+      propertyPath: gridViewer
+      value: 
+      objectReference: {fileID: 1584886598}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9650f574fcbd7b6428043e083d7a4902, type: 3}
+--- !u!4 &1355022658 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1355022658, guid: 9650f574fcbd7b6428043e083d7a4902,
+    type: 3}
+  m_PrefabInstance: {fileID: 1299200594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1408616556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,13 +1335,14 @@ GameObject:
   - component: {fileID: 1584886600}
   - component: {fileID: 1584886598}
   - component: {fileID: 1584886599}
+  - component: {fileID: 1584886601}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: GridDataViewer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1839735485 &1584886598
 Tilemap:
   m_ObjectHideFlags: 0
@@ -1426,6 +1439,19 @@ Transform:
   m_Father: {fileID: 1408616559}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1584886601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584886597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6c12ef3536941469332cd1a858fce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 1584886598}
 --- !u!1001 &1901399078
 PrefabInstance:
   m_ObjectHideFlags: 0
