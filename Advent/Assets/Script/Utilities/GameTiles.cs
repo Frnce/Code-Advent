@@ -13,7 +13,6 @@ namespace Advent.Utilities
 
         public Dictionary<Vector3, WorldTile> tiles;
 <<<<<<< HEAD
-<<<<<<< HEAD
         public delegate void OnTileStatusChange(TileStatus status);
         public OnTileStatusChange onTileChange;
 =======
@@ -23,8 +22,6 @@ namespace Advent.Utilities
         private WorldTile pastTile;
         private Vector3Int tileLocation;
         private Vector3Int pastTileLocation;
-=======
->>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
 
         private void Awake()
         {
@@ -37,7 +34,6 @@ namespace Advent.Utilities
                 Destroy(gameObject);
             }
         }
-<<<<<<< HEAD
 <<<<<<< HEAD
         private void Start()
         {
@@ -71,9 +67,6 @@ namespace Advent.Utilities
 =======
 
 >>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
-=======
-
->>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
         public void GetWorldTiles()
         {
             tiles = new Dictionary<Vector3, WorldTile>();
@@ -98,7 +91,6 @@ namespace Advent.Utilities
                 tiles.Add(tile.WorldLocation, tile);
             }
         }
-<<<<<<< HEAD
 <<<<<<< HEAD
         public void SetTileStatus(WorldTile currentTile,TileStatus status)
         {
@@ -131,8 +123,6 @@ namespace Advent.Utilities
                 SeekTileStatus();
             }
         }
-=======
->>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
 =======
 >>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
     }
