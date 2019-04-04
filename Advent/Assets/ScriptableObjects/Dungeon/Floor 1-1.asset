@@ -28,17 +28,17 @@ MonoBehaviour:
   botWallTile:
   - {fileID: 11400000, guid: c5238195a9dc322468f6221e4de8b8d2, type: 2}
   deviationRate:
-    m_Min: 25
-    m_Max: 50
-  roomRate:
-    m_Min: 4
-    m_Max: 6
-  maxRouteLength:
     m_Min: 10
-    m_Max: 10
+    m_Max: 15
+  roomRate:
+    m_Min: 15
+    m_Max: 25
+  maxRouteLength:
+    m_Min: 100
+    m_Max: 150
   maxRoutes:
-    m_Min: 5
-    m_Max: 10
+    m_Min: 20
+    m_Max: 25
   enemies:
   - {fileID: 1945895348890335813, guid: 85f3cdb51ac327f498e4885d96622c62, type: 3}
   chests:

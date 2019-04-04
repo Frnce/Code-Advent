@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -10,11 +9,14 @@ namespace Advent.Utilities
     public class GameTiles : MonoBehaviour
     {
         public static GameTiles instance;
-        public Tilemap tilemap;
+        public Tilemap Tilemap;
 
         public Dictionary<Vector3, WorldTile> tiles;
+<<<<<<< HEAD
         public delegate void OnTileStatusChange(TileStatus status);
         public OnTileStatusChange onTileChange;
+=======
+>>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
 
         private WorldTile currentTile;
         private WorldTile pastTile;
@@ -32,6 +34,7 @@ namespace Advent.Utilities
                 Destroy(gameObject);
             }
         }
+<<<<<<< HEAD
         private void Start()
         {
             onTileChange += GetEntityLocation;
@@ -61,23 +64,26 @@ namespace Advent.Utilities
                 }
             }
         }
+=======
+
+>>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
         public void GetWorldTiles()
         {
             tiles = new Dictionary<Vector3, WorldTile>();
-            foreach (Vector3Int pos in tilemap.cellBounds.allPositionsWithin)
+            foreach (Vector3Int pos in Tilemap.cellBounds.allPositionsWithin)
             {
                 var localPlace = new Vector3Int(pos.x, pos.y, pos.z);
 
-                if (!tilemap.HasTile(localPlace))
+                if (!Tilemap.HasTile(localPlace))
                 {
                     continue;
                 }
                 var tile = new WorldTile
                 {
                     LocalPlace = localPlace,
-                    WorldLocation = tilemap.CellToWorld(localPlace),
-                    TileBase = tilemap.GetTile(localPlace),
-                    TilemapMember = tilemap,
+                    WorldLocation = Tilemap.CellToWorld(localPlace),
+                    TileBase = Tilemap.GetTile(localPlace),
+                    TilemapMember = Tilemap,
                     Name = localPlace.x + "," + localPlace.y,
                     Cost = 1,
                     tileStatus = TileStatus.EMPTY
@@ -85,6 +91,7 @@ namespace Advent.Utilities
                 tiles.Add(tile.WorldLocation, tile);
             }
         }
+<<<<<<< HEAD
         public void SetTileStatus(WorldTile currentTile,TileStatus status)
         {
             currentTile.tileStatus = status;
@@ -116,5 +123,7 @@ namespace Advent.Utilities
                 SeekTileStatus();
             }
         }
+=======
+>>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
     }
 }

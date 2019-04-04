@@ -28,8 +28,7 @@ namespace Advent.Utilities
     }
     public enum TileStatus
     {
-        EMPTY,
-        PLAYER,
-        ENEMY
+        OCCUPIED,
+        EMPTY
     }
 }
