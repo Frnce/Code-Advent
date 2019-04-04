@@ -451,6 +451,7 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &853385154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1021,6 +1022,8 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e3b145af1ada847b4a77ce185f8822, type: 3}
 =======
+=======
+>>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
 --- !u!114 &638280028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1047,6 +1050,9 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+<<<<<<< HEAD
+>>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
+=======
 >>>>>>> parent of 7ca7620... Can Now follow the If a Tile is Occupied by the player
 --- !u!1 &888541077
 GameObject:
