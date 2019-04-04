@@ -27,15 +27,15 @@ namespace Advent.Utilities
                 StartCoroutine(EnterNewTile(TileStatus.PLAYER));
             }
         }
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                pastTileLocation = tileLocation;
-                Debug.Log("Exited");
-                StartCoroutine(ExitTile(TileStatus.EMPTY));
-            }
-        }
+        //private void OnTriggerExit2D(Collider2D collision)
+        //{
+        //    if (collision.CompareTag("Player"))
+        //    {
+        //        pastTileLocation = tileLocation;
+        //        Debug.Log("Exited");
+        //        StartCoroutine(ExitTile(TileStatus.EMPTY));
+        //    }
+        //}
         IEnumerator EnterNewTile(TileStatus status)
         {
             yield return new WaitForSeconds(GameManager.instance.turnDelay);
@@ -47,7 +47,6 @@ namespace Advent.Utilities
             {
                 tileLocation = currentTile.LocalPlace;
                 gameTiles.SetTileStatus(currentTile, status);
-                gameTiles.onTileChange.Invoke();
             }
         }
         IEnumerator ExitTile(TileStatus status)
@@ -60,7 +59,6 @@ namespace Advent.Utilities
             if (tiles.TryGetValue(worldPoint, out currentTile))
             {
                 gameTiles.SetTileStatus(currentTile, status);
-                gameTiles.onTileChange.Invoke();
             }
         }
     }

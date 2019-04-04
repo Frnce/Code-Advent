@@ -4,6 +4,8 @@ using UnityEngine;
 using Advent.Entities;
 using Advent.Dungeons;
 using UnityEngine.SceneManagement;
+using Advent.Utilities;
+
 namespace Advent
 {
     public class GameManager : MonoBehaviour
@@ -54,10 +56,6 @@ namespace Advent
 
             enemies = new List<Enemy>();
         }
-        private void Start()
-        {
-
-        }
         void InitGame()
         {
             enemies.Clear();
@@ -85,6 +83,10 @@ namespace Advent
         public void RemoveEnemyToList(Enemy enemy)
         {
             enemies.Remove(enemy);
+        }
+        public List<Enemy> GetEnemyList()
+        {
+            return enemies;
         }
         public void GameOver()
         {
