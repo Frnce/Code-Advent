@@ -106,7 +106,6 @@ namespace Advent.Entities
             {
                 anim.SetTrigger("Move");
                 gameManager.turns++;
-                GetTilePosition();
                 //Call RandomizeSfx of SoundManager to play the move sound, passing in two audio clips to choose from.
             }
             gameManager.playersTurn = false;
@@ -126,19 +125,19 @@ namespace Advent.Entities
                 chest.OpenChest();
             }
         }
-        private void GetTilePosition()
-        {
-            Vector3 point = transform.position;
-            var worldPoint = new Vector3Int(Mathf.FloorToInt(point.x), Mathf.FloorToInt(point.y), 0);
+        //private void GetTilePosition()
+        //{
+        //    Vector3 point = transform.position;
+        //    var worldPoint = new Vector3Int(Mathf.FloorToInt(point.x), Mathf.FloorToInt(point.y), 0);
 
-            var tiles = GameTiles.instance.tiles; // This is our Dictionary of tiles
+        //    var tiles = GameTiles.instance.tiles; // This is our Dictionary of tiles
 
-            if (tiles.TryGetValue(worldPoint, out currentTile))
-            {
-                currentTile.tileStatus = TileStatus.OCCUPIED;
-                Debug.Log("Tile " + currentTile.Name + " Position: X: " + currentTile.LocalPlace.x + " Y: " + currentTile.LocalPlace.y + " Status :" + currentTile.tileStatus);
-            }
-        }
+        //    if (tiles.TryGetValue(worldPoint, out currentTile))
+        //    {
+        //        currentTile.tileStatus = TileStatus.OCCUPIED;
+        //        Debug.Log("Tile " + currentTile.Name + " Position: X: " + currentTile.LocalPlace.x + " Y: " + currentTile.LocalPlace.y + " Status :" + currentTile.tileStatus);
+        //    }
+        //}
         private void CheckIfGameOver()
         {
             if(currentHealth <= 0)

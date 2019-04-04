@@ -9,6 +9,7 @@ namespace Advent.Dungeons
 {
     public class BoardGenerator : MonoBehaviour
     {
+        public Tile gridTile = null;
         [SerializeField]
         private BoardParameters boardParameters = null;
         [SerializeField]
@@ -17,14 +18,18 @@ namespace Advent.Dungeons
         private Tilemap pitMap = null;
         [SerializeField]
         private Tilemap wallMap = null;
+        [SerializeField]
+        private Tilemap gridViewer = null;
         private int routeCount = 0;
         List<Vector2> vacantTiles;
         GridLayout gridLayout;
         Player player;
+        private GameObject enemyCollection;
         // Start is called before the first frame update
         void Start()
         {
             player = Player.instance;
+            enemyCollection = new GameObject("Enemy Collection");
             SetupBoard();
             GameTiles.instance.GetWorldTiles();
         }
@@ -44,6 +49,7 @@ namespace Advent.Dungeons
 
             GetAvailableTiles();
             MovePlayerToStartPosition();
+            SpawnEnemies();
         }
         public void ClearAllTiles()
         {
@@ -61,6 +67,7 @@ namespace Advent.Dungeons
                 {
                     Vector3Int localPlace = (new Vector3Int(n, p, (int)groundMap.transform.position.y));
                     Vector3 place = groundMap.CellToWorld(localPlace);
+                    gridViewer.SetTile(localPlace, gridTile);
                     if (groundMap.HasTile(localPlace))
                     {
                         //Tile at "place"
@@ -76,8 +83,19 @@ namespace Advent.Dungeons
         private void MovePlayerToStartPosition()
         {
             int selectedAvailableTile = Random.Range(0, vacantTiles.Count);
-            player.transform.position = new Vector3(vacantTiles[selectedAvailableTile].x + 0.5f, vacantTiles[selectedAvailableTile].y + 0.5f, 0);
+            player.transform.position = new Vector3(vacantTiles[selectedAvailableTile].x, vacantTiles[selectedAvailableTile].y, 0);
             vacantTiles.Remove(vacantTiles[selectedAvailableTile]);
+        }
+        private void SpawnEnemies()
+        {
+            for (int i = 0; i < boardParameters.enemyCount.Random; i++)
+            {
+                int selectedAvailableTile = Random.Range(0, vacantTiles.Count);
+                int getRandomEnemy = Random.Range(0, boardParameters.enemies.Length);
+                Vector3 spawnPosition = new Vector3(vacantTiles[selectedAvailableTile].x, vacantTiles[selectedAvailableTile].y, 0);
+                Instantiate(boardParameters.enemies[getRandomEnemy], spawnPosition,Quaternion.identity,enemyCollection.transform);
+                vacantTiles.Remove(vacantTiles[selectedAvailableTile]);
+            }
         }
         private void FillWalls()
         {
