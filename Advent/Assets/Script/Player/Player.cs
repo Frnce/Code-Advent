@@ -21,7 +21,7 @@ namespace Advent.Entities
             }
             DontDestroyOnLoad(gameObject);
         }
-        public GameObject selector;
+        public SelectorController selector;
         [SerializeField]
         private Tilemap gridViewer = null;
         GameManager gameManager;
@@ -48,30 +48,41 @@ namespace Advent.Entities
             if (Input.GetKeyDown(KeyCode.T) && isSelectionMode == false)
             {
                 isSelectionMode = true;
-                selector.SetActive(true);
+                selector.SetIfActive(true);
                 gridViewer.gameObject.SetActive(true);
                 Debug.Log(isSelectionMode);
             }
             else if(Input.GetKeyDown(KeyCode.T) && isSelectionMode == true)
             {
                 isSelectionMode = false;
-                selector.SetActive(false);
+                selector.SetIfActive(false);
                 gridViewer.gameObject.SetActive(false);
                 Debug.Log(isSelectionMode);
             }
 
             int horizontal = 0;
             int vertical = 0;
+            int selectorHorizontal = 0;
+            int selectorVertical = 0;
 
             if (!isSelectionMode)
             {
                 horizontal = (int)Input.GetAxisRaw("Horizontal");
                 vertical = (int)Input.GetAxisRaw("Vertical");
             }
+            else
+            {
+                selectorHorizontal = (int)Input.GetAxisRaw("Horizontal");
+                selectorVertical = (int)Input.GetAxisRaw("Vertical");
+            }
             if (horizontal != 0 || vertical != 0)
             {
                 AttemptMove<Enemy,ChestScript>(horizontal, vertical);
                 //AttemptMove<ChestScript>(horizontal, vertical);
+            }
+            if(selectorHorizontal!= 0 || selectorVertical != 0)
+            {
+                selector.MoveSelector(selectorHorizontal, selectorVertical);
             }
             if(horizontal > 0 && !isFacingRight)
             {
