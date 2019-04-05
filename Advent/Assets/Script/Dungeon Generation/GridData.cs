@@ -55,6 +55,20 @@ namespace Advent.Dungeons
             }
             SeekTileStatus();
         }
+        public TileStatus GetTileStatus(Vector3 pos)
+        {
+            Vector3Int worldPoint = new Vector3Int(Mathf.FloorToInt(pos.x), Mathf.FloorToInt(pos.y), 0);
+            TileStatus status = TileStatus.EMPTY;
+            foreach (KeyValuePair<Vector3, WorldTile> item in GameTiles.instance.tiles)
+            {
+                if(item.Value.LocalPlace == worldPoint)
+                {
+                    status = item.Value.tileStatus;
+                    break;
+                }
+            }
+            return status;
+        }
         public void SeekTileStatus()
         {
             foreach (KeyValuePair<Vector3, WorldTile> item in GameTiles.instance.tiles)
@@ -66,7 +80,7 @@ namespace Advent.Dungeons
                         tilemap.SetColor(item.Value.LocalPlace, Color.white);
                         break;
                     case TileStatus.PLAYER:
-                        tilemap.SetColor(item.Value.LocalPlace, Color.green);
+                        tilemap.SetColor(item.Value.LocalPlace, Color.yellow);
                         break;
                     case TileStatus.ENEMY:
                         tilemap.SetColor(item.Value.LocalPlace, Color.red);
