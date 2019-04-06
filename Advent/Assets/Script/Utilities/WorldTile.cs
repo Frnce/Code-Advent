@@ -26,13 +26,4 @@ namespace Advent.Utilities
         
         public TileStatus tileStatus { get; set; }
     }
-    public enum TileStatus
-    {
-        EMPTY,
-        GROUND,
-        OBJECTS,
-        WALL,
-        PLAYER,
-        ENEMY
-    }
 }

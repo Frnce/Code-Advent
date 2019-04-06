@@ -22,6 +22,7 @@ namespace Advent.Entities
             DontDestroyOnLoad(gameObject);
         }
         public SelectorController selector;
+        public bool canRangeSingleAttack;
         [SerializeField]
         private Tilemap gridViewer = null;
         GameManager gameManager;
@@ -75,10 +76,10 @@ namespace Advent.Entities
                 selectorHorizontal = (int)Input.GetAxisRaw("Horizontal");
                 selectorVertical = (int)Input.GetAxisRaw("Vertical");
             }
+
             if (horizontal != 0 || vertical != 0)
             {
                 AttemptMove<Enemy,ChestScript>(horizontal, vertical);
-                //AttemptMove<ChestScript>(horizontal, vertical);
             }
             if(selectorHorizontal!= 0 || selectorVertical != 0)
             {
@@ -96,7 +97,6 @@ namespace Advent.Entities
             {
                 isMoving = false;
             }
-
             if (isOnDoor)
             {
                 if (Input.GetKeyDown(KeyCode.F))

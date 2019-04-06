@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Dungeons;
+using Advent.Utilities;
 
 namespace Advent.Entities
 {
@@ -33,7 +34,7 @@ namespace Advent.Entities
             {
                 if (Input.GetKeyDown(KeyCode.K))
                 {
-                    CheckHit();
+                    CheckTileHit();
                 }
             }
         }
@@ -71,10 +72,14 @@ namespace Advent.Entities
             }
             canMove = true;
         }
-        private void CheckHit()
+        private void CheckTileHit()
         {
             Vector2 start = transform.position;
             Debug.Log(gridData.GetTileStatus(start));
+            if (Player.instance.canRangeSingleAttack && gridData.GetTileStatus(start) == TileStatus.ENEMY)
+            {
+                Debug.Log("Hit Enemy");
+            }
         }
     }
 }

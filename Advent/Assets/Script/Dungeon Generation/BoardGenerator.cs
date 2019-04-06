@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Advent.Entities;
 using Advent.Utilities;
+using Advent.Items;
 
 namespace Advent.Dungeons
 {
@@ -20,6 +21,8 @@ namespace Advent.Dungeons
         private Tilemap wallMap = null;
         [SerializeField]
         private Tilemap gridViewer = null;
+        [SerializeField]
+        private Item summonItem;
         private int routeCount = 0;
         List<Vector2> vacantTiles;
         GridLayout gridLayout;
@@ -31,7 +34,7 @@ namespace Advent.Dungeons
             player = Player.instance;
             enemyCollection = new GameObject("Enemy Collection");
             SetupBoard();
-            GameTiles.instance.GetWorldTiles();
+            GameTiles.instance.GetWorldTiles(); 
         }
         public void SetupBoard()
         {
@@ -50,6 +53,7 @@ namespace Advent.Dungeons
             GetAvailableTiles();
             MovePlayerToStartPosition();
             SpawnEnemies();
+            SpawnTestItem();
         }
         public void ClearAllTiles()
         {
@@ -96,6 +100,13 @@ namespace Advent.Dungeons
                 Instantiate(boardParameters.enemies[getRandomEnemy], spawnPosition,Quaternion.identity,enemyCollection.transform);
                 vacantTiles.Remove(vacantTiles[selectedAvailableTile]);
             }
+        }
+        private void SpawnTestItem()
+        {
+            int selectAvailableTile = Random.Range(0, vacantTiles.Count);
+            Vector3 spawnPosition = new Vector3(vacantTiles[selectAvailableTile].x, vacantTiles[selectAvailableTile].y, 0);
+            Instantiate(summonItem.gameobject, spawnPosition, Quaternion.identity);
+            vacantTiles.Remove(vacantTiles[selectAvailableTile]);
         }
         private void FillWalls()
         {

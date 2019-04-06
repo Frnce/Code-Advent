@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Advent.Inventories;
 using Advent.Entities;
+using Advent.Utilities;
 
 namespace Advent.Items
 {
@@ -29,10 +30,5 @@ namespace Advent.Items
             RemoveFromInventory();
             Instantiate(gameobject,Player.instance.transform.position, Quaternion.identity);
         }
-    }
-    public enum ItemType
-    {
-        EQUIPMENT,
-        CONSUMABLE
     }
 }
