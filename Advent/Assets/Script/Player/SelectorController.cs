@@ -6,45 +6,24 @@ using Advent.Utilities;
 
 namespace Advent.Entities
 {
-    public class SelectorController : MonoBehaviour
+    public class SelectorController : TargetingSystem
     {
-        public float moveTime = 0.1f;
-        Rigidbody2D rb2d;
-        private float inverseMoveTime;
-        private BoxCollider2D boxCollider;
-        private GridData gridData;
-
-        bool canMove = true;
         private void OnEnable()
         {
             transform.localPosition = new Vector3(0, 0, 0);
         }
+
         // Start is called before the first frame update
-        void Start()
+        protected override void Start()
         {
-            rb2d = GetComponent<Rigidbody2D>();
-            boxCollider = GetComponent<BoxCollider2D>();
-            gridData = FindObjectOfType<GridData>();
-            inverseMoveTime = 1f / moveTime;
+            base.Start();
         }
         // Update is called once per frame
         void Update()
         {
             if (gameObject.activeSelf)
             {
-                if (Input.GetKeyDown(KeyCode.K))
-                {
-                    CheckTileHit();
-                }
-            }
-        }
-        public void MoveSelector(int horizontal,int vertical)
-        {
-            if (canMove)
-            {
-                Vector2 start = transform.position;
-                Vector2 end = start + new Vector2(horizontal, vertical);
-                StartCoroutine(SmoothMovement(end));
+                RangeWeaponEquipped();
             }
         }
         public void SetIfActive(bool isActive)
@@ -56,6 +35,15 @@ namespace Advent.Entities
             if(isActive == false)
             {
                 gameObject.SetActive(isActive);
+            }
+        }
+        public void MoveSelector(int horizontal, int vertical)
+        {
+            if (canMove)
+            {
+                Vector2 start = transform.position;
+                Vector2 end = start + new Vector2(horizontal, vertical);
+                StartCoroutine(SmoothMovement(end));
             }
         }
         protected IEnumerator SmoothMovement(Vector3 end)
@@ -72,14 +60,45 @@ namespace Advent.Entities
             }
             canMove = true;
         }
-        private void CheckTileHit()
+        private void RangeWeaponEquipped()
         {
-            Vector2 start = transform.position;
-            Debug.Log(gridData.GetTileStatus(start));
-            if (Player.instance.canRangeSingleAttack && gridData.GetTileStatus(start) == TileStatus.ENEMY)
+            if (player.canRangeSingleAttack)
             {
-                Debug.Log("Hit Enemy");
+                isInRange = IsInRange(player.transform.position, transform.position, player.rangeOfWeapon);
+                if (isInRange)
+                {
+                    if (Input.GetKeyDown(KeyCode.K))
+                    {
+                        AttemptTarget<Enemy>(transform.position);
+                    }
+                }
+                else
+                {
+                    Debug.Log("Not In range");
+                }
             }
+        }
+        protected override void AttemptTarget<Enemy>(Vector2 selectorPosition)
+        {
+            base.AttemptTarget<Enemy>(selectorPosition);
+            GameManager.instance.playersTurn = false;
+        }
+        protected override void AttackTarget<T>(T component)
+        {
+            Enemy hitEnemy = component as Enemy;
+            if (component == hitEnemy)
+            {
+                hitEnemy.DamageEntity(hitEnemy.name, player.attack.GetValue());
+            }
+        }
+        private bool IsInRange(Vector3 player, Vector3 selector, IntRange range)
+        {
+            float distance = Vector3.Distance(player, selector);
+            if (distance <= range.m_Max)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

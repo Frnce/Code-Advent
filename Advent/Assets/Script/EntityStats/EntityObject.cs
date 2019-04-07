@@ -126,19 +126,6 @@ namespace Advent.Entities
         }
         public void DamageEntity(string beenDamaged,int damage)
         {
-            ////Call the RandomizeSfx function of SoundManager to play one of two chop sounds.
-            //SoundManager.instance.RandomizeSfx(chopSound1, chopSound2);
-
-            ////Set spriteRenderer to the damaged wall sprite.
-            //spriteRenderer.sprite = dmgSprite;
-
-            ////Subtract loss from hit point total.
-            //hp -= loss;
-
-            ////If hit points are less than or equal to zero:
-            //if (hp <= 0)
-            //    //Disable the gameObject.
-            //    gameObject.SetActive(false);
             damage = Mathf.Clamp(damage, 0, int.MaxValue); //have room for improvements ,. ,balancing shits
             currentHealth -= damage;
             eventLogs.AddEvent(beenDamaged + " has been Hit for " + damage);

@@ -23,6 +23,7 @@ namespace Advent.Entities
         }
         public SelectorController selector;
         public bool canRangeSingleAttack;
+        public IntRange rangeOfWeapon;
         [SerializeField]
         private Tilemap gridViewer = null;
         GameManager gameManager;
@@ -129,7 +130,7 @@ namespace Advent.Entities
             {
                 isMoving = true;
                 anim.SetTrigger("Move");
-                gameManager.turns++;
+                GameManager.instance.AddTurn();
                 //Call RandomizeSfx of SoundManager to play the move sound, passing in two audio clips to choose from.
             }
             gameManager.playersTurn = false;
@@ -148,6 +149,7 @@ namespace Advent.Entities
             {
                 chest.OpenChest();
             }
+            GameManager.instance.AddTurn();
         }
         private void CheckIfGameOver()
         {

@@ -11,6 +11,7 @@ namespace Advent.Items
     {
         public EquipSlot equipSlot;
         public WeaponType weaponType;
+        public IntRange weaponRange = new IntRange(1, 1);
 
         public int defenseModifier;
         public int pAttackModifier;

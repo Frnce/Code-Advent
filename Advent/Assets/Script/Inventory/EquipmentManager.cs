@@ -47,6 +47,7 @@ namespace Advent.Inventories
                 if(newItem.weaponType == WeaponType.RANGE && newItem.equipSlot == EquipSlot.WEAPON)
                 {
                     player.canRangeSingleAttack = true;
+                    player.rangeOfWeapon = newItem.weaponRange;
                 }
                 else
                 {

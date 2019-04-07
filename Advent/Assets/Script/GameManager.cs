@@ -19,7 +19,7 @@ namespace Advent
         private int level = 0;
         private int maxLevel = 0;
         public GameObject nextLevelObject;
-        public int turns = 0;
+        private int turns = 0;
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -122,6 +122,10 @@ namespace Advent
             enemiesMoving = false;
             //Once Enemies are done moving, set playersTurn to true so player can move.
             playersTurn = true;
+        }
+        public void AddTurn()
+        {
+            turns++;
         }
     }
 }
