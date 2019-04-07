@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using Advent.Inventories;
 using Advent.Entities;
+using Advent.Utilities;
 
 namespace Advent.Items
 {
     [CreateAssetMenu(fileName ="New Item", menuName = "Inventory/Item")]
     public class Item : ScriptableObject
     {
-        public float level; 
+        public float level;
+        public ItemType ItemType;
         new public string name = "New Item";
         public Sprite icon = null;
         public bool isDefaultItem = false;

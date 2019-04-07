@@ -9,7 +9,6 @@ namespace Advent.Entities
     {
         private Transform target;
         private LootScript lootDrop;
-        private LevelSystemController levelSystem;
         //private bool skipMove;
         // Start is called before the first frame update
         protected override void Start()
@@ -17,7 +16,6 @@ namespace Advent.Entities
             GameManager.instance.AddEnemyToList(this);
             target = GameObject.FindGameObjectWithTag("Player").transform;
             lootDrop = GetComponent<LootScript>();
-            levelSystem = LevelSystemController.instance;
             base.Start();
         }
 
@@ -26,15 +24,9 @@ namespace Advent.Entities
         {
 
         }
-        protected override void AttemptMove<T>(int xDir, int yDir)
+        protected override void AttemptMove<Enemy,Chest>(int xDir, int yDir)
         {
-            //if (skipMove)
-            //{
-            //    skipMove = false;
-            //    return;
-            //}
-            base.AttemptMove<T>(xDir, yDir);
-            //skipMove = true;
+            base.AttemptMove<Enemy,Chest>(xDir, yDir);
         }
         public void MoveEnemy()
         {
@@ -49,13 +41,21 @@ namespace Advent.Entities
             {
                 xDir = target.position.x > transform.position.x ? 1 : -1;
             }
-            AttemptMove<Player>(xDir, yDir);
+            AttemptMove<Player,ChestScript>(xDir, yDir);
         }
         protected override void OnCantMove<T>(T component)
         {
             Player hitPlayer = component as Player;
+            ChestScript chest = component as ChestScript;
 
-            hitPlayer.DamageEntity(hitPlayer.name,attack.GetValue());
+            if(component == hitPlayer)
+            {
+                hitPlayer.DamageEntity(hitPlayer.name, attack.GetValue());
+            }
+            if(component == chest)
+            {
+                return;
+            }
             //hitPlayer.LoseFood(playerDamage);
 
             ////Set the attack trigger of animator to trigger Enemy attack animation.
@@ -66,6 +66,7 @@ namespace Advent.Entities
             base.Die();
             lootDrop.DropLoot();
             levelSystem.GainExp(entity.expGiven);
+            GameManager.instance.RemoveEnemyToList(this);
             Destroy(gameObject);
         }
     }

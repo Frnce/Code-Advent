@@ -22,11 +22,9 @@ namespace Advent.Entities
         public int currentExperience;
 
         public int PointsAddedToStats = 4;
-
-        Player player;
         private void Start()
         {
-            player = Player.instance;
+
         }
         //TODO add skillpoints;
         public void GainExp(int expToAdd)
@@ -52,7 +50,7 @@ namespace Advent.Entities
         }
         void AddStatPoints()
         {
-            player.AddAvailablePoints(PointsAddedToStats);
+            Player.instance.AddAvailablePoints(PointsAddedToStats);
         }
     }
 }

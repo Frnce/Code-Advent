@@ -25,15 +25,18 @@ namespace Advent.Entities
         public Stat intelligence;
         public Stat vitality;
 
-        private int availablePoints;
-
         private BoxCollider2D boxCollider;
         private Rigidbody2D rb2d;
         private float inverseMoveTime; //used to make movement more effiecient;
         private EventLogs eventLogs;
 
+        protected bool canMove;
+
+        protected LevelSystemController levelSystem;
+
         protected virtual void Start()
         {
+            levelSystem = LevelSystemController.instance;
             boxCollider = GetComponent<BoxCollider2D>();
             rb2d = GetComponent<Rigidbody2D>();
             inverseMoveTime = 1f / moveTime;
@@ -61,31 +64,18 @@ namespace Advent.Entities
             attack.AddStat(strength.GetValue());
         }
 
-        public int GetAvailablePoints()
-        {
-            return availablePoints;
-        }
-        public void AddAvailablePoints(int additionalPoints)
-        {
-            availablePoints += additionalPoints;
-        }
-        public void UseAvailablePoint()
-        {
-            availablePoints--;
-        }
-
         private void SetST()
         {
-            maxStamina = 2 * (intelligence.GetValue()); //TODO add level.
+            maxStamina = 2 * (levelSystem.currentLevel + intelligence.GetValue());
         }
 
         private void SetHP()
         {
-            maxHealth = 3 * (vitality.GetValue()); //TODO add level .
+            maxHealth = 3 * (levelSystem.currentLevel + vitality.GetValue());
         }
 
 
-        protected bool Move(int xDir,int yDir, out RaycastHit2D hit)
+        protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
         {
             Vector2 start = transform.position;
             Vector2 end = start + new Vector2(xDir, yDir);
@@ -94,7 +84,7 @@ namespace Advent.Entities
             hit = Physics2D.Linecast(start, end, blockingLayer);
             boxCollider.enabled = true;
 
-            if(hit.transform == null)
+            if (hit.transform == null)
             {
                 StartCoroutine(SmoothMovement(end));
                 return true;
@@ -105,7 +95,7 @@ namespace Advent.Entities
         {
             float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
 
-            while(sqrRemainingDistance > float.Epsilon)
+            while (sqrRemainingDistance > float.Epsilon)
             {
                 Vector3 newPostion = Vector3.MoveTowards(rb2d.position, end, inverseMoveTime * Time.deltaTime);
                 rb2d.MovePosition(newPostion);
@@ -113,41 +103,35 @@ namespace Advent.Entities
                 yield return null;
             }
         }
-        protected virtual void AttemptMove<T>(int xDir, int yDir) where T : Component
+        protected virtual void AttemptMove<Enemy,Chest>(int xDir, int yDir)
+            where Enemy : Component
+            where Chest : Component
         {
             RaycastHit2D hit;
-            bool canMove = Move(xDir, yDir, out hit);
-            if(hit.transform == null)
+            canMove = Move(xDir, yDir, out hit);
+            if (hit.transform == null)
             {
                 return;
             }
-            T hitComponent = hit.transform.GetComponent<T>();
-
-            if(!canMove && hitComponent != null)
+            Enemy enemyComponent = hit.transform.GetComponent<Enemy>();
+            Chest chestComponent = hit.transform.GetComponent<Chest>();
+            if (!canMove && enemyComponent != null)
             {
-                OnCantMove(hitComponent);
+                OnCantMove(enemyComponent);
+            }
+            else if(!canMove && chestComponent != null)
+            {
+                OnCantMove(chestComponent);
             }
         }
         public void DamageEntity(string beenDamaged,int damage)
         {
-            ////Call the RandomizeSfx function of SoundManager to play one of two chop sounds.
-            //SoundManager.instance.RandomizeSfx(chopSound1, chopSound2);
-
-            ////Set spriteRenderer to the damaged wall sprite.
-            //spriteRenderer.sprite = dmgSprite;
-
-            ////Subtract loss from hit point total.
-            //hp -= loss;
-
-            ////If hit points are less than or equal to zero:
-            //if (hp <= 0)
-            //    //Disable the gameObject.
-            //    gameObject.SetActive(false);
             damage = Mathf.Clamp(damage, 0, int.MaxValue); //have room for improvements ,. ,balancing shits
             currentHealth -= damage;
             eventLogs.AddEvent(beenDamaged + " has been Hit for " + damage);
             if (currentHealth <= 0)
             {
+                currentHealth = 0;
                 Die();
             }
         }

@@ -9,7 +9,6 @@ namespace Advent.UI
 {
     public class ShowStats : MonoBehaviour
     {
-        bool isActive = false;
         [Space]
         [SerializeField]
         private TextMeshProUGUI attackText = null;

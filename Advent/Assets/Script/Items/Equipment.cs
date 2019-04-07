@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Inventories;
+using Advent.Utilities;
 
 namespace Advent.Items
 {
@@ -9,6 +10,8 @@ namespace Advent.Items
     public class Equipment : Item
     {
         public EquipSlot equipSlot;
+        public WeaponType weaponType;
+        public IntRange weaponRange = new IntRange(1, 1);
 
         public int defenseModifier;
         public int pAttackModifier;
@@ -23,12 +26,5 @@ namespace Advent.Items
         {
             EquipmentManager.instance.SwapEquip(index);
         }
-    }
-    public enum EquipSlot
-    {
-        HEAD,
-        BODY,
-        ACCESORY,
-        WEAPON
     }
 }

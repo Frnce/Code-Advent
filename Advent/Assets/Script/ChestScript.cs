@@ -14,34 +14,17 @@ namespace Advent
         {
             lootScript = GetComponent<LootScript>();
         }
-
-        // Update is called once per frame
-        void Update()
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (isNearChest)
+            if (collision.collider.CompareTag("Player"))
             {
-                Debug.Log("near chest");
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    lootScript.DropLoot();
-                    Destroy(gameObject);
-                }
+                Debug.Log("Chest Open");
             }
         }
-        private void OnTriggerEnter2D (Collider2D collision)
+        public void OpenChest()
         {
-            if (collision.CompareTag("Player"))
-            {
-                isNearChest = true;
-            }
-        }
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                isNearChest = false;
-            }
+            lootScript.DropLoot();
+            Destroy(gameObject);
         }
     }
-
 }

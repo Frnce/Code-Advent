@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b78ec78fc7c76d54ea0d4fec8de02926, type: 3}
+  m_Name: Floor 1-1
+  m_EditorClassIdentifier: 
+  enemyCount:
+    m_Min: 1
+    m_Max: 5
+  chestCount:
+    m_Min: 1
+    m_Max: 2
+  groundTile:
+  - {fileID: 11400000, guid: 42a8fb1d9eca09348955acb8d0f4e023, type: 2}
+  - {fileID: 11400000, guid: f8d4db9d8c58c6640b15d1e9666e1078, type: 2}
+  pitTile:
+  - {fileID: 11400000, guid: c5238195a9dc322468f6221e4de8b8d2, type: 2}
+  topWallTile:
+  - {fileID: 11400000, guid: a47cef2cb3e044a4baf67f817873b8a1, type: 2}
+  botWallTile:
+  - {fileID: 11400000, guid: c5238195a9dc322468f6221e4de8b8d2, type: 2}
+  deviationRate:
+    m_Min: 0
+    m_Max: 0
+  roomRate:
+    m_Min: 25
+    m_Max: 25
+  maxRouteLength:
+    m_Min: 25
+    m_Max: 25
+  maxRoutes:
+    m_Min: 0
+    m_Max: 0
+  enemies:
+  - {fileID: 1945895348890335813, guid: 85f3cdb51ac327f498e4885d96622c62, type: 3}
+  chests:
+  - {fileID: 254484702860795624, guid: f64facbc56d59da41a13e6b8d3e6b75b, type: 3}

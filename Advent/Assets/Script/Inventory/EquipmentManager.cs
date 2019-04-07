@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Advent.Items;
 using Advent.Entities;
+using Advent.Utilities;
 
 namespace Advent.Inventories
 {
@@ -23,7 +24,6 @@ namespace Advent.Inventories
         public Equipment[] currentEquipment;
         public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
         public OnEquipmentChanged onEquipmentChangedCallback;
-
         Player player;
         Inventory inventory;
         // Start is called before the first frame update
@@ -43,6 +43,16 @@ namespace Advent.Inventories
             {
                 player.defense.AddModifier(newItem.defenseModifier);
                 player.attack.AddModifier(newItem.pAttackModifier);
+
+                if(newItem.weaponType == WeaponType.RANGE && newItem.equipSlot == EquipSlot.WEAPON)
+                {
+                    player.canRangeSingleAttack = true;
+                    player.rangeOfWeapon = newItem.weaponRange;
+                }
+                else
+                {
+                    player.canRangeSingleAttack = false;
+                }
             }
             if (oldItem != null)
             {

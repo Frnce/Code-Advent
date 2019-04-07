@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Items
+  - Chest
+  - Exit
+  - Indicator
   layers:
   - Default
   - TransparentFX
@@ -16,10 +19,10 @@ TagManager:
   - 
   - 
   - BlockingLayer
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Objects
+  - GroundLayer
   - 
   - 
   - 
@@ -42,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Board
+    uniqueID: 2634582867
     locked: 0
   - name: Items
     uniqueID: 1439889715
