@@ -16,8 +16,6 @@ namespace Advent.UI
         private InventorySlot[] itemSlot;
         private EquipmentManager equipmentManager;
         private EquipmentSlot[] equipmentSlot;
-
-        // Start is called before the first frame update
         void Start()
         {
             inventory = Inventory.instance;
@@ -28,11 +26,6 @@ namespace Advent.UI
 
             itemSlot = itemsParent.GetComponentsInChildren<InventorySlot>();
             equipmentSlot = equipParent.GetComponentsInChildren<EquipmentSlot>();
-        }
-        // Update is called once per frame
-        void Update()
-        {
-
         }
         public void UpdateInventoryUI()
         {
@@ -52,7 +45,7 @@ namespace Advent.UI
         {
             if(newItem != null)
             {
-                int slotIndex = (int)newItem.equipSlot;
+                int slotIndex = (int)newItem.GetEquipSlot();
                 for (int i = 0; i < equipmentSlot.Length; i++)
                 {
                     if (i < equipmentManager.currentEquipment.Length)

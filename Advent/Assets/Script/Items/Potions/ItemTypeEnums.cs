@@ -4,8 +4,12 @@
     {
         HEAD,
         BODY,
-        ACCESORY,
-        WEAPON
+        ACCESORY, //REMOVE
+        WEAPON, //REMOVE
+        MAINHAND,
+        OFFHAND,
+        RING,
+        NECKLACE
     }
     public enum ItemType
     {
@@ -14,8 +18,24 @@
     }
     public enum WeaponType
     {
-        MELEE,
+        ONEHANDED,
+        TWOHANDED,
         RANGE
+    }
+    public enum EquipmentRarity
+    {
+        COMMON, //WHITE
+        RARE, //BLUE
+        EPIC, //PURPLE / VIOLET
+        LEGENDARY, // YELLOW / ORANGE
+        GOD // RED
+    }
+    public enum EquipmentType
+    {
+        NORMAL, // WHITE
+        SET,
+        CURSED,
+        DIVINE
     }
     public enum TileStatus
     {
