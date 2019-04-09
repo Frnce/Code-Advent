@@ -8,7 +8,7 @@ namespace Advent.Entities
     public class Stat
     {
         [SerializeField]
-        private int baseValue = 0;
+        private int baseValue = 0;  
         private List<int> modifiers = new List<int>();
         public void AddStat(int stat)
         {
