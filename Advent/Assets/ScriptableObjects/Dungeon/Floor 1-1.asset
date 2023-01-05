@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78ec78fc7c76d54ea0d4fec8de02926, type: 3}
   m_Name: Floor 1-1
   m_EditorClassIdentifier: 
-  enemyCount:
-    m_Min: 1
-    m_Max: 5
+  enemySpawns:
+  - enemyObject: {fileID: 1945895348890335813, guid: 85f3cdb51ac327f498e4885d96622c62,
+      type: 3}
+    count:
+      m_Min: 15
+      m_Max: 20
   chestCount:
     m_Min: 1
     m_Max: 2
@@ -28,18 +31,16 @@ MonoBehaviour:
   botWallTile:
   - {fileID: 11400000, guid: c5238195a9dc322468f6221e4de8b8d2, type: 2}
   deviationRate:
-    m_Min: 0
-    m_Max: 0
+    m_Min: 2
+    m_Max: 7
   roomRate:
-    m_Min: 25
-    m_Max: 25
+    m_Min: 5
+    m_Max: 10
   maxRouteLength:
-    m_Min: 25
-    m_Max: 25
+    m_Min: 50
+    m_Max: 75
   maxRoutes:
-    m_Min: 0
-    m_Max: 0
-  enemies:
-  - {fileID: 1945895348890335813, guid: 85f3cdb51ac327f498e4885d96622c62, type: 3}
+    m_Min: 5
+    m_Max: 10
   chests:
   - {fileID: 254484702860795624, guid: f64facbc56d59da41a13e6b8d3e6b75b, type: 3}

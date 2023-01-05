@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Advent.Items;
 using Advent.Entities;
 using Advent.Utilities;
@@ -44,15 +42,15 @@ namespace Advent.Inventories
                 player.defense.AddModifier(newItem.defenseModifier);
                 player.attack.AddModifier(newItem.pAttackModifier);
 
-                if(newItem.weaponType == WeaponType.RANGE && newItem.equipSlot == EquipSlot.WEAPON)
-                {
-                    player.canRangeSingleAttack = true;
-                    player.rangeOfWeapon = newItem.weaponRange;
-                }
-                else
-                {
-                    player.canRangeSingleAttack = false;
-                }
+                //if(newItem.weaponType == WeaponType.RANGE && newItem.equipSlot == EquipSlot.WEAPON)
+                //{
+                //    player.canRangeSingleAttack = true;
+                //    player.rangeOfWeapon = newItem.weaponRange;
+                //}
+                //else
+                //{
+                //    player.canRangeSingleAttack = false;
+                //}
             }
             if (oldItem != null)
             {
@@ -62,7 +60,7 @@ namespace Advent.Inventories
         }
         public void Equip(Equipment newItem)
         {
-            int slotIndex = (int)newItem.equipSlot;
+            int slotIndex = (int)newItem.GetEquipSlot();
             Equipment oldItem = null;
             if(currentEquipment[slotIndex] != null)
             {

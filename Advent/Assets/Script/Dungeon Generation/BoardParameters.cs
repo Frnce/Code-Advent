@@ -8,7 +8,7 @@ namespace Advent.Dungeons
     [CreateAssetMenu(fileName = "New Board", menuName = "Dungeon/board parameters")]
     public class BoardParameters : ScriptableObject
     {
-        public IntRange enemyCount = new IntRange(0, 10);
+        public EnemySpawns[] enemySpawns = null;
         public IntRange chestCount = new IntRange(3, 5);
         public Tile[] groundTile = null;
         public Tile[] pitTile = null;
@@ -18,7 +18,18 @@ namespace Advent.Dungeons
         public IntRange roomRate = new IntRange(10,15);
         public IntRange maxRouteLength = new IntRange(100, 150);
         public IntRange maxRoutes = new IntRange(20, 25);
-        public GameObject[] enemies;
         public GameObject[] chests;
+    }
+    [System.Serializable]
+    public class EnemySpawns
+    {
+        public GameObject enemyObject;
+        public IntRange count;
+
+        public EnemySpawns(GameObject gameObject,IntRange range)
+        {
+            enemyObject = gameObject;
+            count = range;
+        }
     }
 }

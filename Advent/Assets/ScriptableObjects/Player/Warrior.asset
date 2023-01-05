@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   name: Warrior
-  baseStr: 99
-  baseDex: 99
-  baseInt: 99
-  baseVit: 99
+  baseStr: 15
+  baseDex: 10
+  baseInt: 5
+  baseVit: 25
   expGiven: 0

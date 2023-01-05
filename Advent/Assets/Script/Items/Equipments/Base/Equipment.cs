@@ -6,25 +6,26 @@ using Advent.Utilities;
 
 namespace Advent.Items
 {
-    [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
     public class Equipment : Item
     {
-        public EquipSlot equipSlot;
-        public WeaponType weaponType;
-        public IntRange weaponRange = new IntRange(1, 1);
-
+        protected EquipSlot equipSlot;
+        public EquipmentRarity rarity;
         public int defenseModifier;
-        public int pAttackModifier;
-
+        public int pAttackModifier; //TODO change to intrange
+        //statsMod(class)[] statMod
         public override void Use()
         {
             base.Use();
             EquipmentManager.instance.Equip(this);
             RemoveFromInventory();
         }
-        public void Unequip(int index)
+        public void Unequip(int index)  
         {
             EquipmentManager.instance.SwapEquip(index);
+        }
+        public EquipSlot GetEquipSlot()
+        {
+            return equipSlot;
         }
     }
 }
